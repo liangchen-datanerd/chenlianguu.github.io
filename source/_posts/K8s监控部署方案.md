@@ -1,7 +1,7 @@
 ---
 title: K8s监控部署方案
 top: false
-cover: false
+cover: https://i.loli.net/2020/01/08/vN8FjS6aoxEGYRI.png
 toc: true
 mathjax: true
 date: 2020-01-07 17:17:22
@@ -16,7 +16,7 @@ categories: kubernetes
 ---
 
 ## 架构
-![grafana](q3q379nk9.bkt.clouddn.com/grafana.png)
+![grafana](https://i.loli.net/2020/01/08/DVBiRAwaNsnYbgL.png)
 
 ## 部署
 
@@ -112,7 +112,7 @@ node-exporter-service   NodePort   10.1.130.7     <none>        9100:31672/TCP  
 prometheus-service      NodePort   10.1.133.130   <none>        9090:30753/TCP   3h45m
 ```
 
-![image-20200103143320329](http://q3q379nk9.bkt.clouddn.com/image-20200103143320329.png)
+![image-20200103143320329](https://i.loli.net/2020/01/08/TP6tIlvFKhgzHuZ.png)
 
 ### 3 部署Prometheus pod
 
@@ -139,7 +139,7 @@ node-exporter-service   NodePort   10.1.130.7     <none>        9100:31672/TCP  
 prometheus-service      NodePort   10.1.133.130   <none>        9090:30753/TCP   3h45m
 ```
 
-![image-20200103143645494](http://q3q379nk9.bkt.clouddn.com/image-20200103143645494.png)
+![image-20200103143645494](https://i.loli.net/2020/01/08/fdFs8EN2xhHwCM6.png)
 
 ### 4 在k8s中部署grafana
 
@@ -168,17 +168,17 @@ prometheus-service      NodePort   10.1.133.130   <none>        9090:30753/TCP  
 
 把prometheus配置成数据源 ：http://prometheus-service.ns-monitor:9090
 
-![image-20200103144416930](http://q3q379nk9.bkt.clouddn.com/image-20200103144416930.png)
+![image-20200103144416930](https://i.loli.net/2020/01/08/fzxnrR5iguDjlHk.png)
 
 ### 6 倒入dashboard
 
 把 kubernetes的Dashboard的模板导入进来，直接把JSON格式内容复制进来。
 
-![image-20200103145516630](uhttp://q3q379nk9.bkt.clouddn.com/image-20200103145516630.png)
+![image-20200103145516630](https://i.loli.net/2020/01/08/6XkA5hEjN1OWioS.png)
 
 ## 效果图
 
-![image-20200103145627198](http://q3q379nk9.bkt.clouddn.com/image-20200103145627198.png)
+![image-20200103145627198](https://i.loli.net/2020/01/08/bqEolIi8KVSGuHk.png)
 
 ## Ref
 
