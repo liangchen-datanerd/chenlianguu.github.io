@@ -1,7 +1,7 @@
 ---
-title: gitlab开启https
+title: Gitlab开启Https
 top: false
-cover: false
+index_img: https://i.loli.net/2020/01/09/THWYZKhmjqslku4.png
 toc: true
 mathjax: true
 date: 2020-01-07 17:11:59

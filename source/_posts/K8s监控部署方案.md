@@ -1,7 +1,7 @@
 ---
 title: K8s监控部署方案
 top: false
-cover: https://i.loli.net/2020/01/08/vN8FjS6aoxEGYRI.png
+index_img: https://www.ovh.com/blog/wp-content/uploads/2019/01/kubernetesblog02.jpg
 toc: true
 mathjax: true
 date: 2020-01-07 17:17:22
@@ -11,6 +11,7 @@ tags:
  - kubernetes
  - grafana
  - prometheus
+ - 部署
  - 监控
 categories: kubernetes
 ---

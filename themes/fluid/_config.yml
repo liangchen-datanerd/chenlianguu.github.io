@@ -11,13 +11,13 @@
 # 全局
 # Site
 #---------------------------
-favicon: /img/favicon.png # 网站标签页的 icon
+favicon: https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png # 网站标签页的 icon
 
 apple_touch_icon: /img/apple-touch-icon.png # 用于苹果设备的 icon
 
 title_join_string: ' ~ '  # 浏览器标签页中的标题分隔符，效果： 文章名 ~ 站点名
 
-force_https: false  # 强制所有链接升级为 HTTPS（适用于图片等资源出现 HTTP 混入报错）
+force_https: true  # 强制所有链接升级为 HTTPS（适用于图片等资源出现 HTTP 混入报错）
 
 highlight: # 代码高亮
   enable: true
@@ -121,13 +121,13 @@ scroll_top_arrow:  # 向顶部滚动的箭头
 # Index Page
 #---------------------------
 index:
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg  # 首页 Banner 头图，以下相同
+  banner_img: https://static.zkqiang.cn/images/20191231163321.jpg-slim  # 首页 Banner 头图，以下相同
   banner_img_height: 100  # 头图高度，屏幕百分比，available: 0 - 100
   slogan:  # 首页副标题的独立设置
     enable: true  # 为 false 则不显示任何内容
-    text:  Hello World # 为空则按 hexo config.subtitle 显示
+    text:  Code Never Lies # 为空则按 hexo config.subtitle 显示
   auto_excerpt:
-    enable: true
+    enable: false
   post_url_target: _self  # available: _blank | _self
   post_meta: # 是否显示文章信息（时间、分类、标签）
     date: true
@@ -140,7 +140,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg
+  banner_img: https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg
   banner_img_height: 70  # available: 0 - 100
   meta:  # 文章标题下方的信息
     date:  # 文章日期
@@ -254,7 +254,7 @@ livere:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg
+  banner_img: https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg
   banner_img_height: 80  # available: 0 - 100
 
 
@@ -263,7 +263,7 @@ archive:
 # Categories Page
 #---------------------------
 category:
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg
+  banner_img: https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg
   banner_img_height: 80  # available: 0 - 100
 
 
@@ -272,7 +272,7 @@ category:
 # Tags Page
 #---------------------------
 tag:
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg
+  banner_img: https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg
   banner_img_height: 80  # available: 0 - 100
   tagcloud: # 标签云
     min_font: 15
@@ -288,7 +288,7 @@ tag:
 #---------------------------
 about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/about.md 中编辑，支持 markdown 和 HTML
   md_path: ./pages/about.md  # 关于页文档的相对路径，可以按相对文档设置主题之外的路径，从而避免更新冲突
-  banner_img: http://q3q379nk9.bkt.clouddn.com/sky-3840x2160-4k-5k-wallpaper-8k-stars-mountains-night-5708.jpg
+  banner_img: https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg
   banner_img_height: 80  # available: 0 - 100
   avatar: /img/avatar.png # 头像
   name: Coder-Chen
@@ -296,6 +296,7 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
   icons: # 更多图标可从 https://fontawesome.com/v4.7.0/icons/ 查找，并以 "图标名: url" 的格式添加在下方
     "fab fa-github": https://github.com/chenlianguu
     "fab fa-twitter": https://twitter.com/chenlianguu
+    "fab fa-linkedin": https://www.linkedin.com/in/liang-chen-53326a194
     "fab fa-weixin":  # 微信图标，这个是特殊图标，点击不会跳转而是悬浮二维码，所以链接需要对应二维码图片地址
 
 
