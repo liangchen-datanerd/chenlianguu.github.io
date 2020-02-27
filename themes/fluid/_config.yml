@@ -295,7 +295,6 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
   introduce: 大数据开发者 / 电影爱好者   # 支持 HTML
   icons: # 更多图标可从 https://fontawesome.com/v4.7.0/icons/ 查找，并以 "图标名: url" 的格式添加在下方
     "fab fa-github": https://github.com/chenlianguu
-    "fab fa-twitter": https://twitter.com/chenlianguu
     "fab fa-linkedin": https://www.linkedin.com/in/liang-chen-53326a194
     "fab fa-weixin":  # 微信图标，这个是特殊图标，点击不会跳转而是悬浮二维码，所以链接需要对应二维码图片地址
 
