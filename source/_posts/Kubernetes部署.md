@@ -1,5 +1,5 @@
 ---
-title: Kubernetes部署
+title: Kubernetes集群部署-admin
 top: false
 toc: true
 mathjax: true
