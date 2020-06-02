@@ -4,7 +4,7 @@ top: false
 toc: true
 mathjax: true
 date: 2020-04-03 14:17:11
-index_img:
+index_img: https://i.loli.net/2020/05/20/Bb7yY1MGgtRL8Kl.png
 summary:
 tags: 
  - kubernetes
@@ -167,4 +167,4 @@ NAMESPACE     NAME                                    READY     STATUS          
 kube-system   kubernetes-dashboard-1745970253-90ppp   0/1       ContainerCreating   0          24m
 ```
 
-完成后可通过浏览器访问 http://yout ip :8080/ui
+完成后可通过浏览器访问 http://yourip:8080/ui
