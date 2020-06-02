@@ -21,7 +21,7 @@ categories: kubernetes
 
 ## 部署
 
-**yaml文件地址见文章底部 ⬇️
+yaml文件地址见文章底部 ⬇️
 
 ### 1 在k8s集群中创建namespace
 
@@ -189,7 +189,7 @@ prometheus-service      NodePort   10.1.133.130   <none>        9090:30753/TCP  
 - [github-kubernetes-promethues](https://github.com/giantswarm/kubernetes-prometheus)
 - [github-giantswarm-promethues](https://github.com/giantswarm/prometheus)
 
-## Yaml文件
+## Yaml文件及Dashboard配置json文件
 
 ```yaml
 apiVersion: v1
