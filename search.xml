@@ -84,9 +84,9 @@
             
             <tag> docker </tag>
             
-            <tag> big data </tag>
-            
             <tag> 证书 </tag>
+            
+            <tag> big data </tag>
             
         </tags>
       
@@ -254,9 +254,9 @@
             
             <tag> 部署 </tag>
             
-            <tag> kubernetes </tag>
-            
             <tag> 大数据 </tag>
+            
+            <tag> kubernetes </tag>
             
             <tag> spark </tag>
             
@@ -376,11 +376,11 @@
             
             <tag> docker </tag>
             
-            <tag> 证书 </tag>
-            
             <tag> harbor </tag>
             
             <tag> https </tag>
+            
+            <tag> 证书 </tag>
             
         </tags>
       
@@ -438,9 +438,9 @@
       
         <tags>
             
-            <tag> 证书 </tag>
-            
             <tag> https </tag>
+            
+            <tag> 证书 </tag>
             
             <tag> gitlab </tag>
             
