@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Spark run on K8s ~ Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  2020-01-09 12:40 
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    777 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>首先查看了下spark的官方文档，了解了spark怎么在k8s上面跑的，实际上不需要搭建spark集群，提交作业到k8s的api server即可。看似简单但是还是不知道怎么动手实践。于是youtube上面搜了下相关视频，按照视频很快就实践了一把spark run on k8s，具体步骤如下：</p>
+<ul>
+<li>step 1 到k8-master机器下载二进制spark最新二进制安装包，并解压</li>
+</ul>
+<pre><code class="shell">cd /opt
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+tar -zxvf http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz</code></pre>
+<ul>
+<li>step 2 制作spark的docker镜像</li>
+</ul>
+<pre><code class="shell">cd spark-2.4.4-bin-hadoop2.7
+./bin/docker-image-tool.sh -r chenlianguu -t v2.4.4 build  # 制作spark进行
+./bin/docker-image-tool.sh -r chenlianguu -t v2.4.4 push  #将spark镜像推送到docker hub
+docker images
+[root@k8s-master opt]# docker images
+REPOSITORY                                                        TAG                 IMAGE ID            CREATED             SIZE
+chenliang/spark-r                                                 v2.4.4              6479a523e3f7        20 hours ago        759MB
+</code></pre>
+<ul>
+<li>step 3 提交作业到k8s</li>
+</ul>
+<p>在提交spark的作业的机器上，把api server的proxy打开</p>
+<pre><code class="shell">kubectl proxy</code></pre>
+<pre><code class="shell">./bin/spark-submit \
+--master k8s://http://127.0.0.1:8001 \
+--name spark-pi \
+--deploy-mode cluster \
+--class org.apache.spark.examples.SparkPi \
+--conf spark.executor.instances=3 \
+--conf spark.kubernetes.container.image=chenlianguu/spark-r:v2.4.4 \
+/opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar</code></pre>
+<h2 id="运行说明"><a href="#运行说明" class="headerlink" title="运行说明"></a>运行说明</h2><p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/k8s-cluster-mode.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/k8s-cluster-mode.png" srcset="/img/loading.gif" alt="k8s-cluster-mode.png"></a><br>集群模式下，通过spark-submit提交程序到k8s集群，具体一下步骤：  </p>
+<ul>
+<li>通过k8s创建spark driver端的pod</li>
+<li>driver端在k8s其他节点创建executor端的pod并保持通信，executor具体执行代码，这里设计到权限问题，假如没有对应的权限创建pods，执行spark会报错，具体见trouble  shooting第二点</li>
+<li>当程序跑完了，executor端pod会终止并清理，driver端的pod会保持complete状态并持久化log信息，最后会由k8s api server进行driver端pod的垃圾回收工作</li>
+</ul>
+<h2 id="trouble-shooting"><a href="#trouble-shooting" class="headerlink" title="trouble shooting"></a>trouble shooting</h2><p>跑spark on k8s的pi example碰到的一些坑及解决方案</p>
+<ul>
+<li>找不到jar问题<br><img src="https://i.loli.net/2020/01/09/xzqUmBIuCdP6HlW.jpg" srcset="/img/loading.gif" alt="1"><br><img src="https://i.loli.net/2020/01/09/U6uIFOrgcjQAkn4.jpg" srcset="/img/loading.gif" alt="2"><br>之前提交的脚本是这样的  </li>
+</ul>
+<pre><code class="shell">./bin/spark-submit \
+--master k8s://http://127.0.0.1:8001 \
+--name spark-pi \
+--deploy-mode cluster \
+--class org.apache.spark.examples.SparkPi \
+--conf spark.executor.instances=3 \
+--conf spark.kubernetes.container.image=chenlianguu/spark-r:v2.4.4 \
+/opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar</code></pre>
+<p>其中jar包制定的地址是local，路径填写应该加上协议local:///opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar，加上之后还是报同样的错，google后发现jar包实际上是在jar包在docker镜像里面的地址，因此改为local:///opt/spark/examples/jars/spark-examples_2.11-2.4.4.jar   </p>
+<ul>
+<li>jar问题解决了，又开始报错，报错信息如下<br><img src="https://i.loli.net/2020/01/09/BgsviowCp5EzARG.jpg" srcset="/img/loading.gif" alt="3"><br>第一感觉就是权限问题，网上找到了解决方案，ref：<a href="https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes/issues/113" target="_blank" rel="noopener">解决办法</a>，按照这个思路，在k8s-master节点，输入   <pre><code>kubectl create clusterrolebinding default --clusterrole cluster-admin --serviceaccount=default:default</code></pre></li>
+</ul>
+<p>然后继续执行spark-submit脚本，可以顺利启动driver端，但是有2个executor端还是报错，说是资源不够，有一个executor端执行成功，整个job还是顺利的跑下来了，查看driver端日志。kubectl logs podsname </p>
+<h2 id><a href="#" class="headerlink" title></a><img src="https://i.loli.net/2020/01/09/5bWGKh34DqVQfYU.jpg" srcset="/img/loading.gif" alt="5"></h2><p>参考资料：<br><a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener">spark官方doc</a><br><a href="https://www.youtube.com/watch?v=l7UoE97Z24I&list=LL-3gJZTnF4DbSyb7KID7P7g&index=2&t=0s" target="_blank" rel="noopener">youtube动手视频</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/kubernetes">kubernetes</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E9%83%A8%E7%BD%B2">部署</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE">大数据</a>
+                
+                  <a class="hover-with-bg" href="/tags/kubernetes">kubernetes</a>
+                
+                  <a class="hover-with-bg" href="/tags/spark">spark</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "lxvw2uH6C55B6fUR6xYK6Mip-gzGzoHsz",
+        app_key: "rXGqk3FqqMJejwdD0DHPFxIX",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Spark run on K8s&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

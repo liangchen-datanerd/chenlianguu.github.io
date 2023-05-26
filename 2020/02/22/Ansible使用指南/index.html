@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Ansible使用指南 ~ Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  2020-02-22 8:25 
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      10 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="1-Ansible介绍"><a href="#1-Ansible介绍" class="headerlink" title="1 Ansible介绍"></a>1 Ansible介绍</h2><p>Ansible是一种IT自动化工具。它可以配置系统，部署软件以及协调更高级的IT任务，例如持续部署，滚动更新。Ansible适用于管理企业IT基础设施，从具有少数主机的小规模到数千个实例的企业环境。Ansible也是一种简单的自动化语言，可以完美地描述IT应用程序基础结构。</p>
+<p>具备以下三个特点：</p>
+<ul>
+<li>简单：减少学习成本   </li>
+<li>强大：协调应用程序生命周期 </li>
+<li>无代理：可预测，可靠和安全</li>
+</ul>
+<p>使用文档： <a href="https://docs.ansible.com/" target="_blank" rel="noopener">https://docs.ansible.com/</a> </p>
+<p>安装Ansible：yum install ansible -y</p>
+<p><img src="https://k8s-1252881505.cos.ap-beijing.myqcloud.com/k8s-2/ansible.png" srcset="/img/loading.gif" alt></p>
+<ul>
+<li>Inventory：Ansible管理的主机信息，包括IP地址、SSH端口、账号、密码等</li>
+<li>Modules：任务均有模块完成，也可以自定义模块，例如经常用的脚本。</li>
+<li>Plugins：使用插件增加Ansible核心功能，自身提供了很多插件，也可以自定义插件。例如connection插件，用于连接目标主机。</li>
+<li>Playbooks：“剧本”，模块化定义一系列任务，供外部统一调用。Ansible核心功能。</li>
+</ul>
+<h2 id="1-2-主机清单"><a href="#1-2-主机清单" class="headerlink" title="1.2 主机清单"></a>1.2 主机清单</h2><pre><code>[webservers]
+alpha.example.org
+beta.example.org
+192.168.1.100
+www[001:006].example.com
+
+[dbservers]
+db01.intranet.mydomain.net
+db02.intranet.mydomain.net
+10.25.1.56
+10.25.1.57
+db-[99:101]-node.example.com</code></pre><h2 id="1-3-命令行使用"><a href="#1-3-命令行使用" class="headerlink" title="1.3 命令行使用"></a>1.3 命令行使用</h2><p>ad-hoc命令可以输入内容，快速执行某个操作，但不希望留存记录。</p>
+<p>ad-hoc命令是理解Ansible和在学习playbooks之前需要掌握的基础知识。</p>
+<p>一般来说，Ansible的真正能力在于剧本。</p>
+<h3 id="1、连接远程主机认证"><a href="#1、连接远程主机认证" class="headerlink" title="1、连接远程主机认证"></a>1、连接远程主机认证</h3><p>SSH密码认证：</p>
+<pre><code>[webservers]
+192.168.1.100:22 ansible_ssh_user=root ansible_ssh_pass=’123456’
+192.168.1.101:22 ansible_ssh_user=root ansible_ssh_pass=’123456’</code></pre><p>SSH密钥对认证：</p>
+<pre><code>[webservers]
+10.206.240.111:22 ansible_ssh_user=root ansible_ssh_key=/root/.ssh/id_rsa 
+10.206.240.112:22 ansible_ssh_user=root
+
+也可以ansible.cfg在配置文件中指定：
+[defaults]
+private_key_file = /root/.ssh/id_rsa  # 默认路径</code></pre><h3 id="2、常用选项"><a href="#2、常用选项" class="headerlink" title="2、常用选项"></a>2、常用选项</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-C, –check</td>
+<td>运行检查，不执行任何操作</td>
+</tr>
+<tr>
+<td>-e EXTRA_VARS,–extra-vars=EXTRA_VARS</td>
+<td>设置附加变量 key=value</td>
+</tr>
+<tr>
+<td>-u REMOTE_USER, –user=REMOTE_USER</td>
+<td>SSH连接用户，默认None</td>
+</tr>
+<tr>
+<td>-k, –ask-pass</td>
+<td>SSH连接用户密码</td>
+</tr>
+<tr>
+<td>-b, –become</td>
+<td>提权，默认root</td>
+</tr>
+<tr>
+<td>-K, –ask-become-pass</td>
+<td>提权密码</td>
+</tr>
+</tbody></table>
+<h3 id="3、命令行使用"><a href="#3、命令行使用" class="headerlink" title="3、命令行使用"></a>3、命令行使用</h3><pre><code class="ansible">ansible all -m ping
+ansible all -m shell -a &quot;ls /root&quot; -u root -k 
+ansible webservers -m copy –a &quot;src=/etc/hosts dest=/tmp/hosts&quot;</code></pre>
+<h2 id="1-4-常用模块"><a href="#1-4-常用模块" class="headerlink" title="1.4 常用模块"></a>1.4 常用模块</h2><p>ansible-doc –l 查看所有模块</p>
+<p>ansible-doc –s copy 查看模块文档</p>
+<p> 模块文档：<a href="https://docs.ansible.com/ansible/latest/modules/modules_by_category.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/modules/modules_by_category.html</a> </p>
+<h3 id="1、shell"><a href="#1、shell" class="headerlink" title="1、shell"></a>1、shell</h3><p>在目标主机执行shell命令。</p>
+<pre><code>- name: 将命令结果输出到指定文件
+  shell: somescript.sh &gt;&gt; somelog.txt
+- name: 切换目录执行命令
+  shell:
+    cmd: ls -l | grep log
+    chdir: somedir/
+- name: 编写脚本
+  shell: |
+      if [ 0 -eq 0 ]; then
+         echo yes &gt; /tmp/result
+      else
+         echo no &gt; /tmp/result
+      fi
+  args:
+    executable: /bin/bash</code></pre><h3 id="2、copy"><a href="#2、copy" class="headerlink" title="2、copy"></a>2、copy</h3><p>将文件复制到远程主机。</p>
+<pre><code>- name: 拷贝文件
+  copy:
+    src: /srv/myfiles/foo.conf
+    dest: /etc/foo.conf
+    owner: foo
+    group: foo
+    mode: u=rw,g=r,o=r
+    # mode: u+rw,g-wx,o-rwx
+    # mode: &#39;0644&#39;
+    backup: yes</code></pre><h3 id="3、file"><a href="#3、file" class="headerlink" title="3、file"></a>3、file</h3><p>管理文件和文件属性。</p>
+<pre><code>- name: 创建目录
+  file:
+    path: /etc/some_directory
+    state: directory
+    mode: &#39;0755&#39;
+- name: 删除文件
+  file:
+    path: /etc/foo.txt
+    state: absent
+- name: 递归删除目录
+  file:
+    path: /etc/foo
+    state: absent</code></pre><p>present，latest：表示安装</p>
+<p>absent：表示卸载</p>
+<h3 id="4、yum"><a href="#4、yum" class="headerlink" title="4、yum"></a>4、yum</h3><p>软件包管理。</p>
+<pre><code>- name: 安装最新版apache
+  yum:
+    name: httpd
+    state: latest
+- name: 安装列表中所有包
+  yum:
+    name:
+      - nginx
+      - postgresql
+      - postgresql-server
+    state: present
+- name: 卸载apache包
+  yum:
+    name: httpd
+    state: absent 
+- name: 更新所有包
+  yum:
+    name: &#39;*&#39;
+    state: latest
+- name: 安装nginx来自远程repo
+  yum:
+    name: http://nginx.org/packages/rhel/7/x86_64/RPMS/nginx-1.14.0-1.el7_4.ngx.x86_64.rpm
+    # name: /usr/local/src/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+    state: present</code></pre><h3 id="5、service-systemd"><a href="#5、service-systemd" class="headerlink" title="5、service/systemd"></a>5、service/systemd</h3><p>管理服务。</p>
+<pre><code>- name: 服务管理
+  service:
+    name: etcd
+    state: started
+    #state: stopped
+    #state: restarted
+    #state: reloaded
+- name: 设置开机启动
+  service:
+    name: httpd
+    enabled: yes</code></pre><pre><code>- name: 服务管理  
+  systemd: 
+    name=etcd 
+    state=restarted 
+    enabled=yes 
+    daemon_reload=yes</code></pre><h3 id="6、unarchive"><a href="#6、unarchive" class="headerlink" title="6、unarchive"></a>6、unarchive</h3><pre><code>- name: 解压
+  unarchive: 
+    src=test.tar.gz 
+    dest=/tmp</code></pre><h3 id="7、debug"><a href="#7、debug" class="headerlink" title="7、debug"></a>7、debug</h3><p>执行过程中打印语句。</p>
+<pre><code>- debug:
+    msg: System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}
+
+- name: 显示主机已知的所有变量
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 4</code></pre><h2 id="1-5-Playbook"><a href="#1-5-Playbook" class="headerlink" title="1.5 Playbook"></a>1.5 Playbook</h2><p>Playbooks是Ansible的配置，部署和编排语言。他们可以描述您希望在远程机器做哪些事或者描述IT流程中一系列步骤。使用易读的YAML格式组织Playbook文件。</p>
+<p>如果Ansible模块是您工作中的工具，那么Playbook就是您的使用说明书，而您的主机资产文件就是您的原材料。</p>
+<p>与adhoc任务执行模式相比，Playbooks使用ansible是一种完全不同的方式，并且功能特别强大。</p>
+<p><a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks.html" target="_blank" rel="noopener">https://docs.ansible.com/ansible/latest/user_guide/playbooks.html</a></p>
+<pre><code>---
+- hosts: webservers
+  vars:
+    http_port: 80
+    server_name: www.ctnrs.com
+  remote_user: root
+  gather_facts: false
+  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest
+  - name: 写入nginx配置文件
+    template: src=/srv/httpd.j2 dest=/etc/nginx/nginx.conf
+    notify:
+    - restart nginx
+  - name: 确保nginx正在运行
+    service: name=httpd state=started
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=reloaded</code></pre><h3 id="1、主机和用户"><a href="#1、主机和用户" class="headerlink" title="1、主机和用户"></a>1、主机和用户</h3><pre><code>- hosts: webservers
+  remote_user: lizhenliang
+  become: yes
+  become_user: root</code></pre><p>ansible-playbook nginx.yaml -u lizhenliang -k -b -K </p>
+<h3 id="2、定义变量"><a href="#2、定义变量" class="headerlink" title="2、定义变量"></a>2、定义变量</h3><p>变量是应用于多个主机的便捷方式； 实际在主机执行之前，变量会对每个主机添加，然后在执行中引用。</p>
+<ul>
+<li><p><strong>命令行传递</strong></p>
+<pre><code>-e VAR=VALUE</code></pre></li>
+<li><p><strong>主机变量与组变量</strong></p>
+</li>
+</ul>
+<p>在Inventory中定义变量。</p>
+<pre><code>[webservers]
+192.168.1.100 ansible_ssh_user=root hostname=web1
+192.168.1.100 ansible_ssh_user=root hostname=web2
+
+[webservers:vars]
+ansible_ssh_user=root hostname=web1</code></pre><ul>
+<li><strong>单文件存储</strong></li>
+</ul>
+<p>Ansible中的首选做法是不将变量存储在Inventory中。</p>
+<p>除了将变量直接存储在Inventory文件之外，主机和组变量还可以存储在相对于Inventory文件的单个文件中。</p>
+<p>组变量：</p>
+<p>group_vars 存放的是组变量</p>
+<p>group_vars/all.yml  表示所有主机有效，等同于[all:vars]</p>
+<p>grous_vars/etcd.yml 表示etcd组主机有效，等同于[etcd:vars]</p>
+<pre><code># vi /etc/ansible/group_vars/all.yml
+work_dir: /data
+# vi /etc/ansible/host_vars/webservers.yml
+nginx_port: 80</code></pre><ul>
+<li><strong>在Playbook中定义</strong></li>
+</ul>
+<pre><code>- hosts: webservers
+  vars:
+    http_port: 80
+    server_name: www.ctnrs.com</code></pre><ul>
+<li><strong>Register变量</strong></li>
+</ul>
+<pre><code>- shell: /usr/bin/uptime
+  register: result
+- debug:
+    var: result</code></pre><h3 id="3、任务列表"><a href="#3、任务列表" class="headerlink" title="3、任务列表"></a>3、任务列表</h3><p>每个play包含一系列任务。这些任务按照顺序执行，在play中，所有主机都会执行相同的任务指令。play目的是将选择的主机映射到任务。</p>
+<pre><code>  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest</code></pre><h3 id="4、语法检查与调试"><a href="#4、语法检查与调试" class="headerlink" title="4、语法检查与调试"></a>4、语法检查与调试</h3><p>语法检查：ansible-playbook  –check  /path/to/playbook.yaml</p>
+<p>测试运行，不实际操作：ansible-playbook -C /path/to/playbook.yaml</p>
+<p>debug模块在执行期间打印语句，对于调试变量或表达式，而不必停止play。与’when：’指令一起调试更佳。</p>
+<pre><code>  - debug: msg={{group_names}}
+  - name: 主机名
+    debug:
+      msg: &quot;{{inventory_hostname}}&quot;</code></pre><h3 id="5、任务控制"><a href="#5、任务控制" class="headerlink" title="5、任务控制"></a>5、任务控制</h3><p>如果你有一个大的剧本，那么能够在不运行整个剧本的情况下运行特定部分可能会很有用。</p>
+<pre><code>  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest
+    tags: install
+  - name: 写入nginx配置文件
+    template: src=/srv/httpd.j2 dest=/etc/nginx/nginx.conf
+    tags: config</code></pre><p>使用：</p>
+<pre><code>ansible-playbook example.yml --tags &quot;install&quot;
+ansible-playbook example.yml --tags &quot;install,config&quot;
+ansible-playbook example.yml --skip-tags &quot;install&quot;</code></pre><h3 id="6、流程控制"><a href="#6、流程控制" class="headerlink" title="6、流程控制"></a>6、流程控制</h3><p>条件：</p>
+<pre><code>tasks:
+- name: 只在192.168.1.100运行任务
+  debug: msg=&quot;{{ansible_default_ipv4.address}}&quot;
+  when: ansible_default_ipv4.address == &#39;192.168.1.100&#39;</code></pre><p>循环：</p>
+<pre><code>tasks:
+- name： 批量创建用户
+  user: name={{ item }} state=present groups=wheel
+  with_items:
+     - testuser1
+     - testuser2</code></pre><pre><code>- name: 解压
+  copy: src={{ item }} dest=/tmp
+  with_fileglob:
+    - &quot;*.txt&quot;</code></pre><p>常用循环语句：</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>with_items</td>
+<td>标准循环</td>
+</tr>
+<tr>
+<td>with_fileglob</td>
+<td>遍历目录文件</td>
+</tr>
+<tr>
+<td>with_dict</td>
+<td>遍历字典</td>
+</tr>
+</tbody></table>
+<h3 id="7、模板"><a href="#7、模板" class="headerlink" title="7、模板"></a>7、模板</h3><pre><code> vars:
+    domain: &quot;www.ctnrs.com&quot;
+ tasks:
+  - name: 写入nginx配置文件
+    template: src=/srv/server.j2 dest=/etc/nginx/conf.d/server.conf</code></pre><pre><code># server.j2
+{% set domain_name = domain %}
+server {
+   listen 80;
+   server_name {{ domain_name }};
+   location / {
+        root /usr/share/html;
+   }
+}</code></pre><p><strong>定义变量</strong>：</p>
+<pre><code>{% set local_ip = inventory_hostname %}</code></pre><p><strong>条件和循环</strong>：</p>
+<pre><code>{% set list=['one', 'two', 'three'] %}
+{% for i in list %}
+	{% if i == 'two' %}
+		-> two
+	{% elif loop.index == 3 %}
+		-> 3
+	{% else %}
+		{{i}}
+	{% endif %}
+{% endfor %}</code></pre><p>例如：生成连接etcd字符串</p>
+<pre><code>{% for host in groups['etcd'] %}
+	https://{{ hostvars[host].inventory_hostname }}:2379
+	{% if not loop.last %},{% endif %}
+{% endfor %} </code></pre><p>里面也可以用ansible的变量。</p>
+<h2 id="1-6-Roles"><a href="#1-6-Roles" class="headerlink" title="1.6 Roles"></a>1.6 Roles</h2><p>Roles是基于已知文件结构自动加载某些变量文件，任务和处理程序的方法。按角色对内容进行分组，适合构建复杂的部署环境。</p>
+<h3 id="1、定义Roles"><a href="#1、定义Roles" class="headerlink" title="1、定义Roles"></a>1、定义Roles</h3><p>Roles目录结构：</p>
+<pre><code>site.yml
+webservers.yml
+fooservers.yml
+roles/
+   common/
+     tasks/
+     handlers/
+     files/
+     templates/
+     vars/
+     defaults/
+     meta/
+   webservers/
+     tasks/
+     defaults/
+     meta/</code></pre><ul>
+<li><code>tasks</code> -包含角色要执行的任务的主要列表。</li>
+<li><code>handlers</code> -包含处理程序，此角色甚至在此角色之外的任何地方都可以使用这些处理程序。</li>
+<li><code>defaults</code>-角色的默认变量</li>
+<li><code>vars</code>-角色的其他变量</li>
+<li><code>files</code> -包含可以通过此角色部署的文件。</li>
+<li><code>templates</code> -包含可以通过此角色部署的模板。</li>
+<li><code>meta</code>-为此角色定义一些元数据。请参阅下面的更多细节。</li>
+</ul>
+<p>通常的做法是从<code>tasks/main.yml</code>文件中包含特定于平台的任务：</p>
+<pre><code># roles/webservers/tasks/main.yml
+- name: added in 2.4, previously you used &#39;include&#39;
+  import_tasks: redhat.yml
+  when: ansible_facts[&#39;os_family&#39;]|lower == &#39;redhat&#39;
+- import_tasks: debian.yml
+  when: ansible_facts[&#39;os_family&#39;]|lower == &#39;debian&#39;
+
+# roles/webservers/tasks/redhat.yml
+- yum:
+    name: &quot;httpd&quot;
+    state: present
+
+# roles/webservers/tasks/debian.yml
+- apt:
+    name: &quot;apache2&quot;
+    state: present</code></pre><h3 id="2、使用角色"><a href="#2、使用角色" class="headerlink" title="2、使用角色"></a>2、使用角色</h3><pre><code># site.yml
+- hosts: webservers
+  roles:
+    - common
+    - webservers
+
+
+定义多个：
+- name: 0
+  gather_facts: false
+  hosts: all 
+  roles:
+    - common
+
+- name: 1
+  gather_facts: false
+  hosts: all 
+  roles:
+    - webservers</code></pre><h3 id="3、角色控制"><a href="#3、角色控制" class="headerlink" title="3、角色控制"></a>3、角色控制</h3><pre><code>- name: 0.系统初始化
+  gather_facts: false
+  hosts: all 
+  roles:
+    - common
+  tags: common </code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%BF%90%E7%BB%B4">运维</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E9%83%A8%E7%BD%B2">部署</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "lxvw2uH6C55B6fUR6xYK6Mip-gzGzoHsz",
+        app_key: "rXGqk3FqqMJejwdD0DHPFxIX",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Ansible使用指南&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,3265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://static.zkqiang.cn/images/20191231163321.jpg-slim')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Docker%E9%83%A8%E7%BD%B2%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/6FDoa7m5WTCnGg2.jpg" srcset="/img/loading.gif" alt="Docker部署伪分布式大数据环境" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Docker%E9%83%A8%E7%BD%B2%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83/">
+        <p class="h4 index-header">Docker部署伪分布式大数据环境</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">思路通过docker搭建大数据环境  
+
+开箱即用，不常驻后台，需要的时候启动集群即可，不用的时候关闭集群释放机器资源
+避免了直接安装端口占用问题，大数据平台所需端口较多
+spark资源docker化，便于后期k8s进行资源管理调度
+
+上述好处主要是基于测试环境下，基于生产环境的大数据平台化要考虑的点很多，例如后期扩容、运维、安全等因素，大数据平台整个是否docker化后期有待考证。
+镜像制作方案使用Docker来搭建hadoop,spark及mysql的集群，首先使用Dockerfile制作镜像，把相关的软件拷贝到约定好的目录 下，把配置文件在外面先配置好，再拷贝移动到hadoop,spark的配置目录，为了能使得mysql能从其它节点被访问到，要配置mysql的访问权限。
+整体架构一共3个节点，即启动3个容器。hadoop-master,hadoop-node1,hadoop-node2这三个容器里面安装hadoop和spark集群。
+集群部署集群网络规划及子网配置既然是做集群，网络的规划是少不了的,至于网络，可以通过Docker中的DockerNetworking的支持配置。首先设置网络，docker中设置 子网可以通过docker network create 方法，这里我们通过命令设置如下的子网。–subnet指定子网络的网段，并为这个子网命名一个名字叫spark
+# 创建子网
+docker network create --subnet=172.16.0.0/16 spark
+# 查看网络
+docker network ls
+NETWORK ID          NAME                       DRIVER              SCOPE
+fab2dd51d1cf        spark                      bridge              local
+ 接下来就在我们创建的子网落spark中规划集群中每个容器的ip地址。网络ip分配如下:
+hadoop-master 172.16.0.2
+hadoop-node1 172.16.0.3
+hadoop-node2 172.16.0.4
+软件版本网络规划好了，首先Spark我们使用最新的2.4.4版本，Hadoop采用比较稳定的hadoop-2.7.3版本，scala采用scala-2.11.8，JDK采用jdk-8u101-linux-x64。
+SSH无密钥登录规则配置注意这里不使用ssh-keygen -t rsa -P ‘’这种方式生成id_rsa.pub，然后集群节点互拷贝id_rsa.pub到authorized_keys文件这种方式，而 是通过在.ssh目录下配置ssh_conf文件的方式，ssh_conf中可以配置SSH的通信规则，例如以正则表达式的方式指定hostname为XXX的 机器之间实现互联互通，而不进行额外的密钥验证。为了编写这个正则表达式，我们5个节点的hostname都以hadoop-*的方式作为开 头，这就是采用这种命名规则的原因。下面来看下ssh_conf配置的内容:
+Host localhost
+    StrictHostKeyChecking no
+Host 0.0.0.0 
+    StrictHostKeyChecking no
+Host hadoop-* 
+    StrictHostKeyChecking no
+注意上面的最后一行，Host hadoop-* 指定了它的严格的Host验证StrictHostKeyChecking 为no，这样既可以是这5个hostname以 hadoop-*开头的容器之间实现互联互通，而不需要二外的验证。
+构建镜像Dockerfile编写完成，接下来写一个build.sh脚本，内容如下:
+ echo build hadoop images
+ docker build -t=&quot;spark&quot; . 
+表示构建一个名叫spark的镜像，.表示Dockerfile的路径，因为在当前路径下，所有用.,若在其他地方则用绝对路径指定Dockerfile的路径 即可。
+运行sh build.sh，就会开始制作镜像了。
+集群运行启动容器 start_container.sh使用这个镜像可完成容器的启动，因为使用了基于DockerNetworking的网络机制，因此可以在启动容器的时候为容器在子网172.16.0.0/16 spark中分贝172.16.0.1 172.16.0.255以外的IP地址，容器内部容器的通信是基于hostname，因此 需要指定hostname，为了方便容器的管理，需要为启动的每个容器指定一个名字。为了方便外网访问，需要通过-p命令指定容器到宿主机的端口映射。还要为每个容器增加host列表。
+# hadoop-master
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.2 \
+    --privileged \
+    -p 18032:8032 \
+    -p 28080:18080 \
+    -p 29888:19888 \
+    -p 17077:7077 \
+    -p 51070:50070 \
+    -p 18888:8888 \
+    -p 19000:9000 \
+    -p 11100:11000 \
+    -p 51030:50030 \
+    -p 18050:8050 \
+    -p 18081:8081 \
+    -p 18900:8900 \
+    --name hadoop-master \
+    --hostname hadoop-master \
+    --add-host hadoop-node1:172.16.0.3 \
+    --add-host hadoop-node2:172.16.0.4 \
+    --add-host hadoop-mysql:172.16.0.6 \
+    spark /usr/sbin/init
+
+# hadoop-node1
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.3 \
+    --privileged \
+    -p 18042:8042 \
+    -p 51010:50010 \
+    -p 51020:50020 \
+    --name hadoop-node1 \
+    --hostname hadoop-node1 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node2:172.16.0.4 \
+    spark /usr/sbin/init
+
+# hadoop-node2
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.4 \
+    --privileged \
+    -p 18043:8042 \
+    -p 51011:50011 \
+    -p 51021:50021 \
+    --name hadoop-node2 \
+    --hostname hadoop-node2 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node1:172.16.0.3 \
+    spark /usr/sbin/init
+
+关闭集群 stop_container.shecho stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo remove containers
+docker rm hadoop-master
+docker rm hadoop-node1
+docker rm hadoop-node2
+
+echo rm containers
+
+docker ps
+重启集群 restart_container.shecho stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo restart containers
+docker start hadoop-master
+docker start hadoop-node1
+docker start hadoop-node2
+echo start sshd
+docker exec -it hadoop-master systemctl start sshd
+docker exec -it hadoop-node1 systemctl start sshd
+docker exec -it hadoop-node2 systemctl start sshd
+docker exec -it hadoop-master ~/restart-hadoop.sh
+echo  containers started
+
+docker ps
+Trouble Shooting
+docker里面执行systemctl报错
+解决方案：启动的时候用/usr/sbin/init
+
+docker登录harbor报错window直接修改docker设置，添加52.83.79.244:8093到docker insecure registrylinux修改方法：https://blog.csdn.net/u010397369/article/details/42422243  
+
+
+Demo进入hadoop-master容器内部，执行spark-shell
+root@node-2 docker-spark]# docker exec -it hadoop-master /bin/bash
+[root@hadoop-master ~]# spark
+spark-class   spark-shell   spark-sql     spark-submit  sparkR
+[root@hadoop-master ~]# spark-shell
+19/12/03 04:51:25 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+19/12/03 04:51:43 WARN util.Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+Spark context Web UI available at http://hadoop-master:4040
+Spark context available as &#39;sc&#39; (master = spark://hadoop-master:7077, app id = app-20191203045141-0000).
+Spark session available as &#39;spark&#39;.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.4.4
+      /_/
+
+Using Scala version 2.11.12 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_101)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;
+本地部署
+想要在自己的笔记本环境使用
+首先笔记本环境下需要有docker环境
+
+拉取gitlab上面的项目：git clone git@161.189.27.8:chenliang/docker-spark.git
+拉去harbor上面的镜像：docker pull 52.83.79.244:8093/wuhan/spark:v1（也可以自己构建镜像，Dockerfile文件在gitlab项目里边）  前提：机器docker环境登录harbor，账号密码：admin 1qaz!QAZdocker login 52.83.79.244:8093登录报错：Error response from daemon: Get https://52.83.79.244:8093/v2/: http: server gave HTTP response to HTTPS client解决：参见trouble shooting
+使用相关脚本执行启动、停止、重启集群
+
+
+
+
+如何自己的spark程序如何在docker环境下执行  
+启动spark的集群之后，使用docker cp等命令将打好的jar包打进容器内，使用spark脚本执行
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/%E7%8E%AF%E5%A2%83">环境</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE">大数据</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Docker%E9%83%A8%E7%BD%B2Nextcloud/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/6Wies2vuV8bdrLm.png" srcset="/img/loading.gif" alt="Docker部署Nextcloud" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Docker%E9%83%A8%E7%BD%B2Nextcloud/">
+        <p class="h4 index-header">Docker部署Nextcloud</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">准备工作docker的安装及配置# 通过yum安装
+yum install -y docker-ce
+# 启动docker并设置开机启动
+systemctl start docker
+systemctl enable docker
+# aws ec2 linux2另外一种安装方式
+sudo amazon-linux-extras install docker
+sudo service docker start
+由于docker镜像源默认是在国外，拉取镜像速度非常慢，修改daemon配置文件/etc/docker/daemon.json来使用加速器
+mkdir -p /etc/docker
+touch /etc/docker/daemon.json
+vim /etc/docker/daemon.json
+{
+  &quot;registry-mirrors&quot;: [&quot;https://b3sst9pc.mirror.aliyuncs.com&quot;]
+}
+systemctl daemon-reload
+systemctl restart docker
+docker-compose安装Docker Compose是 docker 提供的一个命令行工具，用来定义和运行由多个容器组成的应用。使用 compose，我们可以通过 YAML 文件声明式的定义应用程序的各个服务，并由单个命令完成应用的创建和启动。
+
+docker-compose命令安装
+# 安装pip
+yum -y install epel-release
+yum -y install python-pip
+# 确认版本
+pip --version
+# 更新pip
+pip install --upgrade pip
+# 安装docker-compose
+pip install docker-compose 
+# 查看版本
+docker-compose version
+
+
+nextcloud的部署nextcloud通过docker-compose命令进行构建，创建 docker-compose.yml文件
+# 创建docker-compose.yml文件
+touch docker-compose.yml
+# 粘贴以下内容
+version: &#39;2&#39;
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - /data/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=nextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    restart: always
+    ports:
+      - 8091:80
+    links:
+      - db
+    volumes:
+      - /data/nextcloud/data:/var/www/html/data    
+      - /data/nextcloud/themes:/var/www/html/themes
+      - /data/nextcloud/apps:/var/www/html/custom_apps
+docker-compose.yml文件说明
+通过启动两个service服务mariadb及nextcloud服务，并通过link连接到一起，其中将/var/www/html/data、/var/www/html/themes、/var/www/html/custom_apps映射到linux服务器指定目录实现数据持久化，这样下次docker重启的时候数据不会发生丢失。
+nextcloud实现预览编辑office文件需要插件onlyoffice支持，通过docker创建onlyoffice服务器，并启动nextcloud配置onlyoffice
+docker run -it -d -p 8061:80 onlyoffice/documentserver  -v /data/onlyoffice/logs:/var/log/onlyoffice /data/onlyoffice/data:/var/www/onlyoffice/Data /data/onlyoffice/lib:/var/lib/onlyoffice /data/onlyoffice/db:/var/lib/postgresql
+启动nextcloud、停止nextcloud、查看nextcloud启动状态
+# 启动nextcloud
+docker-compose up -d
+# 查看nextcloud状态
+docker-compose ps
+# 停止nextcloud
+docker-compose stop
+nextcloud的数据迁移当需要nextcloud迁移到另外一台服务的时候，需要将nextcloud持久化的数据通过scp或者其他方式复制到另外一台机器，将原来的机器mariadb的nextcloud数据库进行导出，在新的机器上面导入数据库数据。复制YAML文件到新的机器，通过docker-compose进行启动，进入容器内部修改持久化数据的权限及修改nextcloud配置文件，最后重启容器。
+# 复制持久化数据到新的机器上面
+scp -R /data/nextcloud root@192.168.12.1:/data
+# 导出原来机器的上面的mariadb数据
+docker exec -it  nextcloud_db_1【docker容器名称/ID】 mysqldump -uroot -proot【数据库密码】 nextcloud【数据库名称】 &gt; /opt/sql_bak/nextcloud.sql【导出表格路径】
+# 将sql文件复制到新的机器上面
+scp  /opt/sql_bak/nextcloud.sql root@192.168.12.1:/opt/sql_bak
+# 在新的机器上面执行该sql文件(需要先启动docker容器)
+docker cp /opt/sql_bak/nextcloud.sql 【容器名】:/root/
+docker exec -it 【容器名/ID】sh
+mysql -uroot -p nextcloud【数据库名】 &lt; /root/nextcloud.sql
+# 通过docker-compose启动镜像，修改权限
+ docker exec -it -u root nextcloud_app_1【容器id/容器名】 /bin/bash
+ root@bafc02ce112a:/var/www/html# chown -R www-data:root /var/www/html/
+ root@bafc02ce112a:exit
+# 修改nextcloud配置文件
+vim /data/nextcloud/config/config.php
+# 修改ip
+&#39;trusted_domains&#39; =&gt;
+  array (
+    0 =&gt; &#39;161.189.27.8:8091&#39;,
+  ),
+  &#39;datadirectory&#39; =&gt; &#39;/var/www/html/data&#39;,
+  &#39;dbtype&#39; =&gt; &#39;mysql&#39;,
+  &#39;version&#39; =&gt; &#39;16.0.4.1&#39;,
+  &#39;overwrite.cli.url&#39; =&gt; &#39;http://161.189.27.8:8091&#39;,
+# 重启
+docker-compose restart
+trouble shooting
+安装docker-compose命令执行pip install docker-compose的时候报以下错误
+ERROR: Cannot uninstall &#39;requests&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.解决版本，强制安装requests包
+ pip install --ignore-installed requests
+再重新执行
+pip install docker-compose
+
+docker-compose报错：No module named ssl_match_hostname
+File &quot;/usr/local/lib/python2.7/dist-packages/docker/transport/ssladapter.py&quot;, line 23, in &lt;module&gt;
+from backports.ssl_match_hostname import match_hostname
+ImportError: No module named ssl_match_hostname原因：
+/usr/local/lib/python2.7/distpackages/docker/transport/ssladapter.py **在包路径下找不到 **backports包里的ssl_match_hostname模块
+解决办法
+#进入backports模块路径
+cd /usr/lib/python2.7/site-packages
+#复制整个包到transport包路径下
+cp -r backports /usr/lib/python2.7/site-packages/docker/transport
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/nextcloud">nextcloud</a>&nbsp;
+          
+            <a href="/tags/%E7%BD%91%E7%9B%98">网盘</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Docker%E7%A7%81%E6%9C%8DHarbor%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/LKEbkBZWwV7rRT1.jpg" srcset="/img/loading.gif" alt="Docker私服Harbor使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Docker%E7%A7%81%E6%9C%8DHarbor%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Docker私服Harbor使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">harbor搭建官方提供两种方式安装harbor，离线及在线方式。本文档描述离线方式进行安装
+查看docker-compose版本，若版本低进行升级安装，
+下载官方安装包
+cd /opt
+wget https://storage.googleapis.com/harbor-releases/release-1.9.0/harbor-offline-installer-v1.9.2-rc1.tgz
+# 解压
+tar zxvf harbor-offline-installer-v1.9.2-rc1.tgz
+# 查看
+cd harbor
+ls
+[root@ip-172-31-23-16 harbor]# ll
+total 623296
+drwxr-xr-x 3 root root        20 Nov  5 05:50 common
+-rw-r--r-- 1 root root      5369 Nov  5 06:07 docker-compose.yml
+-rw-r--r-- 1 root root 638214056 Nov  1 03:14 harbor.v1.9.2.tar.gz
+-rw-r--r-- 1 root root      5816 Nov  5 06:07 harbor.yml
+-rwxr-xr-x 1 root root      5088 Nov  1 03:13 install.sh
+-rw-r--r-- 1 root root     11347 Nov  1 03:13 LICENSE
+-rwxr-xr-x 1 root root      1748 Nov  1 03:13 prepare
+修改配置，主要修改两个文件
+harbor.yml为系统配置文件，docker-compose.yml为docker相关配置文件
+修改harbor.yml
+vim harbor.yml
+# 修改hostname
+hostname: 52.83.79.244
+# 修改映射端口
+http:
+  port: 8093
+# 修改admin password（可选）
+harbor_admin_password: 1qaz!QAZ
+# 修改数据库相关参数
+database:
+  password: root
+  max_idle_conns: 50
+  max_open_conns: 100
+# 修改数据持久化host目录
+data_volume: /data/harbor
+# 修改log目录
+ location: /var/log/harbor
+修改docker-compose.yml文件
+vim docker-compose.yml
+# 添加ports映射
+registry:
+    image: goharbor/registry-photon:v2.7.1-patch-2819-2553-v1.9.2
+    container_name: registry
+    restart: always
+    ports:
+      - 5000:5000
+启动harbor
+./install.sh安装之后查看
+docker-compose ps
+     Name                     Command                  State                 Ports
+---------------------------------------------------------------------------------------------
+harbor-core         /harbor/harbor_core              Up (healthy)
+harbor-db           /docker-entrypoint.sh            Up (healthy)   5432/tcp
+harbor-jobservice   /harbor/harbor_jobservice  ...   Up (healthy)
+harbor-log          /bin/sh -c /usr/local/bin/ ...   Up (healthy)   127.0.0.1:1514-&gt;10514/tcp
+harbor-portal       nginx -g daemon off;             Up (healthy)   8080/tcp
+nginx               nginx -g daemon off;             Up (healthy)   0.0.0.0:8093-&gt;8080/tcp
+redis               redis-server /etc/redis.conf     Up (healthy)   6379/tcp
+registry            /entrypoint.sh /etc/regist ...   Restarting
+registryctl         /harbor/start.sh                 Up (healthy)
+登录harbor ，账号密码为harbor.yml所设置的密码
+http://52.83.79.244:8093/harbor/projects
+登录时候还不能直接利用docker push 到服务器，这是因为 docker1.3.2 版本开始默认 docker registry 使用的是 https，我们设置 Harbor 默认 http 方式，所以当执行用 docker login、pull、push 等命令操作非 https 的 docker regsitry 的时就会报错。解决办法：
+vim /usr/lib/systemd/system/docker.service
+# ExecStart 增加 --insecure-registry=52.83.79.244【配置文件中的hostname】
+ExecStart=/usr/bin/dockerd $OPTIONS $DOCKER_STORAGE_OPTIONS $DOCKER_ADD_RUNTIMES --insecure-registry=52.83.79.244:8093
+# 重启服务
+systemctl daemon-reload
+systemctl restart docker
+harbor常用命令
+# 需要进入harbor文件夹执行
+cd /opt/harbor
+
+docker-compose up -d               ###后台启动，如果容器不存在根据镜像自动创建
+docker-compose down   -v           ###停止容器并删除容器
+docker-compose start               ###启动容器，容器不存在就无法启动，不会自动创建镜像
+docker-compose stop                ###停止容器
+使用及配置
+docker 登录到harbor
+[root@ip-172-31-23-16 harbor]# docker login 52.83.79.244:8093
+Username: admin
+Password:
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+
+登录harbor后创建一个公共仓库，命名为wuhan
+将镜像发布到harbor
+# 查看需要上传的镜像
+docker images
+# 为镜像上tag
+docker tag jenkins/jenkins:lts 52.83.79.244:8093/wuhan/jenkins:lts
+# 上传到wuhan库
+docker push jenkins/jenkins:lts 52.83.79.244:8093/wuhan/jenkins:lts
+# 若需要上传到library库
+docker push jenkins/jenkins:lts 52.83.79.244:8093/library/jenkins:lts
+配置https协议# 准备工作
+mkdir -p /data/harbor-cert
+yum install -y openssl
+
+------------
+cd data/harbor-cert
+openssl genrsa -des3 -out server.key 2048 
+openssl req -new -key server.key -out server.csr 
+cp server.key server.key.org openssl rsa -in server.key.org -out server.key 
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt 
+生成证书之后，修改harbor.yaml文件具体配置如下
+使用及配置
+docker 登录到harbor
+[root@ip-172-31-23-16 harbor]# docker login 52.83.79.244:8093
+Username: admin
+Password:
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+
+登录harbor后创建一个公共仓库，命名为wuhan
+将镜像发布到harbor
+# 查看需要上传的镜像
+docker images
+# 为镜像上tag
+docker tag jenkins/jenkins:lts 52.83.79.244:8093/wuhan/jenkins:lts
+# 上传到wuhan库
+docker push jenkins/jenkins:lts 52.83.79.244:8093/wuhan/jenkins:lts
+# 若需要上传到library库
+docker push 52.83.79.244:8093/library/jenkins:lts
+trouble shooting
+docker登录harbor报错window直接修改docker设置，添加52.83.79.244:8093到docker insecure registrylinux修改方法：https://blog.csdn.net/u010397369/article/details/42422243
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%81%E4%B9%A6">证书</a>&nbsp;
+          
+            <a href="/tags/harbor">harbor</a>&nbsp;
+          
+            <a href="/tags/https">https</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/07/K8s%E7%9B%91%E6%8E%A7%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/" target="_self">
+          <img src="https://www.ovh.com/blog/wp-content/uploads/2019/01/kubernetesblog02.jpg" srcset="/img/loading.gif" alt="K8s监控部署方案" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/07/K8s%E7%9B%91%E6%8E%A7%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88/">
+        <p class="h4 index-header">K8s监控部署方案</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">架构
+部署yaml文件地址见文章底部 ⬇️
+1 在k8s集群中创建namespaceapiVersion: v1
+kind: Namespace
+metadata: 
+  name: ns-monitor
+  labels:
+    name: ns-monitor
+
+kubectl apply -f namespace.yaml
+2 安装node-exporter在kubernetest集群中部署node-exporter，Node-exporter用于采集kubernetes集群中各个节点的物理指标，比如：Memory、CPU等。可以直接在每个物理节点是直接安装，这里我们使用DaemonSet部署到每个节点上，使用 hostNetwork: true 和 hostPID: true 使其获得Node的物理指标信息，配置tolerations使其在master节点也启动一个pod。
+node-exporter.yaml
+kind: DaemonSet
+apiVersion: apps/v1beta2
+metadata: 
+  labels:
+    app: node-exporter
+  name: node-exporter
+  namespace: ns-monitor
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter:v0.16.0
+          ports:
+            - containerPort: 9100
+              protocol: TCP
+              name:    http
+      hostNetwork: true
+      hostPID: true
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: node-exporter
+  name: node-exporter-service
+  namespace: ns-monitor
+spec:
+  ports:
+    - name:    http
+      port: 9100
+      nodePort: 31672
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: node-exporter
+kubectl apply -f node-exporter.yaml
+*检查是否执行成功(对应pod及svc) 👉🏻 **
+➜  ~ kubectl get pod -n ns-monitor
+NAME                          READY   STATUS    RESTARTS   AGE
+grafana-547699f75-lxljq       1/1     Running   0          3h37m
+node-exporter-75nmc           0/1     Pending   0          20h
+node-exporter-t29kx           1/1     Running   0          20h
+node-exporter-z6s7x           1/1     Running   0          20h
+prometheus-7d7654554d-f5fvf   1/1     Running   0          3h45m
+➜  ~ kubectl get svc -n ns-monitor
+NAME                    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+grafana-service         NodePort   10.1.242.56    &lt;none&gt;        3000:31026/TCP   3h38m
+node-exporter-service   NodePort   10.1.130.7     &lt;none&gt;        9100:31672/TCP   20h
+prometheus-service      NodePort   10.1.133.130   &lt;none&gt;        9090:30753/TCP   3h45m
+
+3 部署Prometheus podprometheus.yaml 中包含rbac认证、ConfigMap等
+kubectl apply -f prometheus.yaml 
+检查是否执行成功(对应pod及svc)* 👉🏻 
+➜  ~ kubectl get pod -n ns-monitor
+NAME                          READY   STATUS    RESTARTS   AGE
+grafana-547699f75-lxljq       1/1     Running   0          3h37m
+node-exporter-75nmc           0/1     Pending   0          20h
+node-exporter-t29kx           1/1     Running   0          20h
+node-exporter-z6s7x           1/1     Running   0          20h
+prometheus-7d7654554d-f5fvf   1/1     Running   0          3h45m
+➜  ~ kubectl get svc -n ns-monitor
+NAME                    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+grafana-service         NodePort   10.1.242.56    &lt;none&gt;        3000:31026/TCP   3h38m
+node-exporter-service   NodePort   10.1.130.7     &lt;none&gt;        9100:31672/TCP   20h
+prometheus-service      NodePort   10.1.133.130   &lt;none&gt;        9090:30753/TCP   3h45m
+
+4 在k8s中部署grafanakubectl apply -f grafana.yaml
+检查是否执行成功(对应pod及svc) 👉🏻 
+➜  ~ kubectl get pod -n ns-monitor
+NAME                          READY   STATUS    RESTARTS   AGE
+grafana-547699f75-lxljq       1/1     Running   0          3h37m
+node-exporter-75nmc           0/1     Pending   0          20h
+node-exporter-t29kx           1/1     Running   0          20h
+node-exporter-z6s7x           1/1     Running   0          20h
+prometheus-7d7654554d-f5fvf   1/1     Running   0          3h45m
+➜  ~ kubectl get svc -n ns-monitor
+NAME                    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+grafana-service         NodePort   10.1.242.56    &lt;none&gt;        3000:31026/TCP   3h38m
+node-exporter-service   NodePort   10.1.130.7     &lt;none&gt;        9100:31672/TCP   20h
+prometheus-service      NodePort   10.1.133.130   &lt;none&gt;        9090:30753/TCP   3h45m
+5 配置grafana数据源把prometheus配置成数据源 ：http://prometheus-service.ns-monitor:9090
+
+6 倒入dashboard把 kubernetes的Dashboard的模板导入进来，直接把JSON格式内容复制进来。
+
+效果图
+Ref
+使用Prometheus监控kubernetes集群
+
+k8s安装Prometheus+Grafana
+
+github-kubernetes-promethues
+
+github-giantswarm-promethues
+
+
+Yaml文件及Dashboard配置json文件apiVersion: v1
+kind: Namespace
+metadata: 
+  name: ns-monitor
+  labels:
+    name: ns-monitor
+
+---
+
+kind: DaemonSet
+apiVersion: apps/v1beta2
+metadata: 
+  labels:
+    app: node-exporter
+  name: node-exporter
+  namespace: ns-monitor
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter:v0.16.0
+          ports:
+            - containerPort: 9100
+              protocol: TCP
+              name:    http
+      hostNetwork: true
+      hostPID: true
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: node-exporter
+  name: node-exporter-service
+  namespace: ns-monitor
+spec:
+  ports:
+    - name:    http
+      port: 9100
+      nodePort: 31672
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: node-exporter
+
+---
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+  - apiGroups: [&quot;&quot;] # &quot;&quot; indicates the core API group
+    resources:
+      - nodes
+      - nodes/proxy
+      - services
+      - endpoints
+      - pods
+    verbs:
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - extensions
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - watch
+      - list
+  - nonResourceURLs: [&quot;/metrics&quot;]
+    verbs:
+      - get
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: ns-monitor
+  labels:
+    app: prometheus
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+subjects:
+  - kind: ServiceAccount
+    name: prometheus
+    namespace: ns-monitor
+roleRef:
+  kind: ClusterRole
+  name: prometheus
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-conf
+  namespace: ns-monitor
+  labels:
+    app: prometheus
+data:
+  prometheus.yml: |-
+    # my global config
+    global:
+      scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+      evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+      # scrape_timeout is set to the global default (10s).
+
+    # Alertmanager configuration
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+    # Load rules once and periodically evaluate them according to the global &#39;evaluation_interval&#39;.
+    rule_files:
+      # - &quot;first_rules.yml&quot;
+      # - &quot;second_rules.yml&quot;
+
+    # A scrape configuration containing exactly one endpoint to scrape:
+    # Here it&#39;s Prometheus itself.
+    scrape_configs:
+      # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+      - job_name: &#39;prometheus&#39;
+
+        # metrics_path defaults to &#39;/metrics&#39;
+        # scheme defaults to &#39;http&#39;.
+
+        static_configs:
+          - targets: [&#39;localhost:9090&#39;]
+      - job_name: &#39;grafana&#39;
+        static_configs:
+          - targets:
+              - &#39;grafana-service.ns-monitor:3000&#39;
+
+      - job_name: &#39;kubernetes-apiservers&#39;
+
+        kubernetes_sd_configs:
+        - role: endpoints
+
+        # Default to scraping over https. If required, just disable this or change to
+        # `http`.
+        scheme: https
+
+        # This TLS &amp; bearer token file config is used to connect to the actual scrape
+        # endpoints for cluster components. This is separate to discovery auth
+        # configuration because discovery &amp; scraping are two separate concerns in
+        # Prometheus. The discovery auth config is automatic if Prometheus runs inside
+        # the cluster. Otherwise, more config options have to be provided within the
+        # &lt;kubernetes_sd_config&gt;.
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          # If your node certificates are self-signed or use a different CA to the
+          # master CA, then disable certificate verification below. Note that
+          # certificate verification is an integral part of a secure infrastructure
+          # so this should only be disabled in a controlled environment. You can
+          # disable certificate verification by uncommenting the line below.
+          #
+          # insecure_skip_verify: true
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+        # Keep only the default/kubernetes service endpoints for the https port. This
+        # will add targets for each API server which Kubernetes adds an endpoint to
+        # the default/kubernetes service.
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+          action: keep
+          regex: default;kubernetes;https
+
+      # Scrape config for nodes (kubelet).
+      #
+      # Rather than connecting directly to the node, the scrape is proxied though the
+      # Kubernetes apiserver.  This means it will work if Prometheus is running out of
+      # cluster, or can&#39;t connect to nodes for some other reason (e.g. because of
+      # firewalling).
+      - job_name: &#39;kubernetes-nodes&#39;
+
+        # Default to scraping over https. If required, just disable this or change to
+        # `http`.
+        scheme: https
+
+        # This TLS &amp; bearer token file config is used to connect to the actual scrape
+        # endpoints for cluster components. This is separate to discovery auth
+        # configuration because discovery &amp; scraping are two separate concerns in
+        # Prometheus. The discovery auth config is automatic if Prometheus runs inside
+        # the cluster. Otherwise, more config options have to be provided within the
+        # &lt;kubernetes_sd_config&gt;.
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+        kubernetes_sd_configs:
+        - role: node
+
+        relabel_configs:
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+        - source_labels: [__meta_kubernetes_node_name]
+          regex: (.+)
+          target_label: __metrics_path__
+          replacement: /api/v1/nodes/${1}/proxy/metrics
+
+      # Scrape config for Kubelet cAdvisor.
+      #
+      # This is required for Kubernetes 1.7.3 and later, where cAdvisor metrics
+      # (those whose names begin with &#39;container_&#39;) have been removed from the
+      # Kubelet metrics endpoint.  This job scrapes the cAdvisor endpoint to
+      # retrieve those metrics.
+      #
+      # In Kubernetes 1.7.0-1.7.2, these metrics are only exposed on the cAdvisor
+      # HTTP endpoint; use &quot;replacement: /api/v1/nodes/${1}:4194/proxy/metrics&quot;
+      # in that case (and ensure cAdvisor&#39;s HTTP server hasn&#39;t been disabled with
+      # the --cadvisor-port=0 Kubelet flag).
+      #
+      # This job is not necessary and should be removed in Kubernetes 1.6 and
+      # earlier versions, or it will cause the metrics to be scraped twice.
+      - job_name: &#39;kubernetes-cadvisor&#39;
+
+        # Default to scraping over https. If required, just disable this or change to
+        # `http`.
+        scheme: https
+
+        # This TLS &amp; bearer token file config is used to connect to the actual scrape
+        # endpoints for cluster components. This is separate to discovery auth
+        # configuration because discovery &amp; scraping are two separate concerns in
+        # Prometheus. The discovery auth config is automatic if Prometheus runs inside
+        # the cluster. Otherwise, more config options have to be provided within the
+        # &lt;kubernetes_sd_config&gt;.
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+        kubernetes_sd_configs:
+        - role: node
+
+        relabel_configs:
+        - action: labelmap
+          regex: __meta_kubernetes_node_label_(.+)
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
+        - source_labels: [__meta_kubernetes_node_name]
+          regex: (.+)
+          target_label: __metrics_path__
+          replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+
+      # Scrape config for service endpoints.
+      #
+      # The relabeling allows the actual service scrape endpoint to be configured
+      # via the following annotations:
+      #
+      # * `prometheus.io/scrape`: Only scrape services that have a value of `true`
+      # * `prometheus.io/scheme`: If the metrics endpoint is secured then you will need
+      # to set this to `https` &amp; most likely set the `tls_config` of the scrape config.
+      # * `prometheus.io/path`: If the metrics path is not `/metrics` override this.
+      # * `prometheus.io/port`: If the metrics are exposed on a different port to the
+      # service then set this appropriately.
+      - job_name: &#39;kubernetes-service-endpoints&#39;
+
+        kubernetes_sd_configs:
+        - role: endpoints
+
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+          action: keep
+          regex: true
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+          action: replace
+          target_label: __scheme__
+          regex: (https?)
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+          action: replace
+          target_label: __metrics_path__
+          regex: (.+)
+        - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+          action: replace
+          target_label: __address__
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+        - action: labelmap
+          regex: __meta_kubernetes_service_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_service_name]
+          action: replace
+          target_label: kubernetes_name
+
+      # Example scrape config for probing services via the Blackbox Exporter.
+      #
+      # The relabeling allows the actual service scrape endpoint to be configured
+      # via the following annotations:
+      #
+      # * `prometheus.io/probe`: Only probe services that have a value of `true`
+      - job_name: &#39;kubernetes-services&#39;
+
+        metrics_path: /probe
+        params:
+          module: [http_2xx]
+
+        kubernetes_sd_configs:
+        - role: service
+
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_probe]
+          action: keep
+          regex: true
+        - source_labels: [__address__]
+          target_label: __param_target
+        - target_label: __address__
+          replacement: blackbox-exporter.example.com:9115
+        - source_labels: [__param_target]
+          target_label: instance
+        - action: labelmap
+          regex: __meta_kubernetes_service_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_service_name]
+          target_label: kubernetes_name
+
+      # Example scrape config for probing ingresses via the Blackbox Exporter.
+      #
+      # The relabeling allows the actual ingress scrape endpoint to be configured
+      # via the following annotations:
+      #
+      # * `prometheus.io/probe`: Only probe services that have a value of `true`
+      - job_name: &#39;kubernetes-ingresses&#39;
+
+        metrics_path: /probe
+        params:
+          module: [http_2xx]
+
+        kubernetes_sd_configs:
+          - role: ingress
+
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_ingress_annotation_prometheus_io_probe]
+            action: keep
+            regex: true
+          - source_labels: [__meta_kubernetes_ingress_scheme,__address__,__meta_kubernetes_ingress_path]
+            regex: (.+);(.+);(.+)
+            replacement: ${1}://${2}${3}
+            target_label: __param_target
+          - target_label: __address__
+            replacement: blackbox-exporter.example.com:9115
+          - source_labels: [__param_target]
+            target_label: instance
+          - action: labelmap
+            regex: __meta_kubernetes_ingress_label_(.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: kubernetes_namespace
+          - source_labels: [__meta_kubernetes_ingress_name]
+            target_label: kubernetes_name
+
+      # Example scrape config for pods
+      #
+      # The relabeling allows the actual pod scrape endpoint to be configured via the
+      # following annotations:
+      #
+      # * `prometheus.io/scrape`: Only scrape pods that have a value of `true`
+      # * `prometheus.io/path`: If the metrics path is not `/metrics` override this.
+      # * `prometheus.io/port`: Scrape the pod on the indicated port instead of the
+      # pod&#39;s declared ports (default is a port-free target if none are declared).
+      - job_name: &#39;kubernetes-pods&#39;
+
+        kubernetes_sd_configs:
+        - role: pod
+
+        relabel_configs:
+        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+          action: keep
+          regex: true
+        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+          action: replace
+          target_label: __metrics_path__
+          regex: (.+)
+        - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+          action: replace
+          regex: ([^:]+)(?::\d+)?;(\d+)
+          replacement: $1:$2
+          target_label: __address__
+        - action: labelmap
+          regex: __meta_kubernetes_pod_label_(.+)
+        - source_labels: [__meta_kubernetes_namespace]
+          action: replace
+          target_label: kubernetes_namespace
+        - source_labels: [__meta_kubernetes_pod_name]
+          action: replace
+          target_label: kubernetes_pod_name
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: ns-monitor
+  labels:
+    app: prometheus
+data:
+  cpu-usage.rule: |
+    groups:
+      - name: NodeCPUUsage
+        rules:
+          - alert: NodeCPUUsage
+            expr: (100 - (avg by (instance) (irate(node_cpu{name=&quot;node-exporter&quot;,mode=&quot;idle&quot;}[5m])) * 100)) &gt; 75
+            for: 2m
+            labels:
+              severity: &quot;page&quot;
+            annotations:
+              summary: &quot;{{$labels.instance}}: High CPU usage detected&quot;
+              description: &quot;{{$labels.instance}}: CPU usage is above 75% (current value is: {{ $value }})&quot;
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: &quot;prometheus-data-pv&quot;
+  labels:
+    name: prometheus-data-pv
+    release: stable
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /nfs
+    server: 52.83.79.244
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-data-pvc
+  namespace: ns-monitor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      name: prometheus-data-pv
+      release: stable
+
+---
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus
+  namespace: ns-monitor
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      serviceAccountName: prometheus
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: prometheus
+          image: 52.83.79.244:8093/pythagoras/prometheus:latest
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /prometheus
+              name: prometheus-data-volume
+            - mountPath: /etc/prometheus/prometheus.yml
+              name: prometheus-conf-volume
+              subPath: prometheus.yml
+            - mountPath: /etc/prometheus/rules
+              name: prometheus-rules-volume
+          ports:
+            - containerPort: 9090
+              protocol: TCP
+      volumes:
+        - name: prometheus-data-volume
+          persistentVolumeClaim:
+            claimName: prometheus-data-pvc
+        - name: prometheus-conf-volume
+          configMap:
+            name: prometheus-conf
+        - name: prometheus-rules-volume
+          configMap:
+            name: prometheus-rules
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    prometheus.io/scrape: &#39;true&#39;
+  labels:
+    app: prometheus
+  name: prometheus-service
+  namespace: ns-monitor
+spec:
+  ports:
+    - port: 9090
+      targetPort: 9090
+  selector:
+    app: prometheus
+  type: NodePort
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: &quot;grafana-data-pv&quot;
+  labels:
+    name: grafana-data-pv
+    release: stable
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: /nfs/grafana
+    server: 52.83.79.244
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-data-pvc
+  namespace: ns-monitor
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      name: grafana-data-pv
+      release: stable
+---
+kind: Deployment
+apiVersion: apps/v1beta2
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+  namespace: ns-monitor
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: grafana
+          image: 52.83.79.244:8093/pythagoras/grafana:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: GF_AUTH_BASIC_ENABLED
+              value: &quot;true&quot;
+            - name: GF_AUTH_ANONYMOUS_ENABLED
+              value: &quot;false&quot;
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 3000
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: grafana-data-volume
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+      volumes:
+        - name: grafana-data-volume
+          persistentVolumeClaim:
+            claimName: grafana-data-pvc
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: grafana
+  name: grafana-service
+  namespace: ns-monitor
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: grafana
+  type: NodePort
+
+
+dashboard配置
+
+{
+  &quot;__inputs&quot;: [
+    {
+      &quot;name&quot;: &quot;DS_PROMETHEUS&quot;,
+      &quot;label&quot;: &quot;prometheus&quot;,
+      &quot;description&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;datasource&quot;,
+      &quot;pluginId&quot;: &quot;prometheus&quot;,
+      &quot;pluginName&quot;: &quot;Prometheus&quot;
+    }
+  ],
+  &quot;__requires&quot;: [
+    {
+      &quot;type&quot;: &quot;grafana&quot;,
+      &quot;id&quot;: &quot;grafana&quot;,
+      &quot;name&quot;: &quot;Grafana&quot;,
+      &quot;version&quot;: &quot;5.0.4&quot;
+    },
+    {
+      &quot;type&quot;: &quot;panel&quot;,
+      &quot;id&quot;: &quot;graph&quot;,
+      &quot;name&quot;: &quot;Graph&quot;,
+      &quot;version&quot;: &quot;5.0.0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;datasource&quot;,
+      &quot;id&quot;: &quot;prometheus&quot;,
+      &quot;name&quot;: &quot;Prometheus&quot;,
+      &quot;version&quot;: &quot;5.0.0&quot;
+    },
+    {
+      &quot;type&quot;: &quot;panel&quot;,
+      &quot;id&quot;: &quot;singlestat&quot;,
+      &quot;name&quot;: &quot;Singlestat&quot;,
+      &quot;version&quot;: &quot;5.0.0&quot;
+    }
+  ],
+  &quot;annotations&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;builtIn&quot;: 1,
+        &quot;datasource&quot;: &quot;-- Grafana --&quot;,
+        &quot;enable&quot;: true,
+        &quot;hide&quot;: true,
+        &quot;iconColor&quot;: &quot;rgba(0, 211, 255, 1)&quot;,
+        &quot;name&quot;: &quot;Annotations &amp; Alerts&quot;,
+        &quot;type&quot;: &quot;dashboard&quot;
+      }
+    ]
+  },
+  &quot;description&quot;: &quot;Shows resource usage of Kubernetes pods.&quot;,
+  &quot;editable&quot;: true,
+  &quot;gnetId&quot;: 737,
+  &quot;graphTooltip&quot;: 0,
+  &quot;id&quot;: null,
+  &quot;iteration&quot;: 1524106098941,
+  &quot;links&quot;: [],
+  &quot;panels&quot;: [
+    {
+      &quot;collapsed&quot;: false,
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 1,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 0
+      },
+      &quot;id&quot;: 35,
+      &quot;panels&quot;: [],
+      &quot;title&quot;: &quot;all pods&quot;,
+      &quot;type&quot;: &quot;row&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: true,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;percent&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: true,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 5,
+        &quot;w&quot;: 8,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 1
+      },
+      &quot;height&quot;: &quot;180px&quot;,
+      &quot;id&quot;: 4,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (container_memory_working_set_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;}) / sum (machine_memory_bytes{instance=~\&quot;^$instance$\&quot;}) * 100&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 2
+        }
+      ],
+      &quot;thresholds&quot;: &quot;65, 90&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Memory Working Set&quot;,
+      &quot;transparent&quot;: false,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;80%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: true,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;percent&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: true,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 5,
+        &quot;w&quot;: 8,
+        &quot;x&quot;: 8,
+        &quot;y&quot;: 1
+      },
+      &quot;height&quot;: &quot;180px&quot;,
+      &quot;id&quot;: 6,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(rate(container_cpu_usage_seconds_total{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;}[1m])) / sum (machine_cpu_cores{instance=~\&quot;^$instance$\&quot;}) * 100&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;65, 90&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Cpu Usage&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;80%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: true,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;percent&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: true,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 5,
+        &quot;w&quot;: 8,
+        &quot;x&quot;: 16,
+        &quot;y&quot;: 1
+      },
+      &quot;height&quot;: &quot;180px&quot;,
+      &quot;id&quot;: 7,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(container_fs_usage_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;}) / sum(container_fs_limit_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;}) * 100&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;legendFormat&quot;: &quot;&quot;,
+          &quot;metric&quot;: &quot;&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;65, 90&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Filesystem Usage&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;80%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;bytes&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 9,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;20%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;20%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(container_memory_working_set_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;})&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;title&quot;: &quot;Used&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;bytes&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 4,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 10,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (machine_memory_bytes{instance=~\&quot;^$instance$\&quot;})&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;title&quot;: &quot;Total&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;none&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 8,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 11,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot; cores&quot;,
+      &quot;postfixFontSize&quot;: &quot;30%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (rate (container_cpu_usage_seconds_total{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;}[1m]))&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Used&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;none&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 12,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 12,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot; cores&quot;,
+      &quot;postfixFontSize&quot;: &quot;30%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (machine_cpu_cores{instance=~\&quot;^$instance$\&quot;})&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;title&quot;: &quot;Total&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;bytes&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 16,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 13,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(container_fs_usage_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;})&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;title&quot;: &quot;Used&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;cacheTimeout&quot;: null,
+      &quot;colorBackground&quot;: false,
+      &quot;colorValue&quot;: false,
+      &quot;colors&quot;: [
+        &quot;rgba(50, 172, 45, 0.97)&quot;,
+        &quot;rgba(237, 129, 40, 0.89)&quot;,
+        &quot;rgba(245, 54, 54, 0.9)&quot;
+      ],
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;format&quot;: &quot;bytes&quot;,
+      &quot;gauge&quot;: {
+        &quot;maxValue&quot;: 100,
+        &quot;minValue&quot;: 0,
+        &quot;show&quot;: false,
+        &quot;thresholdLabels&quot;: false,
+        &quot;thresholdMarkers&quot;: true
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 3,
+        &quot;w&quot;: 4,
+        &quot;x&quot;: 20,
+        &quot;y&quot;: 6
+      },
+      &quot;height&quot;: &quot;1px&quot;,
+      &quot;hideTimeOverride&quot;: true,
+      &quot;id&quot;: 14,
+      &quot;interval&quot;: null,
+      &quot;isNew&quot;: true,
+      &quot;links&quot;: [],
+      &quot;mappingType&quot;: 1,
+      &quot;mappingTypes&quot;: [
+        {
+          &quot;name&quot;: &quot;value to text&quot;,
+          &quot;value&quot;: 1
+        },
+        {
+          &quot;name&quot;: &quot;range to text&quot;,
+          &quot;value&quot;: 2
+        }
+      ],
+      &quot;maxDataPoints&quot;: 100,
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;nullText&quot;: null,
+      &quot;postfix&quot;: &quot;&quot;,
+      &quot;postfixFontSize&quot;: &quot;50%&quot;,
+      &quot;prefix&quot;: &quot;&quot;,
+      &quot;prefixFontSize&quot;: &quot;50%&quot;,
+      &quot;rangeMaps&quot;: [
+        {
+          &quot;from&quot;: &quot;null&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;to&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;sparkline&quot;: {
+        &quot;fillColor&quot;: &quot;rgba(31, 118, 189, 0.18)&quot;,
+        &quot;full&quot;: false,
+        &quot;lineColor&quot;: &quot;rgb(31, 120, 193)&quot;,
+        &quot;show&quot;: false
+      },
+      &quot;tableColumn&quot;: &quot;&quot;,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (container_fs_limit_bytes{id=\&quot;/\&quot;,instance=~\&quot;^$instance$\&quot;})&quot;,
+          &quot;interval&quot;: &quot;10s&quot;,
+          &quot;intervalFactor&quot;: 1,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 10
+        }
+      ],
+      &quot;thresholds&quot;: &quot;&quot;,
+      &quot;timeFrom&quot;: &quot;1m&quot;,
+      &quot;title&quot;: &quot;Total&quot;,
+      &quot;type&quot;: &quot;singlestat&quot;,
+      &quot;valueFontSize&quot;: &quot;50%&quot;,
+      &quot;valueMaps&quot;: [
+        {
+          &quot;op&quot;: &quot;=&quot;,
+          &quot;text&quot;: &quot;N/A&quot;,
+          &quot;value&quot;: &quot;null&quot;
+        }
+      ],
+      &quot;valueName&quot;: &quot;current&quot;
+    },
+    {
+      &quot;aliasColors&quot;: {},
+      &quot;bars&quot;: false,
+      &quot;dashLength&quot;: 10,
+      &quot;dashes&quot;: false,
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;fill&quot;: 1,
+      &quot;grid&quot;: {},
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 5,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 9
+      },
+      &quot;height&quot;: &quot;200px&quot;,
+      &quot;id&quot;: 32,
+      &quot;isNew&quot;: true,
+      &quot;legend&quot;: {
+        &quot;alignAsTable&quot;: true,
+        &quot;avg&quot;: true,
+        &quot;current&quot;: true,
+        &quot;max&quot;: false,
+        &quot;min&quot;: false,
+        &quot;rightSide&quot;: true,
+        &quot;show&quot;: true,
+        &quot;sideWidth&quot;: 200,
+        &quot;sort&quot;: &quot;current&quot;,
+        &quot;sortDesc&quot;: true,
+        &quot;total&quot;: false,
+        &quot;values&quot;: true
+      },
+      &quot;lines&quot;: true,
+      &quot;linewidth&quot;: 2,
+      &quot;links&quot;: [],
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;percentage&quot;: false,
+      &quot;pointradius&quot;: 5,
+      &quot;points&quot;: false,
+      &quot;renderer&quot;: &quot;flot&quot;,
+      &quot;seriesOverrides&quot;: [],
+      &quot;spaceLength&quot;: 10,
+      &quot;stack&quot;: false,
+      &quot;steppedLine&quot;: false,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(rate(container_network_receive_bytes_total{instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}[1m]))&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;receive&quot;,
+          &quot;metric&quot;: &quot;network&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 240
+        },
+        {
+          &quot;expr&quot;: &quot;- sum(rate(container_network_transmit_bytes_total{instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}[1m]))&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;transmit&quot;,
+          &quot;metric&quot;: &quot;network&quot;,
+          &quot;refId&quot;: &quot;B&quot;,
+          &quot;step&quot;: 240
+        }
+      ],
+      &quot;thresholds&quot;: [],
+      &quot;timeFrom&quot;: null,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Network&quot;,
+      &quot;tooltip&quot;: {
+        &quot;msResolution&quot;: false,
+        &quot;shared&quot;: true,
+        &quot;sort&quot;: 0,
+        &quot;value_type&quot;: &quot;cumulative&quot;
+      },
+      &quot;transparent&quot;: false,
+      &quot;type&quot;: &quot;graph&quot;,
+      &quot;xaxis&quot;: {
+        &quot;buckets&quot;: null,
+        &quot;mode&quot;: &quot;time&quot;,
+        &quot;name&quot;: null,
+        &quot;show&quot;: true,
+        &quot;values&quot;: []
+      },
+      &quot;yaxes&quot;: [
+        {
+          &quot;format&quot;: &quot;Bps&quot;,
+          &quot;label&quot;: &quot;transmit / receive&quot;,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: true
+        },
+        {
+          &quot;format&quot;: &quot;Bps&quot;,
+          &quot;label&quot;: null,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: false
+        }
+      ]
+    },
+    {
+      &quot;collapsed&quot;: false,
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 1,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 14
+      },
+      &quot;id&quot;: 36,
+      &quot;panels&quot;: [],
+      &quot;title&quot;: &quot;each pod&quot;,
+      &quot;type&quot;: &quot;row&quot;
+    },
+    {
+      &quot;aliasColors&quot;: {},
+      &quot;bars&quot;: false,
+      &quot;dashLength&quot;: 10,
+      &quot;dashes&quot;: false,
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 3,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;fill&quot;: 0,
+      &quot;grid&quot;: {},
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 7,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 15
+      },
+      &quot;height&quot;: &quot;&quot;,
+      &quot;id&quot;: 17,
+      &quot;isNew&quot;: true,
+      &quot;legend&quot;: {
+        &quot;alignAsTable&quot;: true,
+        &quot;avg&quot;: true,
+        &quot;current&quot;: true,
+        &quot;hideEmpty&quot;: true,
+        &quot;hideZero&quot;: true,
+        &quot;max&quot;: false,
+        &quot;min&quot;: false,
+        &quot;rightSide&quot;: true,
+        &quot;show&quot;: true,
+        &quot;sideWidth&quot;: null,
+        &quot;sort&quot;: &quot;current&quot;,
+        &quot;sortDesc&quot;: true,
+        &quot;total&quot;: false,
+        &quot;values&quot;: true
+      },
+      &quot;lines&quot;: true,
+      &quot;linewidth&quot;: 2,
+      &quot;links&quot;: [],
+      &quot;nullPointMode&quot;: &quot;connected&quot;,
+      &quot;percentage&quot;: false,
+      &quot;pointradius&quot;: 5,
+      &quot;points&quot;: false,
+      &quot;renderer&quot;: &quot;flot&quot;,
+      &quot;seriesOverrides&quot;: [],
+      &quot;spaceLength&quot;: 10,
+      &quot;stack&quot;: false,
+      &quot;steppedLine&quot;: false,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(rate(container_cpu_usage_seconds_total{image!=\&quot;\&quot;,name=~\&quot;^k8s_.*\&quot;,instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}[1m])) by (pod_name)&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;{{ pod_name }}&quot;,
+          &quot;metric&quot;: &quot;container_cpu&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 240
+        }
+      ],
+      &quot;thresholds&quot;: [],
+      &quot;timeFrom&quot;: null,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Cpu Usage&quot;,
+      &quot;tooltip&quot;: {
+        &quot;msResolution&quot;: true,
+        &quot;shared&quot;: false,
+        &quot;sort&quot;: 2,
+        &quot;value_type&quot;: &quot;cumulative&quot;
+      },
+      &quot;transparent&quot;: false,
+      &quot;type&quot;: &quot;graph&quot;,
+      &quot;xaxis&quot;: {
+        &quot;buckets&quot;: null,
+        &quot;mode&quot;: &quot;time&quot;,
+        &quot;name&quot;: null,
+        &quot;show&quot;: true,
+        &quot;values&quot;: []
+      },
+      &quot;yaxes&quot;: [
+        {
+          &quot;format&quot;: &quot;none&quot;,
+          &quot;label&quot;: &quot;cores&quot;,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: true
+        },
+        {
+          &quot;format&quot;: &quot;short&quot;,
+          &quot;label&quot;: null,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: false
+        }
+      ]
+    },
+    {
+      &quot;aliasColors&quot;: {},
+      &quot;bars&quot;: false,
+      &quot;dashLength&quot;: 10,
+      &quot;dashes&quot;: false,
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;fill&quot;: 0,
+      &quot;grid&quot;: {},
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 7,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 22
+      },
+      &quot;id&quot;: 33,
+      &quot;isNew&quot;: true,
+      &quot;legend&quot;: {
+        &quot;alignAsTable&quot;: true,
+        &quot;avg&quot;: true,
+        &quot;current&quot;: true,
+        &quot;hideEmpty&quot;: true,
+        &quot;hideZero&quot;: true,
+        &quot;max&quot;: false,
+        &quot;min&quot;: false,
+        &quot;rightSide&quot;: true,
+        &quot;show&quot;: true,
+        &quot;sideWidth&quot;: null,
+        &quot;sort&quot;: &quot;current&quot;,
+        &quot;sortDesc&quot;: true,
+        &quot;total&quot;: false,
+        &quot;values&quot;: true
+      },
+      &quot;lines&quot;: true,
+      &quot;linewidth&quot;: 2,
+      &quot;links&quot;: [],
+      &quot;nullPointMode&quot;: &quot;null&quot;,
+      &quot;percentage&quot;: false,
+      &quot;pointradius&quot;: 5,
+      &quot;points&quot;: false,
+      &quot;renderer&quot;: &quot;flot&quot;,
+      &quot;seriesOverrides&quot;: [],
+      &quot;spaceLength&quot;: 10,
+      &quot;stack&quot;: false,
+      &quot;steppedLine&quot;: false,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (container_memory_working_set_bytes{image!=\&quot;\&quot;,name=~\&quot;^k8s_.*\&quot;,instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}) by (pod_name)&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;{{ pod_name }}&quot;,
+          &quot;metric&quot;: &quot;&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 240
+        }
+      ],
+      &quot;thresholds&quot;: [],
+      &quot;timeFrom&quot;: null,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Memory Working Set&quot;,
+      &quot;tooltip&quot;: {
+        &quot;msResolution&quot;: false,
+        &quot;shared&quot;: false,
+        &quot;sort&quot;: 2,
+        &quot;value_type&quot;: &quot;cumulative&quot;
+      },
+      &quot;type&quot;: &quot;graph&quot;,
+      &quot;xaxis&quot;: {
+        &quot;buckets&quot;: null,
+        &quot;mode&quot;: &quot;time&quot;,
+        &quot;name&quot;: null,
+        &quot;show&quot;: true,
+        &quot;values&quot;: []
+      },
+      &quot;yaxes&quot;: [
+        {
+          &quot;format&quot;: &quot;bytes&quot;,
+          &quot;label&quot;: &quot;used&quot;,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: true
+        },
+        {
+          &quot;format&quot;: &quot;short&quot;,
+          &quot;label&quot;: null,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: false
+        }
+      ]
+    },
+    {
+      &quot;aliasColors&quot;: {},
+      &quot;bars&quot;: false,
+      &quot;dashLength&quot;: 10,
+      &quot;dashes&quot;: false,
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;fill&quot;: 1,
+      &quot;grid&quot;: {},
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 7,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 29
+      },
+      &quot;id&quot;: 16,
+      &quot;isNew&quot;: true,
+      &quot;legend&quot;: {
+        &quot;alignAsTable&quot;: true,
+        &quot;avg&quot;: true,
+        &quot;current&quot;: true,
+        &quot;hideEmpty&quot;: true,
+        &quot;hideZero&quot;: true,
+        &quot;max&quot;: false,
+        &quot;min&quot;: false,
+        &quot;rightSide&quot;: true,
+        &quot;show&quot;: true,
+        &quot;sideWidth&quot;: 200,
+        &quot;sort&quot;: &quot;avg&quot;,
+        &quot;sortDesc&quot;: true,
+        &quot;total&quot;: false,
+        &quot;values&quot;: true
+      },
+      &quot;lines&quot;: true,
+      &quot;linewidth&quot;: 2,
+      &quot;links&quot;: [],
+      &quot;nullPointMode&quot;: &quot;null&quot;,
+      &quot;percentage&quot;: false,
+      &quot;pointradius&quot;: 5,
+      &quot;points&quot;: false,
+      &quot;renderer&quot;: &quot;flot&quot;,
+      &quot;seriesOverrides&quot;: [],
+      &quot;spaceLength&quot;: 10,
+      &quot;stack&quot;: false,
+      &quot;steppedLine&quot;: false,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum (rate (container_network_receive_bytes_total{image!=\&quot;\&quot;,name=~\&quot;^k8s_.*\&quot;,instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}[1m])) by (pod_name)&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;{{ pod_name }} &lt; in&quot;,
+          &quot;metric&quot;: &quot;network&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 240
+        },
+        {
+          &quot;expr&quot;: &quot;- sum (rate (container_network_transmit_bytes_total{image!=\&quot;\&quot;,name=~\&quot;^k8s_.*\&quot;,instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}[1m])) by (pod_name)&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;{{ pod_name }} &gt; out&quot;,
+          &quot;metric&quot;: &quot;network&quot;,
+          &quot;refId&quot;: &quot;B&quot;,
+          &quot;step&quot;: 240
+        }
+      ],
+      &quot;thresholds&quot;: [],
+      &quot;timeFrom&quot;: null,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Network&quot;,
+      &quot;tooltip&quot;: {
+        &quot;msResolution&quot;: false,
+        &quot;shared&quot;: false,
+        &quot;sort&quot;: 2,
+        &quot;value_type&quot;: &quot;cumulative&quot;
+      },
+      &quot;type&quot;: &quot;graph&quot;,
+      &quot;xaxis&quot;: {
+        &quot;buckets&quot;: null,
+        &quot;mode&quot;: &quot;time&quot;,
+        &quot;name&quot;: null,
+        &quot;show&quot;: true,
+        &quot;values&quot;: []
+      },
+      &quot;yaxes&quot;: [
+        {
+          &quot;format&quot;: &quot;Bps&quot;,
+          &quot;label&quot;: &quot;transmit / receive&quot;,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: true
+        },
+        {
+          &quot;format&quot;: &quot;short&quot;,
+          &quot;label&quot;: null,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: false
+        }
+      ]
+    },
+    {
+      &quot;aliasColors&quot;: {},
+      &quot;bars&quot;: false,
+      &quot;dashLength&quot;: 10,
+      &quot;dashes&quot;: false,
+      &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+      &quot;decimals&quot;: 2,
+      &quot;editable&quot;: true,
+      &quot;error&quot;: false,
+      &quot;fill&quot;: 1,
+      &quot;grid&quot;: {},
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 7,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 36
+      },
+      &quot;id&quot;: 34,
+      &quot;isNew&quot;: true,
+      &quot;legend&quot;: {
+        &quot;alignAsTable&quot;: true,
+        &quot;avg&quot;: true,
+        &quot;current&quot;: true,
+        &quot;hideEmpty&quot;: true,
+        &quot;hideZero&quot;: true,
+        &quot;max&quot;: false,
+        &quot;min&quot;: false,
+        &quot;rightSide&quot;: true,
+        &quot;show&quot;: true,
+        &quot;sideWidth&quot;: 200,
+        &quot;sort&quot;: &quot;current&quot;,
+        &quot;sortDesc&quot;: true,
+        &quot;total&quot;: false,
+        &quot;values&quot;: true
+      },
+      &quot;lines&quot;: true,
+      &quot;linewidth&quot;: 2,
+      &quot;links&quot;: [],
+      &quot;nullPointMode&quot;: &quot;null&quot;,
+      &quot;percentage&quot;: false,
+      &quot;pointradius&quot;: 5,
+      &quot;points&quot;: false,
+      &quot;renderer&quot;: &quot;flot&quot;,
+      &quot;seriesOverrides&quot;: [],
+      &quot;spaceLength&quot;: 10,
+      &quot;stack&quot;: false,
+      &quot;steppedLine&quot;: false,
+      &quot;targets&quot;: [
+        {
+          &quot;expr&quot;: &quot;sum(container_fs_usage_bytes{image!=\&quot;\&quot;,name=~\&quot;^k8s_.*\&quot;,instance=~\&quot;^$instance$\&quot;,namespace=~\&quot;^$namespace$\&quot;}) by (pod_name)&quot;,
+          &quot;interval&quot;: &quot;&quot;,
+          &quot;intervalFactor&quot;: 2,
+          &quot;legendFormat&quot;: &quot;{{ pod_name }}&quot;,
+          &quot;metric&quot;: &quot;network&quot;,
+          &quot;refId&quot;: &quot;A&quot;,
+          &quot;step&quot;: 240
+        }
+      ],
+      &quot;thresholds&quot;: [],
+      &quot;timeFrom&quot;: null,
+      &quot;timeShift&quot;: null,
+      &quot;title&quot;: &quot;Filesystem&quot;,
+      &quot;tooltip&quot;: {
+        &quot;msResolution&quot;: false,
+        &quot;shared&quot;: false,
+        &quot;sort&quot;: 2,
+        &quot;value_type&quot;: &quot;cumulative&quot;
+      },
+      &quot;type&quot;: &quot;graph&quot;,
+      &quot;xaxis&quot;: {
+        &quot;buckets&quot;: null,
+        &quot;mode&quot;: &quot;time&quot;,
+        &quot;name&quot;: null,
+        &quot;show&quot;: true,
+        &quot;values&quot;: []
+      },
+      &quot;yaxes&quot;: [
+        {
+          &quot;format&quot;: &quot;bytes&quot;,
+          &quot;label&quot;: &quot;used&quot;,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: true
+        },
+        {
+          &quot;format&quot;: &quot;short&quot;,
+          &quot;label&quot;: null,
+          &quot;logBase&quot;: 1,
+          &quot;max&quot;: null,
+          &quot;min&quot;: null,
+          &quot;show&quot;: false
+        }
+      ]
+    }
+  ],
+  &quot;refresh&quot;: false,
+  &quot;schemaVersion&quot;: 16,
+  &quot;style&quot;: &quot;dark&quot;,
+  &quot;tags&quot;: [
+    &quot;kubernetes&quot;
+  ],
+  &quot;templating&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;allValue&quot;: &quot;.*&quot;,
+        &quot;current&quot;: {},
+        &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+        &quot;hide&quot;: 0,
+        &quot;includeAll&quot;: true,
+        &quot;label&quot;: &quot;Instance&quot;,
+        &quot;multi&quot;: false,
+        &quot;name&quot;: &quot;instance&quot;,
+        &quot;options&quot;: [],
+        &quot;query&quot;: &quot;label_values(instance)&quot;,
+        &quot;refresh&quot;: 1,
+        &quot;regex&quot;: &quot;master|node.*&quot;,
+        &quot;sort&quot;: 0,
+        &quot;tagValuesQuery&quot;: &quot;&quot;,
+        &quot;tags&quot;: [],
+        &quot;tagsQuery&quot;: &quot;&quot;,
+        &quot;type&quot;: &quot;query&quot;,
+        &quot;useTags&quot;: false
+      },
+      {
+        &quot;allValue&quot;: null,
+        &quot;current&quot;: {},
+        &quot;datasource&quot;: &quot;${DS_PROMETHEUS}&quot;,
+        &quot;hide&quot;: 0,
+        &quot;includeAll&quot;: true,
+        &quot;label&quot;: &quot;Namespace&quot;,
+        &quot;multi&quot;: true,
+        &quot;name&quot;: &quot;namespace&quot;,
+        &quot;options&quot;: [],
+        &quot;query&quot;: &quot;label_values(namespace)&quot;,
+        &quot;refresh&quot;: 1,
+        &quot;regex&quot;: &quot;&quot;,
+        &quot;sort&quot;: 0,
+        &quot;tagValuesQuery&quot;: &quot;&quot;,
+        &quot;tags&quot;: [],
+        &quot;tagsQuery&quot;: &quot;&quot;,
+        &quot;type&quot;: &quot;query&quot;,
+        &quot;useTags&quot;: false
+      }
+    ]
+  },
+  &quot;time&quot;: {
+    &quot;from&quot;: &quot;now-15m&quot;,
+    &quot;to&quot;: &quot;now&quot;
+  },
+  &quot;timepicker&quot;: {
+    &quot;refresh_intervals&quot;: [
+      &quot;5s&quot;,
+      &quot;10s&quot;,
+      &quot;30s&quot;,
+      &quot;1m&quot;,
+      &quot;5m&quot;,
+      &quot;15m&quot;,
+      &quot;30m&quot;,
+      &quot;1h&quot;,
+      &quot;2h&quot;,
+      &quot;1d&quot;
+    ],
+    &quot;time_options&quot;: [
+      &quot;5m&quot;,
+      &quot;15m&quot;,
+      &quot;1h&quot;,
+      &quot;6h&quot;,
+      &quot;12h&quot;,
+      &quot;24h&quot;,
+      &quot;2d&quot;,
+      &quot;7d&quot;,
+      &quot;30d&quot;
+    ]
+  },
+  &quot;timezone&quot;: &quot;browser&quot;,
+  &quot;title&quot;: &quot;Kubernetes Pod Resources&quot;,
+  &quot;uid&quot;: &quot;Tl8II5Wmz&quot;,
+  &quot;version&quot;: 19
+}
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kubernetes">kubernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/kubernetes">kubernetes</a>&nbsp;
+          
+            <a href="/tags/grafana">grafana</a>&nbsp;
+          
+            <a href="/tags/prometheus">prometheus</a>&nbsp;
+          
+            <a href="/tags/%E7%9B%91%E6%8E%A7">监控</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/07/gitlab%E5%BC%80%E5%90%AFhttps/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/THWYZKhmjqslku4.png" srcset="/img/loading.gif" alt="Gitlab开启Https" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/07/gitlab%E5%BC%80%E5%90%AFhttps/">
+        <p class="h4 index-header">Gitlab开启Https</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Gitlab开启Https建立认证目录mkdir -p /etc/gitlab/ssl
+chmod 700 /etc/gitlab/ssl
+建立证书# step 1 创建private key （记住输入的密码（Pass phrase））
+openssl genrsa -des3 -out /etc/gitlab/ssl/server.key 2048
+
+# step 2 生成 Certificate Request
+openssl req -new -key /etc/gitlab/ssl/gitlab.domain.com.key -out /etc/gitlab/ssl/server.csr
+
+ Enter Country Name CN Enter State or Province Full Name HB Enter City Name WuHan Enter Organization Name Enter Company Name EV-IV Enter Organizational Unit Name Enter server hostname i.e. URL gitlab.domain.com Enter Admin Email Address Skip Challenge Password (Hit Enter) Skip Optional Company Name (Hit Enter)
+
+#在加载SSL支持的Nginx并使用上述私钥时要除去刚才设置的口令： 
+#step3 备份csr文件及去除命令，直接覆盖了server.key了
+openssl rsa -inserver.key.org -out server.key
+#step 4最后标记证书使用上述私钥和CSR：（把csr标记后转换成了crt nginx要用key和crt文件）
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+修改gitlab配置vim /etc/gitlab/gitlab.rb
+
+external_url &#39;https://161.189.27.8:8090/&#39;
+
+nginx[&#39;redirect_http_to_https&#39;]= true
+nginx[&#39;ssl_client_certificate&#39;] = &quot;/etc/gitlab/ssl/server.crt&quot;
+nginx[&#39;ssl_certificate&#39;]= &quot;/etc/gitlab/ssl/server.crt&quot;
+nginx[&#39;ssl_certificate_key&#39;]= &quot;/etc/gitlab/ssl/server.key&quot;
+重启gitlabgitlab-ctl reconfigure
+gitlab-ctl restart
+最后通过访问https地址进行访问测试
+相关问题Q1 由于ssl证书为自签证书 git clone报错
+git clone https://161.189.27.8:8090/dqdev/pythogoras.git
+Cloning into &#39;pythogoras&#39;...
+fatal: unable to access &#39;https://161.189.27.8:8090/dqdev/pythogoras.git/&#39;: SSL certificate problem: self signed certificate
+关闭git ssl验证
+git config --global http.sslVerify false 关闭
+git config --global http.sslVerify true  开启
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-07&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E8%AF%81%E4%B9%A6">证书</a>&nbsp;
+          
+            <a href="/tags/https">https</a>&nbsp;
+          
+            <a href="/tags/gitlab">gitlab</a>&nbsp;
+          
+            <a href="/tags/ssl">ssl</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-double-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Work Hard Play Hard&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

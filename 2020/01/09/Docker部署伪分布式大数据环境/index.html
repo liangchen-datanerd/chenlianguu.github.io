@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Docker部署伪分布式大数据环境 ~ Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  2020-01-09 12:26 
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.8k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      8 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>通过docker搭建大数据环境  </p>
+<ul>
+<li>开箱即用，不常驻后台，需要的时候启动集群即可，不用的时候关闭集群释放机器资源</li>
+<li>避免了直接安装端口占用问题，大数据平台所需端口较多</li>
+<li>spark资源docker化，便于后期k8s进行资源管理调度</li>
+</ul>
+<p>上述好处主要是基于测试环境下，基于生产环境的大数据平台化要考虑的点很多，例如后期扩容、运维、安全等因素，大数据平台整个是否docker化后期有待考证。</p>
+<h2 id="镜像制作方案"><a href="#镜像制作方案" class="headerlink" title="镜像制作方案"></a>镜像制作方案</h2><p>使用Docker来搭建hadoop,spark及mysql的集群，首先使用Dockerfile制作镜像，把相关的软件拷贝到约定好的目录 下，把配置文件在外面先配置好，再拷贝移动到hadoop,spark的配置目录，为了能使得mysql能从其它节点被访问到，要配置mysql的访问权限。</p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p>一共3个节点，即启动3个容器。hadoop-master,hadoop-node1,hadoop-node2这三个容器里面安装hadoop和spark集群。<br><img src="https://i.loli.net/2020/01/09/HIAsFMrPekj4fZw.png" srcset="/img/loading.gif" alt="architect.png"></p>
+<h2 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h2><h3 id="集群网络规划及子网配置"><a href="#集群网络规划及子网配置" class="headerlink" title="集群网络规划及子网配置"></a>集群网络规划及子网配置</h3><p>既然是做集群，网络的规划是少不了的,至于网络，可以通过Docker中的DockerNetworking的支持配置。首先设置网络，docker中设置 子网可以通过docker network create 方法，这里我们通过命令设置如下的子网。–subnet指定子网络的网段，并为这个子网命名一个名字叫spark</p>
+<pre><code class="shell"># 创建子网
+docker network create --subnet=172.16.0.0/16 spark
+# 查看网络
+docker network ls
+NETWORK ID          NAME                       DRIVER              SCOPE
+fab2dd51d1cf        spark                      bridge              local</code></pre>
+<p> 接下来就在我们创建的子网落spark中规划集群中每个容器的ip地址。网络ip分配如下:</p>
+<p>hadoop-master 172.16.0.2</p>
+<p>hadoop-node1 172.16.0.3</p>
+<p>hadoop-node2 172.16.0.4</p>
+<h3 id="软件版本"><a href="#软件版本" class="headerlink" title="软件版本"></a>软件版本</h3><p>网络规划好了，首先Spark我们使用最新的2.4.4版本，Hadoop采用比较稳定的hadoop-2.7.3版本，scala采用scala-2.11.8，JDK采用jdk-8u101-linux-x64。</p>
+<h3 id="SSH无密钥登录规则配置"><a href="#SSH无密钥登录规则配置" class="headerlink" title="SSH无密钥登录规则配置"></a>SSH无密钥登录规则配置</h3><p>注意这里不使用ssh-keygen -t rsa -P ‘’这种方式生成id_rsa.pub，然后集群节点互拷贝id_rsa.pub到authorized_keys文件这种方式，而 是通过在.ssh目录下配置ssh_conf文件的方式，ssh_conf中可以配置SSH的通信规则，例如以正则表达式的方式指定hostname为XXX的 机器之间实现互联互通，而不进行额外的密钥验证。为了编写这个正则表达式，我们5个节点的hostname都以hadoop-*的方式作为开 头，这就是采用这种命名规则的原因。下面来看下ssh_conf配置的内容:</p>
+<pre><code class="shell">Host localhost
+    StrictHostKeyChecking no
+Host 0.0.0.0 
+    StrictHostKeyChecking no
+Host hadoop-* 
+    StrictHostKeyChecking no</code></pre>
+<p>注意上面的最后一行，Host hadoop-* 指定了它的严格的Host验证StrictHostKeyChecking 为no，这样既可以是这5个hostname以 hadoop-*开头的容器之间实现互联互通，而不需要二外的验证。</p>
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><p>Dockerfile编写完成，接下来写一个build.sh脚本，内容如下:</p>
+<pre><code class="shell"> echo build hadoop images
+ docker build -t=&quot;spark&quot; . </code></pre>
+<p>表示构建一个名叫spark的镜像，.表示Dockerfile的路径，因为在当前路径下，所有用.,若在其他地方则用绝对路径指定Dockerfile的路径 即可。</p>
+<p>运行sh build.sh，就会开始制作镜像了。</p>
+<h2 id="集群运行"><a href="#集群运行" class="headerlink" title="集群运行"></a>集群运行</h2><h3 id="启动容器-start-container-sh"><a href="#启动容器-start-container-sh" class="headerlink" title="启动容器 start_container.sh"></a>启动容器 start_container.sh</h3><p>使用这个镜像可完成容器的启动，因为使用了基于DockerNetworking的网络机制，因此可以在启动容器的时候为容器在子网172.16.0.0/16 spark中分贝172.16.0.1 172.16.0.255以外的IP地址，容器内部容器的通信是基于hostname，因此 需要指定hostname，为了方便容器的管理，需要为启动的每个容器指定一个名字。为了方便外网访问，需要通过-p命令指定容器到宿主机的端口映射。还要为每个容器增加host列表。</p>
+<pre><code class="shell"># hadoop-master
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.2 \
+    --privileged \
+    -p 18032:8032 \
+    -p 28080:18080 \
+    -p 29888:19888 \
+    -p 17077:7077 \
+    -p 51070:50070 \
+    -p 18888:8888 \
+    -p 19000:9000 \
+    -p 11100:11000 \
+    -p 51030:50030 \
+    -p 18050:8050 \
+    -p 18081:8081 \
+    -p 18900:8900 \
+    --name hadoop-master \
+    --hostname hadoop-master \
+    --add-host hadoop-node1:172.16.0.3 \
+    --add-host hadoop-node2:172.16.0.4 \
+    --add-host hadoop-mysql:172.16.0.6 \
+    spark /usr/sbin/init
+
+# hadoop-node1
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.3 \
+    --privileged \
+    -p 18042:8042 \
+    -p 51010:50010 \
+    -p 51020:50020 \
+    --name hadoop-node1 \
+    --hostname hadoop-node1 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node2:172.16.0.4 \
+    spark /usr/sbin/init
+
+# hadoop-node2
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.4 \
+    --privileged \
+    -p 18043:8042 \
+    -p 51011:50011 \
+    -p 51021:50021 \
+    --name hadoop-node2 \
+    --hostname hadoop-node2 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node1:172.16.0.3 \
+    spark /usr/sbin/init
+</code></pre>
+<h3 id="关闭集群-stop-container-sh"><a href="#关闭集群-stop-container-sh" class="headerlink" title="关闭集群 stop_container.sh"></a>关闭集群 stop_container.sh</h3><pre><code class="shell">echo stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo remove containers
+docker rm hadoop-master
+docker rm hadoop-node1
+docker rm hadoop-node2
+
+echo rm containers
+
+docker ps</code></pre>
+<h3 id="重启集群-restart-container-sh"><a href="#重启集群-restart-container-sh" class="headerlink" title="重启集群 restart_container.sh"></a>重启集群 restart_container.sh</h3><pre><code class="shell">echo stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo restart containers
+docker start hadoop-master
+docker start hadoop-node1
+docker start hadoop-node2
+echo start sshd
+docker exec -it hadoop-master systemctl start sshd
+docker exec -it hadoop-node1 systemctl start sshd
+docker exec -it hadoop-node2 systemctl start sshd
+docker exec -it hadoop-master ~/restart-hadoop.sh
+echo  containers started
+
+docker ps</code></pre>
+<h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><ul>
+<li><p>docker里面执行systemctl报错</p>
+<p>解决方案：启动的时候用/usr/sbin/init</p>
+</li>
+<li><p>docker登录harbor报错<br>window直接修改docker设置，添加52.83.79.244:8093到docker insecure registry<br>linux修改方法：<a href="https://blog.csdn.net/u010397369/article/details/42422243" target="_blank" rel="noopener">https://blog.csdn.net/u010397369/article/details/42422243</a>  </p>
+</li>
+</ul>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>进入hadoop-master容器内部，执行spark-shell</p>
+<pre><code class="shell">root@node-2 docker-spark]# docker exec -it hadoop-master /bin/bash
+[root@hadoop-master ~]# spark
+spark-class   spark-shell   spark-sql     spark-submit  sparkR
+[root@hadoop-master ~]# spark-shell
+19/12/03 04:51:25 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+19/12/03 04:51:43 WARN util.Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+Spark context Web UI available at http://hadoop-master:4040
+Spark context available as &#39;sc&#39; (master = spark://hadoop-master:7077, app id = app-20191203045141-0000).
+Spark session available as &#39;spark&#39;.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.4.4
+      /_/
+
+Using Scala version 2.11.12 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_101)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;</code></pre>
+<h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><ul>
+<li><p>想要在自己的笔记本环境使用</p>
+<p>首先笔记本环境下需要有docker环境</p>
+<ul>
+<li>拉取gitlab上面的项目：git clone <a href="mailto:git@161.189.27.8">git@161.189.27.8</a>:chenliang/docker-spark.git</li>
+<li>拉去harbor上面的镜像：docker pull 52.83.79.244:8093/wuhan/spark:v1（也可以自己构建镜像，Dockerfile文件在gitlab项目里边）<br>  前提：机器docker环境登录harbor，账号密码：admin 1qaz!QAZ<br>docker login 52.83.79.244:8093<br>登录报错：Error response from daemon: Get <a href="https://52.83.79.244:8093/v2/" target="_blank" rel="noopener">https://52.83.79.244:8093/v2/</a>: http: server gave HTTP response to HTTPS client<br>解决：参见trouble shooting</li>
+<li>使用相关脚本执行启动、停止、重启集群</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>如何自己的spark程序如何在docker环境下执行  </p>
+<p>启动spark的集群之后，使用docker cp等命令将打好的jar包打进容器内，使用spark脚本执行</p>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E8%BF%90%E7%BB%B4">运维</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/%E9%83%A8%E7%BD%B2">部署</a>
+                
+                  <a class="hover-with-bg" href="/tags/docker">docker</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E7%8E%AF%E5%A2%83">环境</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE">大数据</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "lxvw2uH6C55B6fUR6xYK6Mip-gzGzoHsz",
+        app_key: "rXGqk3FqqMJejwdD0DHPFxIX",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Docker部署伪分布式大数据环境&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

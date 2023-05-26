@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://static.zkqiang.cn/images/20191231163321.jpg-slim')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/04/03/Kubernetes%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2/" target="_self">
+          <img src="https://i.loli.net/2020/05/20/Bb7yY1MGgtRL8Kl.png" srcset="/img/loading.gif" alt="Kubernetes单节点部署" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/04/03/Kubernetes%E5%8D%95%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2/">
+        <p class="h4 index-header">Kubernetes单节点部署</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">准备环境关闭防火墙：
+$ systemctl stop firewalld
+$ systemctl disable firewalld
+
+关闭selinux：
+$ sed -i &#39;s/enforcing/disabled/&#39; /etc/selinux/config 
+$ setenforce 0
+关闭swap：
+$ swapoff -a $ 临时
+$ vim /etc/fstab $ 永久
+
+添加主机名与IP对应关系（记得设置主机名）：
+$ cat /etc/hosts
+192.168.31.61 k8s-master
+192.168.31.62 k8s-node1
+192.168.31.63 k8s-node2
+
+将桥接的IPv4流量传递到iptables的链：
+$ cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+$ sysctl --system
+
+卸载docker
+因为k8s默认会安装docker，所以如果系统安装过就需要将其卸载，不然可能出现版本不兼容安装上的情况，卸载命令如下。
+$ yum remove -y &#39;rpm -qa |grep docker&#39;
+$ rm -rf /var/lib/docker
+
+配置docker源镜像
+vim /etc/docker/daemin.json
+
+{
+  &quot;registry-mirrors&quot;: [
+        &quot;https://dockerhub.azk8s.cn&quot;,
+        &quot;https://b3sst9pc.mirror.aliyuncs.com&quot;,
+        &quot;https://hub-mirror.c.163.com&quot;
+]
+}
+
+systemctl daemon-reload
+systemctl restart docker
+
+安装etcd kuberetes# 配置yum源
+$ cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg 
+https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF
+
+# 安装
+yum install -y etcd kubernetes
+修改配置# 将KUBE_ADMISSION_CONTROL选项中的ServiceAccount删除掉
+vim /etc/kubernetes/apiserver
+
+# KUBE_ADMISSION_CONTROL=&quot;--admission-control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ServiceAccount,ResourceQuota&quot;
+KUBE_ADMISSION_CONTROL=&quot;--admission_control=NamespaceLifecycle,NamespaceExists,LimitRanger,SecurityContextDeny,ResourceQuota&quot;
+启动服务systemctl start etcd
+
+systemctl start docker
+
+systemctl start kube-apiserver
+
+systemctl start kube-controller-manager
+
+systemctl start kube-scheduler
+
+systemctl start kubelet
+
+systemctl start kube-proxy
+部署dashboardkind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  labels:
+    app: kubernetes-dashboard
+    version: v1.10.1  
+  name: kubernetes-dashboard
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-dashboard
+  template:
+    metadata:
+      labels:
+        app: kubernetes-dashboard
+    spec:
+      containers:
+      - name: kubernetes-dashboard
+        image: lizhenliang/kubernetes-dashboard-amd64:v1.10.1 #已修改为国内镜像
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 9090
+          initialDelaySeconds: 30
+          timeoutSeconds: 30
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: kubernetes-dashboard
+  name: kubernetes-dashboard
+  namespace: kube-system
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 9090
+  selector:
+    app: kubernetes-dashboard
+创建服务
+kubectl create -f kubernetes-dashboard.yaml
+kubectl get pods --all-namespaces=true
+NAMESPACE     NAME                                    READY     STATUS              RESTARTS   AGE
+kube-system   kubernetes-dashboard-1745970253-90ppp   0/1       ContainerCreating   0          24m
+完成后可通过浏览器访问 http://yourip:8080/ui
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kubernetes">kubernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/kubernetes">kubernetes</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/28/Kubernetes%E9%83%A8%E7%BD%B2Presto/" target="_self">
+          <img src="https://i.loli.net/2020/03/28/InC7YBLkgTVEAJ4.png" srcset="/img/loading.gif" alt="Kubernetes部署Presto" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/28/Kubernetes%E9%83%A8%E7%BD%B2Presto/">
+        <p class="h4 index-header">Kubernetes部署Presto</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">一、介绍
+Presto
+
+Presto是一个分布式SQL查询引擎，用于查询分布在一个或多个不同数据源中的大数据集。完整安装包括一个Coordinator和多个Worker。 由客户端提交查询，从Presto命令行CLI提交到Coordinator。 Coordinator进行解析，分析并执行查询计划，然后分发处理队列到Worker。
+Presto是完全基于内存的分布式大数据查询引擎，所有查询和计算都在内存中执行。
+Presto的输入是SQL语句；输出是具体的SQL执行结果。
+Presto可以对接不同的数据源，例如MySQL、Hive等。
+Presto可以对SQL的查询过程进行优化，包括SQL本身的执行计划优化，以及用分布式查询提高并发等。
+Presto不是数据库，并不能处理在线事务。
+
+ceph 
+
+Ceph是当前非常流行的开源分布式存储系统，具有高扩展性、高性能、高可靠性等优点，同时提供块存储服务(rbd)、对象存储服务(rgw)以及文件系统存储服务(cephfs)，Ceph在存储的时候充分利用存储节点的计算能力，在存储每一个数据时都会通过计算得出该数据的位置，尽量的分布均衡。
+
+rook
+
+Rook是一个开放源码的云本机存储协调器，提供平台、框架和对各种存储解决方案的支持，以便与云本机环境进行本机集成。
+Rook将存储软件转变为自我管理、自我扩展和自我修复的存储服务。它通过自动化部署、引导、配置、供应、扩展、升级、迁移、灾难恢复、监视和资源管理来实现这一点。Rook使用底层云本地容器管理、调度和协调平台提供的设施来执行其职责。
+Rook利用扩展点深入集成到云本机环境中，为调度、生命周期管理、资源管理、安全、监控和用户体验提供无缝体验。
+
+基于kubernetes部署presto
+
+将presto数据持久化到ceph集群中，保证presto的数据高可用
+二、软件版本
+Kubernetes v1.15（单节点环境亦可）
+Rook v1.0.2
+CentOS 7 
+presto 332（prestosql版本）
+jdk-8
+
+三、部署rook及cephrook的部署可以使用kubernetes的包管理工具helm安装，由于rook及kubernetes版本众多以及涉及到相关源等问题，本文没有采用helm安装方式部署rook
+$ git clone https://github.com/rook/rook.git 
+$ cd rook 
+$ git checkout v1.0.2
+$ cd cluster/examples/kubernetes/ceph/
+cluster/examples/kubernetes/ceph/目录包含部署rook相关文件
+安装Rook Common Objects &amp; Operator
+kubectl create -f common.yaml
+kubectl create -f operator.yaml
+检查rook-ceph-operator,rook-ceph-agent, rook-discover`安装成功
+$ kubectl get pods -n rook-ceph 
+NAME                                   READY       STATUS        RESTARTS    AGE 
+rook-ceph-agent-chj4l                  1/1         Running       0           84s 
+rook-ceph-operator-548b56f995-v4mvp    1/1         Running       0           4m5s 
+rook-discover-vkkvl                    1/1         Running       0    
+3.1 部署Rook Ceph Clusterkubectl apply -f cluster.yml
+检查是否部署成功
+kubectl get pods -n rook-ceph
+NAME                                  READY   STATUS      RESTARTS   AGE
+rook-ceph-agent-chl7b                 1/1     Running     0          4h14m
+rook-ceph-agent-tbx4l                 1/1     Running     2          4h14m
+rook-ceph-mgr-a-bf88cfdc4-wvhjb       1/1     Running     0          3h52m
+rook-ceph-mon-a-df88f8cbf-dklvj       1/1     Running     0          3h53m
+rook-ceph-operator-548b56f995-q47jb   1/1     Running     5          4h14m
+rook-ceph-osd-0-655957b867-p8tf7      1/1     Running     0          3h51m
+rook-ceph-osd-1-7578dc7874-f9q64      1/1     Running     0          3h50m
+rook-ceph-osd-prepare-node-2-nvr7d    0/2     Completed   0          3h45m
+rook-ceph-osd-prepare-node-3-2mm2p    0/2     Completed   0          3h45m
+rook-discover-44789                   1/1     Running     3          4h14m
+rook-discover-c4r7d                   1/1     Running     0          4h14m
+3.2 测试ceph cluster创建StorageClass以便ceph cluster动态创建PV、
+kubectl create -f storageclass-test.yaml
+
+# 查找Rook Operator
+$ kubectl get pod -n rook-ceph --selector=app=rook-ceph-operator 
+NAME                                  READY   STATUS    RESTARTS   AGE
+rook-ceph-operator-548b56f995-q47jb   1/1     Running   5          4h23m
+
+# 检查ceph cluster健康状态
+kubectl exec -n rook-ceph -it rook-ceph-operator-548b56f995-q47jb -- ceph status
+  cluster:
+    id:     bed40efd-b3e8-4b18-b9a0-e8723f51e747
+    health: HEALTH_OK
+
+  services:
+    mon: 1 daemons, quorum a (age 4h)
+    mgr: a(active, since 3h)
+    osd: 2 osds: 2 up (since 3h), 2 in (since 3h)
+
+  data:
+    pools:   1 pools, 100 pgs
+    objects: 0 objects, 0 B
+    usage:   13 GiB used, 22 GiB / 35 GiB avail
+    pgs:     100 active+clean
+
+# 查看ceph磁盘信息
+kubectl exec -n rook-ceph -it rook-ceph-operator-548b56f995-q47jb -- ceph df
+RAW STORAGE:
+    CLASS     SIZE       AVAIL      USED       RAW USED     %RAW USED
+    hdd       35 GiB     22 GiB     13 GiB       13 GiB         37.40
+    TOTAL     35 GiB     22 GiB     13 GiB       13 GiB         37.40
+
+POOLS:
+    POOL            ID     STORED     OBJECTS     USED     %USED     MAX AVAIL
+    replicapool      1        0 B           0      0 B         0        19 GiB
+3.3 配置ceph dashborad在cluster.yaml文件中默认已经启用了ceph dashboard，查看dashboard的service：
+[root@node-1 presto-kubernetes]# kubectl get svc -n rook-ceph
+NAME                                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE
+rook-ceph-mgr                            ClusterIP   10.1.73.175    &lt;none&gt;        9283/TCP            6h29m
+rook-ceph-mgr-dashboard                  ClusterIP   10.1.228.105   &lt;none&gt;        8443/TCP            6h29m
+rook-ceph-mgr-dashboard-external-https   NodePort    10.1.38.28     &lt;none&gt;        8443:30102/TCP      21m
+rook-ceph-mon-a                          ClusterIP   10.1.130.153   &lt;none&gt;        6789/TCP,3300/TCP   6h31m
+rook-ceph-mgr-dashboard监听的端口是8443，创建nodeport类型的service以便集群外部访问。
+kubectl apply -f rook/cluster/examples/kubernetes/ceph/dashboard-external-https.yaml
+查看一下nodeport暴露的端口，这里是30102端口：
+[root@node-1 presto-kubernetes]# kubectl get svc -n rook-ceph
+NAME                                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE
+rook-ceph-mgr                            ClusterIP   10.1.73.175    &lt;none&gt;        9283/TCP            6h29m
+rook-ceph-mgr-dashboard                  ClusterIP   10.1.228.105   &lt;none&gt;        8443/TCP            6h29m
+rook-ceph-mgr-dashboard-external-https   NodePort    10.1.38.28     &lt;none&gt;        8443:30102/TCP      21m
+rook-ceph-mon-a                          ClusterIP   10.1.130.153   &lt;none&gt;        6789/TCP,3300/TCP   6h31m获取Dashboard的登陆账号和密码
+[root@node-1 ~]# MGR_POD=`kubectl get pod -n rook-ceph | grep mgr | awk &#39;{print $1}&#39;`
+[root@node-1 ~]# kubectl -n rook-ceph logs $MGR_POD | grep password
+debug 2020-02-25 23:54:04.280 7ffb08d89700  0 log_channel(audit) log [DBG] : from=&#39;client.4198 -&#39; entity=&#39;client.admin&#39; cmd=[{&quot;username&quot;: &quot;admin&quot;, &quot;prefix&quot;: &quot;dashboard set-login-credentials&quot;, &quot;password&quot;: &quot;Wo9nf64nDs&quot;, &quot;target&quot;: [&quot;mgr&quot;, &quot;&quot;], &quot;format&quot;: &quot;json&quot;}]: dispatch
+debug 2020-02-25 23:58:11.177 7f8606e0e700  0 log_channel(audit) log [DBG] : from=&#39;client.4373 -&#39; entity=&#39;client.admin&#39; cmd=[{&quot;username&quot;: &quot;admin&quot;, &quot;prefix&quot;: &quot;dashboard set-login-credentials&quot;, &quot;password&quot;: &quot;Wo9nf64nDs&quot;, &quot;target&quot;: [&quot;mgr&quot;, &quot;&quot;], &quot;format&quot;: &quot;json&quot;}]: dispatch
+找到username和password字段，我这里是admin，Wo9nf64nDs打开浏览器输入任意一个Node的IP+nodeport端口，这里使用master节点 ip访问：https://localhost:30102/#/dashboard
+四、部署presto4.1 部署步骤
+构建镜像presto-server端机presto-cli端的镜像，hdfs-site及core-site配置文件可以构建到镜像中，方便后续配置hive connector。通过脚本build_image.sh构建
+
+presto-serve端Dockerfile
+
+FROM centos:centos7.5.1804
+
+RUN mkdir -p /etc/hadoop/conf
+
+ADD jdk-11.0.6_linux-x64_bin.tar.gz /opt
+ADD presto-server-332.tar.gz /opt
+ADD core-site.xml /etc/hadoop/conf
+ADD hdfs-site.xml /etc/hadoop/conf
+ADD hudi-presto-bundle-0.5.2-incubating-sources.jar /opt/presto-server-332/plugin/hive-hadoop2
+ADD hudi-presto-bundle-0.5.2-incubating.jar /opt/presto-server-332/plugin/hive-hadoop2
+ADD original-hudi-presto-bundle-0.5.2-incubating-sources.jar /opt/presto-server-332/plugin/hive-hadoop2
+ADD original-hudi-presto-bundle-0.5.2-incubating.jar /opt/presto-server-332/plugin/hive-hadoop2
+
+ENV PRESTO_HOME /opt/presto-server-332
+ENV JAVA_HOME /opt/jdk-11.0.6
+ENV PATH $JAVA_HOME/bin:$PATH
+
+presto-client端的Dockerfile
+
+FROM openjdk:8-slim
+
+ADD presto-cli-332-executable.jar /opt
+
+RUN  mv /opt/presto-cli-332-executable.jar /opt/presto-cli  &amp;&amp; chmod +x /opt/presto-cli
+
+
+
+配置server端相关配置 presto-config-cm.yaml
+server端的配置注意两个地方
+
+每个presto节点的node.id需要不一样
+jvm参数需要加上-DHADOOP_USER_NAME=hdfs及-Dpresto-temporarily-allow-java8=true确保presto以HDFS用户访问hdfs文件及解决presto安装jdk8报错的问题
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presto-config-cm
+  namespace: presto
+  labels:
+    app: presto-coordinator
+data:
+  bootstrap.sh: |-
+    #!/bin/bash
+
+    cd /root/bootstrap
+
+    mkdir -p $PRESTO_HOME/etc/catalog
+
+    cat ./node.properties &gt; $PRESTO_HOME/etc/node.properties
+    cat ./jvm.config &gt; $PRESTO_HOME/etc/jvm.config
+    cat ./config.properties &gt; $PRESTO_HOME/etc/config.properties
+    cat ./log.properties &gt; $PRESTO_HOME/etc/log.properties
+
+    echo &quot;&quot; &gt;&gt; $PRESTO_HOME/etc/node.properties
+    echo &quot;node.id=$HOSTNAME&quot; &gt;&gt; $PRESTO_HOME/etc/node.properties
+
+    sed -i &#39;s/${COORDINATOR_NODE}/&#39;$COORDINATOR_NODE&#39;/g&#39; $PRESTO_HOME/etc/config.properties
+
+    if ${COORDINATOR_NODE}; 
+    then
+      echo coordinator
+    else 
+      sed -i &#39;7d&#39; $PRESTO_HOME/etc/config.properties
+      echo worker
+    fi
+
+    for cfg in ../catalog/*; do
+      cat $cfg &gt; $PRESTO_HOME/etc/catalog/${cfg##*/}
+    done
+
+    $PRESTO_HOME/bin/launcher run --verbose
+  node.properties: |-
+    node.environment=production
+    node.data-dir=/var/presto/data
+  jvm.config: |-
+    -server
+    -Xmx16G
+    -XX:-UseBiasedLocking
+    -XX:+UseG1GC
+    -XX:G1HeapRegionSize=32M
+    -XX:+ExplicitGCInvokesConcurrent
+    -XX:+ExitOnOutOfMemoryError
+    -XX:+UseGCOverheadLimit
+    -XX:+HeapDumpOnOutOfMemoryError
+    -XX:ReservedCodeCacheSize=512M
+    -Djdk.attach.allowAttachSelf=true
+    -Djdk.nio.maxCachedBufferSize=2000000
+    -Dpresto-temporarily-allow-java8=true
+    -DHADOOP_USER_NAME=hdfs
+  config.properties: |-
+    coordinator=${COORDINATOR_NODE}
+    node-scheduler.include-coordinator=true
+    http-server.http.port=8080
+    query.max-memory=10GB
+    query.max-memory-per-node=1GB
+    query.max-total-memory-per-node=2GB
+    discovery-server.enabled=true
+    discovery.uri=http://presto:8080
+  log.properties: |-
+    io.prestosql=DEBUG
+
+catalog相关配置presto-catalog-config-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presto-catalog-config-cm
+  namespace: presto
+  labels:
+    app: presto-coordinator
+data:
+  hive.properties: |-
+    connector.name=hive-hadoop2
+    hive.metastore.uri=thrift://ip:9083
+    hive.config.resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hdfs-site.xml
+  mysql.properties: |-
+    connector.name=mysql
+    connection-url=jdbc:mysql://ip:30306
+    connection-user=root
+    connection-password=Qloud@dev?123
+
+
+presto-svc、worker、coordinator、presto-cli的部署deployment.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: presto
+  namespace: presto
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: presto-coordinator
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: presto-coordinator
+    namespace: presto
+spec:
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+    matchLabels:
+        app: presto-coordinator
+    template:
+    metadata:
+        labels:
+        app: presto-coordinator
+    spec:
+        containers:
+        - name: presto-coordinator
+            image: reg.chebai.org/presto/presto-server:332
+            command: [&quot;bash&quot;, &quot;-c&quot;, &quot;sh /root/bootstrap/bootstrap.sh&quot;]
+            ports:
+            - containerPort: 8080
+            env:
+            - name: COORDINATOR_NODE
+                value: &quot;true&quot;
+            volumeMounts:
+            - name: presto-config-volume
+                mountPath: /root/bootstrap
+            - name: presto-catalog-config-volume
+                mountPath: /root/catalog
+            - name: presto-data-volume
+                mountPath: /var/presto/data
+        volumes:
+        - name: presto-config-volume
+            configMap:
+            name: presto-config-cm
+        - name: presto-catalog-config-volume
+            configMap:
+            name: presto-catalog-config-cm
+        - name: presto-data-volume
+            emptyDir: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: presto-worker
+    namespace: presto
+spec:
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+    matchLabels:
+        app: presto-worker
+    template:
+    metadata:
+        labels:
+        app: presto-worker
+    spec:
+        containers:
+        - name: presto-worker
+            image: reg.chebai.org/presto/presto-server:332
+            command: [&quot;bash&quot;, &quot;-c&quot;, &quot;sh /root/bootstrap/bootstrap.sh&quot;]
+            ports:
+            - containerPort: 8080
+            env:
+            - name: COORDINATOR_NODE
+                value: &quot;false&quot;
+            volumeMounts:
+            - name: presto-config-volume
+                mountPath: /root/bootstrap
+            - name: presto-catalog-config-volume
+                mountPath: /root/catalog
+            - name: presto-data-volume
+                mountPath: /var/presto/data
+        volumes:
+        - name: presto-config-volume
+            configMap:
+            name: presto-config-cm
+        - name: presto-catalog-config-volume
+            configMap:
+            name: presto-catalog-config-cm
+        - name: presto-data-volume
+            emptyDir: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: presto-cli
+    namespace: presto
+spec:
+    containers:
+    - name: presto-cli
+    image: reg.chebai.org/presto/presto-cli:332
+    command: [&quot;tail&quot;, &quot;-f&quot;, &quot;/dev/null&quot;]
+    imagePullPolicy: Always
+    restartPolicy: Always
+
+启动presto
+kubectl create -f presto-config-cm.yaml
+kubectl create -f presto-catalog-config-cm.yaml
+kubectl create -f deployment.yaml 
+
+使用presto，找出外部地址
+[root@node-1 ~]# kubectl get svc -n presto
+NAME     TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+presto   NodePort   10.1.27.143   &lt;none&gt;        8080:32151/TCP   27h
+
+使用presto-cli客户端连接不同connector
+kubectl exec -it presto-cli -n presto /opt/presto-cli -- --server presto:8080 --catalog hive --schema default
+
+
+4.2 挂载ceph卷到presto
+由于github开源版本，没有提供数据卷挂载，因此需要相关yaml文件进行修改，配置rook提供RBD服务
+
+rook可以提供以下3类型的存储： Block: Create block storage to be consumed by a pod Object: Create an object store that is accessible inside or outside the Kubernetes cluster Shared File System: Create a file system to be shared across multiple pods在提供（Provisioning）块存储之前，需要先创建StorageClass和存储池。K8S需要这两类资源，才能和Rook交互，进而分配持久卷（PV）。在kubernetes集群里，要提供rbd块设备服务，需要有如下步骤：
+
+创建rbd-provisioner pod
+创建rbd对应的storageclass
+创建pvc，使用rbd对应的storageclass
+创建pod使用rbd pvc
+
+通过rook创建Ceph Cluster之后，rook自身提供了rbd-provisioner服务，所以我们不需要再部署其provisioner。
+# 配置storageclass
+kubectl apply -f rook/cluster/examples/kubernetes/ceph/storageclass.yaml
+
+# 检查storageclass
+kubectl get storageclass
+NAME              PROVISIONER          AGE
+rook-ceph-block   ceph.rook.io/block   171m
+
+修改preso-kubernetes文件夹中的worker相关配置
+
+vim deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presto-worker
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: presto-worker
+  template:
+    metadata:
+      labels:
+        app: presto-worker
+    spec:
+      initContainers:
+        - name: wait-coordinator
+          image:  chenlianguu/presto-server:dm-0.208
+          command: [&quot;bash&quot;, &quot;-c&quot;, &quot;until curl -sf http://presto-coordinator-service:8080/ui/; do echo &#39;waiting for coordinator started...&#39;; sleep 2; done;&quot;]
+      containers:
+        - name: presto-worker
+          image: chenlianguu/presto-server:dm-0.208
+          command: [&quot;bash&quot;, &quot;-c&quot;, &quot;sh /root/bootstrap/bootstrap.sh&quot;]
+          ports:
+            - name: http-coord
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: COORDINATOR_NODE
+              value: &quot;false&quot;
+          volumeMounts:
+            - name: presto-config-volume
+              mountPath: /root/bootstrap
+            - name: presto-catalog-config-volume
+              mountPath: /root/catalog
+            - name: presto-data-volume
+              mountPath: /var/presto/data
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            exec:
+              command: [&quot;bash&quot;, &quot;-c&quot;, &quot;curl -s http://presto-coordinator-service:8080/v1/node | tr &#39;,&#39; &#39;\n&#39; | grep -s $(hostname -i)&quot;]
+      volumes:
+        - name: presto-config-volume
+          configMap:
+            name: presto-config-cm
+        - name: presto-catalog-config-volume
+          configMap:
+            name: presto-catalog-config-cm
+        - name: presto-data-volume
+          persistentVolumeClaim:
+            claimName: presto-data-claim
+重新apply yaml文件
+kubectl aplly -f worker-deployment.yaml
+检查是否配置成功
+[root@node-1 ~]# kubectl get pv
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS      REASON   AGE
+pvc-1ff7bb97-238e-4ebd-bfc3-fb9db1ae5656   10Gi       RWO            Delete           Bound    default/presto-data-claim   rook-ceph-block            100m
+[root@node-1 ~]# kubectl get pvc
+NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS      AGE
+presto-data-claim   Bound    pvc-1ff7bb97-238e-4ebd-bfc3-fb9db1ae5656   10Gi       RWO            rook-ceph-block   100m
+注意：这里的pv会自动创建，当提交了包含 StorageClass 字段的 PVC 之后，Kubernetes 就会根据这个 StorageClass 创建出对应的 PV，这是用到的是Dynamic Provisioning机制来动态创建pv，PV 支持 Static 静态请求，和动态创建两种方式。
+# ceph集群端检查
+[root@node-1 ~]# kubectl exec -n rook-ceph -it rook-ceph-operator-548b56f995-q47jb -- rbd info -p replicapool pvc-1ff7bb97-238e-4ebd-bfc3-fb9db1ae5656
+rbd image &#39;pvc-1ff7bb97-238e-4ebd-bfc3-fb9db1ae5656&#39;:
+        size 10 GiB in 2560 objects
+        order 22 (4 MiB objects)
+        snapshot_count: 0
+        id: 1dd4352e100d
+        block_name_prefix: rbd_data.1dd4352e100d
+        format: 2
+        features: layering
+        op_features:
+        flags:
+        create_timestamp: Wed Feb 26 05:23:09 2020
+        access_timestamp: Wed Feb 26 05:23:09 2020
+        modify_timestamp: Wed Feb 26 05:23:09 2020
+登陆pod检查rbd设备
+[root@node-1 presto-kubernetes]# kubectl exec -it worker-7b66b5cb5-d2vzt bash
+root@worker-7b66b5cb5-d2vzt:/usr/lib/presto-server-0.167-t.0.3/etc# df -h
+Filesystem                                                                                        Size  Used Avail Use% Mounted on
+/dev/mapper/docker-253:0-203738-8a1bc94ee31c6ca3e406a6c740b84cd8bd2c681c568dc8a4007f273208bbd9fd   10G  1.4G  8.7G  14% /
+tmpfs                                                                                              64M     0   64M   0% /dev
+tmpfs                                                                                             1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/mapper/centos-root                                                                            18G  6.3G   12G  36% /etc/hosts
+shm                                                                                                64M     0   64M   0% /dev/shm
+/dev/rbd0                                                                                          10G   33M   10G   1% /var/presto/data
+tmpfs                                                                                             1.9G   12K  1.9G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs                                                                                             1.9G     0  1.9G   0% /proc/acpi
+tmpfs                                                                                             1.9G     0  1.9G   0% /proc/scsi
+tmpfs                                                                                             1.9G     0  1.9G   0% /sys/firmware
+4.3 presto多源异构查询
+相关connector采用configmap方式进行灵活配置，不同connector的配置参考官网Doc
+
+# 创建presto-catalog-config-cm.yaml
+cat &lt;&lt; EOF &gt; ～/presto-kubernetes/presto-catalog-config-cm.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presto-catalog-config-cm
+  labels:
+    app: presto-coordinator
+data:
+  # hive相关配置
+  hive.properties: |-
+    connector.name=hive-hadoop2
+    hive.metastore.uri=thrift://hive-metastore-ip:9083
+  # mysql相关配置
+  mysql.properties: |-
+    connector.name=mysql
+    connection-url=jdbc:mysql://example.net:3306
+    connection-user=root
+    connection-password=secret
+  cassandra.properties: |-
+    connector.name=cassandra
+    cassandra.contact-points=host1,host2
+EOF
+配置好之后需要生效，重新apply presto-catalog-config-cm.yaml 并删除coordinator及word相关的pod，删除之后会重新生成新的pod，新的pod会载入新的connector配置
+kubectl apply -f presto-catalog-config-cm.yaml
+kubectl apply -f coordinator-deployment.yaml
+kubectl apply -f worker-deployment.yaml
+kubectl get pods
+NAME                           READY   STATUS    RESTARTS   AGE
+coordinator-8549f46c58-q8ngm   1/1     Running   0          9m29s
+worker-d64744f4d-8j2vg         1/1     Running   0          9m10s
+kubectl delete pod coordinator-8549f46c58-q8ngm worker-d64744f4d-8j2vg
+4.4 presto相关connect的测试4.4.1 presto查询hive中数据首先准备hive环境，这里直接利用docker启动hive环境，简单方便高效快捷，参考github项目docker-hive
+git clone https://github.com/big-data-europe/docker-hive.git
+cd docker-hive 
+# 启动docker-hive
+docker-compose up -d
+# 查看启动状态
+                 Name                                Command                  State                          Ports
+--------------------------------------------------------------------------------------------------------------------------------------
+docker-hive_datanode_1                    /entrypoint.sh /run.sh           Up (healthy)   0.0.0.0:50075-&gt;50075/tcp
+docker-hive_hive-metastore-postgresql_1   /docker-entrypoint.sh postgres   Up             5432/tcp
+`docker-hive_hive-metastore_1              entrypoint.sh /opt/hive/bi ...   Up             10000/tcp, 10002/tcp, 0.0.0.0:9083-&gt;9083/tcp`
+docker-hive_hive-server_1                 entrypoint.sh /bin/sh -c s ...   Up             0.0.0.0:10000-&gt;10000/tcp, 10002/tcp
+docker-hive_namenode_1                    /entrypoint.sh /run.sh           Up (healthy)   0.0.0.0:50070-&gt;50070/tcp
+docker-hive_presto-coordinator_1          ./bin/launcher run               Up             0.0.0.0:8080-&gt;8080/tcp
+
+# 往hive里边加载数据
+docker-compose exec hive-server bash
+# /opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
+  &gt; CREATE TABLE pokes (foo INT, bar STRING);
+  &gt; LOAD DATA LOCAL INPATH &#39;/opt/hive/examples/files/kv1.txt&#39; OVERWRITE INTO TABLE pokes;
+hive-metastore的连接端口为9083，确认该端口处于监听状态 presto连接hive进行测试
+kubectl exec -it presto-cli -n presto /opt/presto-cli -- --server presto:8080 --catalog hive --schema default
+presto:default&gt; show schemas;
+       Schema
+--------------------
+ default
+ information_schema
+(2 rows)
+
+Query 20200409_121447_00002_3jete, FINISHED, 2 nodes
+Splits: 18 total, 18 done (100.00%)
+0:00 [2 rows, 35B] [16 rows/s, 290B/s]
+
+presto:default&gt; show tables;
+ Table
+-------
+ `pokes`
+(1 row)
+
+Query 20200409_121459_00003_3jete, FINISHED, 2 nodes
+Splits: 18 total, 18 done (100.00%)
+0:00 [1 rows, 22B] [9 rows/s, 201B/s]
+
+presto:default&gt; select * from pokes;
+
+Query 20200409_121548_00004_3jete, FAILED, 1 node
+Splits: 16 total, 0 done (0.00%)
+0:01 [0 rows, 0B] [0 rows/s, 0B/s]
+
+Query 20200409_121548_00004_3jete failed: java.net.UnknownHostException: namenode
+可以找到hive中表，但是查询不成功，查询不成功是因为使用docker-compose方式搭建的hive环境，其中namenode节点和kubernetes中的presto不在一套网络环境中，无法解析namenode地址，有条件可以用hive集群测试，本次测试环境都基于单机。
+4.4.2 presto查询mysql中数据首先准备mysql环境，这里直接利用docker启动mysql环境
+docker run --name mysql -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql:5.6.36
+docker exec -it mysql /bin/bash
+# 造数据
+mysql -uroot -p123456
+mysql&gt; create database test;
+mysql&gt; use test;
+Database changed
+mysql&gt; create table user(id int not null, username varchar(32) not null, password varchar(32) not null);
+mysql&gt; insert into user values(1,&#39;user1&#39;,&#39;password1&#39;);
+mysql&gt; insert into user values(2,&#39;user2&#39;,&#39;password2&#39;);
+mysql&gt; insert into user values(3,&#39;user3&#39;,&#39;password3&#39;);
+mysql&gt; select * from user;
++----+----------+-----------+
+| id | username | password  |
++----+----------+-----------+
+|  1 | user1    | password1 |
+|  2 | user2    | password2 |
+|  3 | user3    | password3 |
++----+----------+-----------+
+3 rows in set (0.00 sec)
+mysql的连接端口为3306，确认该端口处于监听状态 presto连接mysql进行测试
+kubectl exec -it presto-cli -n presto /opt/presto-cli -- --server presto:8080 --catalog mysql --schema test
+presto:test&gt; show tables;
+ Table
+-------
+ user
+(1 row)
+
+Query 20200409_122956_00004_6mm78, FINISHED, 2 nodes
+Splits: 18 total, 18 done (100.00%)
+0:00 [1 rows, 18B] [10 rows/s, 187B/s]
+
+presto:test&gt; select * from user;
+ id | username | password
+----+----------+-----------
+  1 | user1    | password1
+  2 | user2    | password2
+  3 | user3    | password3
+(3 rows)
+
+Query 20200409_123010_00005_6mm78, FINISHED, 1 node
+Splits: 17 total, 17 done (100.00%)
+0:00 [3 rows, 0B] [10 rows/s, 0B/s]
+presto可以查到mysql中的表及表数据
+4.4.3 presto查询cassandra中的数据首先准备mysql环境，这里直接利用docker启动cassandra环境
+docker run --name cassandra -p 9042:9042 -d cassandra:3.0
+连接数据库
+
+
+准备数据
+CREATE KEYSPACE IF NOT EXISTS pimin_net
+WITH REPLICATION = {&#39;class&#39;: &#39;SimpleStrategy&#39;,&#39;replication_factor&#39;:1};
+
+USE pimin_net;
+
+CREATE TABLE users (
+id int,
+user_name varchar,
+PRIMARY KEY (id) );
+
+INSERT INTO users (id,user_name) VALUES (1,&#39;china&#39;);
+INSERT INTO users (id,user_name) VALUES (2,&#39;taiwan&#39;);
+
+select * from users;
+
+
+
+查询数据
+kubectl exec -it presto-cli -n presto /opt/presto-cli -- --server presto:8080 --catalog cassandra --schema default
+presto:pimin_net&gt; show tables;
+ Table
+-------
+ users
+(1 row)
+
+Query 20200410_024828_00002_4ekb9, FINISHED, 2 nodes
+Splits: 18 total, 18 done (100.00%)
+0:00 [1 rows, 24B] [5 rows/s, 133B/s]
+
+presto:pimin_net&gt; select * from users;
+ id | user_name
+----+-----------
+  1 | china
+  2 | taiwan
+(2 rows)
+
+Query 20200410_024834_00003_4ekb9, FINISHED, 1 node
+Splits: 273 total, 273 done (100.00%)
+0:02 [2 rows, 2B] [1 rows/s, 1B/s]
+
+presto:pimin_net&gt;
+可以查询到cassandra中的数据
+4.5 弹性伸缩kubectl get deployment -n presto
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+presto-coordinator    1         1         1            1           21m
+presto-worker         2         2         2            2           21m
+
+kubectl scale deployment presto-worker --replicas=3 -n presto
+deployment &quot;presto-worker&quot; scaled
+
+kubectl get deployment
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+presto-coordinator    1         1         1            1           23m
+presto-worker         3         3         3            3           23m
+五、Trouble Shooting
+Docker拉取镜像源time out或者拉取不上，增加docker镜像源，把163，阿里，Azure的docker加速器最好都加上
+vim /etc/docker/daemon.json
+
+{
+  &quot;registry-mirrors&quot;: [
+        &quot;https://dockerhub.azk8s.cn&quot;,
+        &quot;https://b3sst9pc.mirror.aliyuncs.com&quot;,
+        &quot;https://hub-mirror.c.163.com&quot;
+]
+}
+
+systemctl daemon-reload
+systemctl restart docker
+
+presto查询hive数据出现io.prestosql.spi.PrestoException: Could not obtain block: BP-1548201263错误，show tables desc table正常显示，通过在presto的pod容器内部使用hdfs 命令ls可以查看目录，但是cat hdfs上面的文件报相同的错误，说明无法联通datanode默认的50010端口，使用telnet命令可查看远程服务器是否开放次端口，通过开放端口或者解决防火墙方式解决，能够telnet成功该端口即可解决该问题 参考presto hive connector error reading from HDFS
+
+
+六、注意事项
+当更新configmap的时候，由于不支持热更新，需要销毁掉presto的work及coordinatoe相关pod，销毁之后新启动的pod会载入最新的相关配置
+prestosql-332版本要求jdk11，但hadoop对jdk11不兼容，需要使用jdk8，并在presto的jvm参数上面加上-Dpresto-temporarily-allow-java8=true
+
+七、Ref
+Using the PostgreSQL Operator with Rook Ceph Storage
+presto-kubernetes
+docker-hive
+presto-on-k8s
+kubernetes部署rook+ceph存储系统
+kubernetes上部署rook-ceph存储系统
+在Kubernetes上部署Presto
+Docker镜像加速器
+Presto连接MySQL
+Presto with Kubernetes and S3 — Deployment
+[Presto-Powered S3 Data Warehouse on Kubernetes](
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-28&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kubernetes">kubernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/kubernetes">kubernetes</a>&nbsp;
+          
+            <a href="/tags/presto">presto</a>&nbsp;
+          
+            <a href="/tags/rook">rook</a>&nbsp;
+          
+            <a href="/tags/ceph">ceph</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/03/03/Docker%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://miro.medium.com/max/1400/0*d1YEe9DrpwFomYys.png" srcset="/img/loading.gif" alt="Docker大数据环境搭建指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/03/Docker%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Docker大数据环境搭建指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">思路将大数据平台资源docker化，主要基于以下考虑
+
+开箱即用，不常驻后台，需要的时候启动集群即可，不用的时候关闭集群释放机器资源
+避免了直接安装端口占用问题，大数据平台所需端口较多
+spark资源docker化，便于后期k8s进行资源管理调度
+
+上述好处主要是基于测试环境下，基于生产环境的大数据平台化要考虑的点很多，例如后期扩容、运维、安全等因素，大数据平台整个是否docker化后期有待考证。
+镜像制作方案使用Docker来搭建hadoop,spark及mysql的集群，首先使用Dockerfile制作镜像，把相关的软件拷贝到约定好的目录 下，把配置文件在外面先配置好，再拷贝移动到hadoop,spark的配置目录，为了能使得mysql能从其它节点被访问到，要配置mysql的访问权限。
+整体架构一共3个节点，即启动3个容器。hadoop-master,hadoop-node1,hadoop-node2这三个容器里面安装hadoop和spark集群。
+集群部署集群网络规划及子网配置既然是做集群，网络的规划是少不了的,至于网络，可以通过Docker中的DockerNetworking的支持配置。首先设置网络，docker中设置 子网可以通过docker network create 方法，这里我们通过命令设置如下的子网。–subnet指定子网络的网段，并为这个子网命名一个名字叫spark
+# 创建子网
+docker network create --subnet=172.16.0.0/16 spark
+# 查看网络
+docker network ls
+NETWORK ID          NAME                       DRIVER              SCOPE
+fab2dd51d1cf        spark                      bridge              local
+ 接下来就在我们创建的子网落spark中规划集群中每个容器的ip地址。网络ip分配如下:
+hadoop-master 172.16.0.2
+hadoop-node1 172.16.0.3
+hadoop-node2 172.16.0.4
+软件版本网络规划好了，首先Spark我们使用最新的2.4.4版本，Hadoop采用比较稳定的hadoop-2.7.3版本，scala采用scala-2.11.8，JDK采用jdk-8u101-linux-x64。
+SSH无密钥登录规则配置注意这里不使用ssh-keygen -t rsa -P ‘’这种方式生成id_rsa.pub，然后集群节点互拷贝id_rsa.pub到authorized_keys文件这种方式，而 是通过在.ssh目录下配置ssh_conf文件的方式，ssh_conf中可以配置SSH的通信规则，例如以正则表达式的方式指定hostname为XXX的 机器之间实现互联互通，而不进行额外的密钥验证。为了编写这个正则表达式，我们5个节点的hostname都以hadoop-*的方式作为开 头，这就是采用这种命名规则的原因。下面来看下ssh_conf配置的内容:
+Host localhost
+    StrictHostKeyChecking no
+Host 0.0.0.0 
+    StrictHostKeyChecking no
+Host hadoop-* 
+    StrictHostKeyChecking no
+注意上面的最后一行，Host hadoop-* 指定了它的严格的Host验证StrictHostKeyChecking 为no，这样既可以是这5个hostname以 hadoop-*开头的容器之间实现互联互通，而不需要二外的验证。
+构建镜像Dockerfile编写完成，接下来写一个build.sh脚本，内容如下:
+ echo build hadoop images
+ docker build -t=&quot;spark&quot; . 
+表示构建一个名叫spark的镜像，.表示Dockerfile的路径，因为在当前路径下，所有用.,若在其他地方则用绝对路径指定Dockerfile的路径 即可。
+运行sh build.sh，就会开始制作镜像了。
+集群运行启动容器 start_container.sh使用这个镜像可完成容器的启动，因为使用了基于DockerNetworking的网络机制，因此可以在启动容器的时候为容器在子网172.16.0.0/16 spark中分贝172.16.0.1 172.16.0.255以外的IP地址，容器内部容器的通信是基于hostname，因此 需要指定hostname，为了方便容器的管理，需要为启动的每个容器指定一个名字。为了方便外网访问，需要通过-p命令指定容器到宿主机的端口映射。还要为每个容器增加host列表。
+# hadoop-master
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.2 \
+    --privileged \
+    -p 18032:8032 \
+    -p 28080:18080 \
+    -p 29888:19888 \
+    -p 17077:7077 \
+    -p 51070:50070 \
+    -p 18888:8888 \
+    -p 19000:9000 \
+    -p 11100:11000 \
+    -p 51030:50030 \
+    -p 18050:8050 \
+    -p 18081:8081 \
+    -p 18900:8900 \
+    --name hadoop-master \
+    --hostname hadoop-master \
+    --add-host hadoop-node1:172.16.0.3 \
+    --add-host hadoop-node2:172.16.0.4 \
+    --add-host hadoop-mysql:172.16.0.6 \
+    spark /usr/sbin/init
+
+# hadoop-node1
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.3 \
+    --privileged \
+    -p 18042:8042 \
+    -p 51010:50010 \
+    -p 51020:50020 \
+    --name hadoop-node1 \
+    --hostname hadoop-node1 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node2:172.16.0.4 \
+    spark /usr/sbin/init
+
+# hadoop-node2
+docker run -itd --restart=always \
+    --net spark \
+    --ip 172.16.0.4 \
+    --privileged \
+    -p 18043:8042 \
+    -p 51011:50011 \
+    -p 51021:50021 \
+    --name hadoop-node2 \
+    --hostname hadoop-node2 \
+    --add-host hadoop-master:172.16.0.2 \
+    --add-host hadoop-node1:172.16.0.3 \
+    spark /usr/sbin/init
+
+关闭集群 stop_container.shecho stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo remove containers
+docker rm hadoop-master
+docker rm hadoop-node1
+docker rm hadoop-node2
+
+echo rm containers
+
+docker ps
+重启集群 restart_container.shecho stop containers
+docker stop hadoop-master
+docker stop hadoop-node1
+docker stop hadoop-node2
+echo restart containers
+docker start hadoop-master
+docker start hadoop-node1
+docker start hadoop-node2
+echo start sshd
+docker exec -it hadoop-master systemctl start sshd
+docker exec -it hadoop-node1 systemctl start sshd
+docker exec -it hadoop-node2 systemctl start sshd
+docker exec -it hadoop-master ~/restart-hadoop.sh
+echo  containers started
+
+docker ps
+Trouble Shooting
+docker里面执行systemctl报错
+解决方案：启动的时候用/usr/sbin/init
+
+docker登录harbor报错window直接修改docker设置，添加ip:8093到docker insecure registrylinux修改方法：https://blog.csdn.net/u010397369/article/details/42422243  
+
+
+Demo进入hadoop-master容器内部，执行spark-shell
+root@node-2 docker-spark]# docker exec -it hadoop-master /bin/bash
+[root@hadoop-master ~]# spark
+spark-class   spark-shell   spark-sql     spark-submit  sparkR
+[root@hadoop-master ~]# spark-shell
+19/12/03 04:51:25 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+19/12/03 04:51:43 WARN util.Utils: spark.executor.instances less than spark.dynamicAllocation.minExecutors is invalid, ignoring its setting, please update your configs.
+Spark context Web UI available at http://hadoop-master:4040
+Spark context available as &#39;sc&#39; (master = spark://hadoop-master:7077, app id = app-20191203045141-0000).
+Spark session available as &#39;spark&#39;.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.4.4
+      /_/
+
+Using Scala version 2.11.12 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_101)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;
+本地部署
+想要在自己的笔记本环境使用
+首先笔记本环境下需要有docker环境
+
+拉取gitlab上面的项目：git clone git@161.189.27.8:chenliang/docker-spark.git
+拉去harbor上面的镜像：docker pull 52.83.79.244:8093/wuhan/spark:v1（也可以自己构建镜像，Dockerfile文件在gitlab项目里边）  前提：机器docker环境登录harbor，账号密码：admin 1qaz!QAZdocker login 52.83.79.244:8093登录报错：Error response from daemon: Get https://52.83.79.244:8093/v2/: http: server gave HTTP response to HTTPS client解决：参见trouble shooting
+使用相关脚本执行启动、停止、重启集群
+
+
+
+
+如何自己的spark程序如何在docker环境下执行  
+启动spark的集群之后，使用docker cp等命令将打好的jar包打进容器内，使用spark脚本执行
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/big%20data">big data</a>&nbsp;
+          
+            <a href="/tags/%E8%AF%81%E4%B9%A6">证书</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/02/27/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/02/27/WbYe8Q6Ah2dL4Ty.png" srcset="/img/loading.gif" alt="frp内网穿透使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/27/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">frp内网穿透使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">背景frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp 协议，为 http 和 https 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
+假如部署的k8s集群，需要暴露给外网使用。花生壳儿、向日葵等这些共可以解决，但是这些工具都为收费工具，使用不够灵活，这时frp就派上了用场，使用起来非常简单便捷。
+ 👉 官方github地址
+配置frp是标准的c/s架构，配置分为server端还有client端，首先需要在github页release端下载对应的版本
+server端配置server端需要部署在有公网ip地址的实例上，这里以centos为例
+# 下载server端
+wget https://github.com/fatedier/frp/releases/download/v0.31.1/frp_0.31.1_linux_arm64.tar.gz
+# 解压
+tar -zxcf frp_0.31.1_linux_arm64.tar.gz
+cd frp_0.31.1_linux_arm64
+frps.ini为server端的配置文件
+[common]
+# 绑定端口
+bind_port = 7000
+
+vhost_http_port = 8076
+
+# web ui访问端口
+dashboard_port = 7500
+
+# web ui用户名及密码
+dashboard_user = admin
+dashboard_pwd =123456
+
+# 最大连接数
+max_pool_count = 10
+
+authentication_timeout = 900
+
+[ssh]
+
+listen_port = 22
+
+auth_token =abcdefg
+
+后台启动frp server端服务
+nohup ./frps -c ./frps.ini &amp;
+访问web ui  http://your ip:7500
+
+client端配置假定kubernetes dashboard需要暴露外网访问，这里需要在提供服务的节点，开启frp服务，这里以centos为例
+# 下载server端
+wget https://github.com/fatedier/frp/releases/download/v0.31.1/frp_0.31.1_linux_arm64.tar.gz
+# 解压
+tar -zxcf frp_0.31.1_linux_arm64.tar.gz
+cd frp_0.31.1_linux_arm64
+配置客户端
+[common]
+server_addr = 161.0.0.0 #填写server端地址
+server_port = 7000
+auth_token=abcdefg
+pool_count=1
+
+[wu-k8s]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 31628  # dashboad访问端口
+remote_port = 31628
+后台启动frp client端服务
+nohup ./frpc -c ./frpc.ini &amp;
+启动之后查看frp web ui，确定是否配置成功
+
+最后通过访问外网ip及映射端口访问对应服务即可，实现了内网穿透。其他组件需要暴露外网直接修改frpc.ini文件重新启动client端即可
+frp除了实现内网穿透功能，还可以绑定自定义域名等，详细见官方文档。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-27&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F">内网穿透</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/02/22/Ansible%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/02/22/jnDhcxQ5oKYHAz8.png" srcset="/img/loading.gif" alt="Ansible使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/02/22/Ansible%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Ansible使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1 Ansible介绍Ansible是一种IT自动化工具。它可以配置系统，部署软件以及协调更高级的IT任务，例如持续部署，滚动更新。Ansible适用于管理企业IT基础设施，从具有少数主机的小规模到数千个实例的企业环境。Ansible也是一种简单的自动化语言，可以完美地描述IT应用程序基础结构。
+具备以下三个特点：
+
+简单：减少学习成本   
+强大：协调应用程序生命周期 
+无代理：可预测，可靠和安全
+
+使用文档： https://docs.ansible.com/ 
+安装Ansible：yum install ansible -y
+
+
+Inventory：Ansible管理的主机信息，包括IP地址、SSH端口、账号、密码等
+Modules：任务均有模块完成，也可以自定义模块，例如经常用的脚本。
+Plugins：使用插件增加Ansible核心功能，自身提供了很多插件，也可以自定义插件。例如connection插件，用于连接目标主机。
+Playbooks：“剧本”，模块化定义一系列任务，供外部统一调用。Ansible核心功能。
+
+1.2 主机清单[webservers]
+alpha.example.org
+beta.example.org
+192.168.1.100
+www[001:006].example.com
+
+[dbservers]
+db01.intranet.mydomain.net
+db02.intranet.mydomain.net
+10.25.1.56
+10.25.1.57
+db-[99:101]-node.example.com1.3 命令行使用ad-hoc命令可以输入内容，快速执行某个操作，但不希望留存记录。
+ad-hoc命令是理解Ansible和在学习playbooks之前需要掌握的基础知识。
+一般来说，Ansible的真正能力在于剧本。
+1、连接远程主机认证SSH密码认证：
+[webservers]
+192.168.1.100:22 ansible_ssh_user=root ansible_ssh_pass=’123456’
+192.168.1.101:22 ansible_ssh_user=root ansible_ssh_pass=’123456’SSH密钥对认证：
+[webservers]
+10.206.240.111:22 ansible_ssh_user=root ansible_ssh_key=/root/.ssh/id_rsa 
+10.206.240.112:22 ansible_ssh_user=root
+
+也可以ansible.cfg在配置文件中指定：
+[defaults]
+private_key_file = /root/.ssh/id_rsa  # 默认路径2、常用选项
+
+
+选项
+描述
+
+
+
+-C, –check
+运行检查，不执行任何操作
+
+
+-e EXTRA_VARS,–extra-vars=EXTRA_VARS
+设置附加变量 key=value
+
+
+-u REMOTE_USER, –user=REMOTE_USER
+SSH连接用户，默认None
+
+
+-k, –ask-pass
+SSH连接用户密码
+
+
+-b, –become
+提权，默认root
+
+
+-K, –ask-become-pass
+提权密码
+
+
+3、命令行使用ansible all -m ping
+ansible all -m shell -a &quot;ls /root&quot; -u root -k 
+ansible webservers -m copy –a &quot;src=/etc/hosts dest=/tmp/hosts&quot;
+1.4 常用模块ansible-doc –l 查看所有模块
+ansible-doc –s copy 查看模块文档
+ 模块文档：https://docs.ansible.com/ansible/latest/modules/modules_by_category.html 
+1、shell在目标主机执行shell命令。
+- name: 将命令结果输出到指定文件
+  shell: somescript.sh &gt;&gt; somelog.txt
+- name: 切换目录执行命令
+  shell:
+    cmd: ls -l | grep log
+    chdir: somedir/
+- name: 编写脚本
+  shell: |
+      if [ 0 -eq 0 ]; then
+         echo yes &gt; /tmp/result
+      else
+         echo no &gt; /tmp/result
+      fi
+  args:
+    executable: /bin/bash2、copy将文件复制到远程主机。
+- name: 拷贝文件
+  copy:
+    src: /srv/myfiles/foo.conf
+    dest: /etc/foo.conf
+    owner: foo
+    group: foo
+    mode: u=rw,g=r,o=r
+    # mode: u+rw,g-wx,o-rwx
+    # mode: &#39;0644&#39;
+    backup: yes3、file管理文件和文件属性。
+- name: 创建目录
+  file:
+    path: /etc/some_directory
+    state: directory
+    mode: &#39;0755&#39;
+- name: 删除文件
+  file:
+    path: /etc/foo.txt
+    state: absent
+- name: 递归删除目录
+  file:
+    path: /etc/foo
+    state: absentpresent，latest：表示安装
+absent：表示卸载
+4、yum软件包管理。
+- name: 安装最新版apache
+  yum:
+    name: httpd
+    state: latest
+- name: 安装列表中所有包
+  yum:
+    name:
+      - nginx
+      - postgresql
+      - postgresql-server
+    state: present
+- name: 卸载apache包
+  yum:
+    name: httpd
+    state: absent 
+- name: 更新所有包
+  yum:
+    name: &#39;*&#39;
+    state: latest
+- name: 安装nginx来自远程repo
+  yum:
+    name: http://nginx.org/packages/rhel/7/x86_64/RPMS/nginx-1.14.0-1.el7_4.ngx.x86_64.rpm
+    # name: /usr/local/src/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+    state: present5、service/systemd管理服务。
+- name: 服务管理
+  service:
+    name: etcd
+    state: started
+    #state: stopped
+    #state: restarted
+    #state: reloaded
+- name: 设置开机启动
+  service:
+    name: httpd
+    enabled: yes- name: 服务管理  
+  systemd: 
+    name=etcd 
+    state=restarted 
+    enabled=yes 
+    daemon_reload=yes6、unarchive- name: 解压
+  unarchive: 
+    src=test.tar.gz 
+    dest=/tmp7、debug执行过程中打印语句。
+- debug:
+    msg: System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}
+
+- name: 显示主机已知的所有变量
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 41.5 PlaybookPlaybooks是Ansible的配置，部署和编排语言。他们可以描述您希望在远程机器做哪些事或者描述IT流程中一系列步骤。使用易读的YAML格式组织Playbook文件。
+如果Ansible模块是您工作中的工具，那么Playbook就是您的使用说明书，而您的主机资产文件就是您的原材料。
+与adhoc任务执行模式相比，Playbooks使用ansible是一种完全不同的方式，并且功能特别强大。
+https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    server_name: www.ctnrs.com
+  remote_user: root
+  gather_facts: false
+  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest
+  - name: 写入nginx配置文件
+    template: src=/srv/httpd.j2 dest=/etc/nginx/nginx.conf
+    notify:
+    - restart nginx
+  - name: 确保nginx正在运行
+    service: name=httpd state=started
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=reloaded1、主机和用户- hosts: webservers
+  remote_user: lizhenliang
+  become: yes
+  become_user: rootansible-playbook nginx.yaml -u lizhenliang -k -b -K 
+2、定义变量变量是应用于多个主机的便捷方式； 实际在主机执行之前，变量会对每个主机添加，然后在执行中引用。
+
+命令行传递
+-e VAR=VALUE
+主机变量与组变量
+
+
+在Inventory中定义变量。
+[webservers]
+192.168.1.100 ansible_ssh_user=root hostname=web1
+192.168.1.100 ansible_ssh_user=root hostname=web2
+
+[webservers:vars]
+ansible_ssh_user=root hostname=web1
+单文件存储
+
+Ansible中的首选做法是不将变量存储在Inventory中。
+除了将变量直接存储在Inventory文件之外，主机和组变量还可以存储在相对于Inventory文件的单个文件中。
+组变量：
+group_vars 存放的是组变量
+group_vars/all.yml  表示所有主机有效，等同于[all:vars]
+grous_vars/etcd.yml 表示etcd组主机有效，等同于[etcd:vars]
+# vi /etc/ansible/group_vars/all.yml
+work_dir: /data
+# vi /etc/ansible/host_vars/webservers.yml
+nginx_port: 80
+在Playbook中定义
+
+- hosts: webservers
+  vars:
+    http_port: 80
+    server_name: www.ctnrs.com
+Register变量
+
+- shell: /usr/bin/uptime
+  register: result
+- debug:
+    var: result3、任务列表每个play包含一系列任务。这些任务按照顺序执行，在play中，所有主机都会执行相同的任务指令。play目的是将选择的主机映射到任务。
+  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest4、语法检查与调试语法检查：ansible-playbook  –check  /path/to/playbook.yaml
+测试运行，不实际操作：ansible-playbook -C /path/to/playbook.yaml
+debug模块在执行期间打印语句，对于调试变量或表达式，而不必停止play。与’when：’指令一起调试更佳。
+  - debug: msg={{group_names}}
+  - name: 主机名
+    debug:
+      msg: &quot;{{inventory_hostname}}&quot;5、任务控制如果你有一个大的剧本，那么能够在不运行整个剧本的情况下运行特定部分可能会很有用。
+  tasks:
+  - name: 安装nginx最新版
+    yum: pkg=nginx state=latest
+    tags: install
+  - name: 写入nginx配置文件
+    template: src=/srv/httpd.j2 dest=/etc/nginx/nginx.conf
+    tags: config使用：
+ansible-playbook example.yml --tags &quot;install&quot;
+ansible-playbook example.yml --tags &quot;install,config&quot;
+ansible-playbook example.yml --skip-tags &quot;install&quot;6、流程控制条件：
+tasks:
+- name: 只在192.168.1.100运行任务
+  debug: msg=&quot;{{ansible_default_ipv4.address}}&quot;
+  when: ansible_default_ipv4.address == &#39;192.168.1.100&#39;循环：
+tasks:
+- name： 批量创建用户
+  user: name={{ item }} state=present groups=wheel
+  with_items:
+     - testuser1
+     - testuser2- name: 解压
+  copy: src={{ item }} dest=/tmp
+  with_fileglob:
+    - &quot;*.txt&quot;常用循环语句：
+
+
+
+语句
+描述
+
+
+
+with_items
+标准循环
+
+
+with_fileglob
+遍历目录文件
+
+
+with_dict
+遍历字典
+
+
+7、模板 vars:
+    domain: &quot;www.ctnrs.com&quot;
+ tasks:
+  - name: 写入nginx配置文件
+    template: src=/srv/server.j2 dest=/etc/nginx/conf.d/server.conf# server.j2
+{% set domain_name = domain %}
+server {
+   listen 80;
+   server_name {{ domain_name }};
+   location / {
+        root /usr/share/html;
+   }
+}定义变量：
+{% set local_ip = inventory_hostname %}条件和循环：
+{% set list=['one', 'two', 'three'] %}
+{% for i in list %}
+	{% if i == 'two' %}
+		-> two
+	{% elif loop.index == 3 %}
+		-> 3
+	{% else %}
+		{{i}}
+	{% endif %}
+{% endfor %}例如：生成连接etcd字符串
+{% for host in groups['etcd'] %}
+	https://{{ hostvars[host].inventory_hostname }}:2379
+	{% if not loop.last %},{% endif %}
+{% endfor %} 里面也可以用ansible的变量。
+1.6 RolesRoles是基于已知文件结构自动加载某些变量文件，任务和处理程序的方法。按角色对内容进行分组，适合构建复杂的部署环境。
+1、定义RolesRoles目录结构：
+site.yml
+webservers.yml
+fooservers.yml
+roles/
+   common/
+     tasks/
+     handlers/
+     files/
+     templates/
+     vars/
+     defaults/
+     meta/
+   webservers/
+     tasks/
+     defaults/
+     meta/
+tasks -包含角色要执行的任务的主要列表。
+handlers -包含处理程序，此角色甚至在此角色之外的任何地方都可以使用这些处理程序。
+defaults-角色的默认变量
+vars-角色的其他变量
+files -包含可以通过此角色部署的文件。
+templates -包含可以通过此角色部署的模板。
+meta-为此角色定义一些元数据。请参阅下面的更多细节。
+
+通常的做法是从tasks/main.yml文件中包含特定于平台的任务：
+# roles/webservers/tasks/main.yml
+- name: added in 2.4, previously you used &#39;include&#39;
+  import_tasks: redhat.yml
+  when: ansible_facts[&#39;os_family&#39;]|lower == &#39;redhat&#39;
+- import_tasks: debian.yml
+  when: ansible_facts[&#39;os_family&#39;]|lower == &#39;debian&#39;
+
+# roles/webservers/tasks/redhat.yml
+- yum:
+    name: &quot;httpd&quot;
+    state: present
+
+# roles/webservers/tasks/debian.yml
+- apt:
+    name: &quot;apache2&quot;
+    state: present2、使用角色# site.yml
+- hosts: webservers
+  roles:
+    - common
+    - webservers
+
+
+定义多个：
+- name: 0
+  gather_facts: false
+  hosts: all 
+  roles:
+    - common
+
+- name: 1
+  gather_facts: false
+  hosts: all 
+  roles:
+    - webservers3、角色控制- name: 0.系统初始化
+  gather_facts: false
+  hosts: all 
+  roles:
+    - common
+  tags: common </div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-22&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E8%BF%90%E7%BB%B4">运维</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96">自动化</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Jenkins%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/aQSYzXWHexZGBLu.png" srcset="/img/loading.gif" alt="Jenkins使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Jenkins%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Jenkins使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">简介Jenkins是一个广泛用于持续构建的可视化web工具，持续构建说得更直白点，就是各种项目的”自动化”编译、打包、分发部署。jenkins可以很好的支持各种语言（比如：java, c#, php等）的项目构建，也完全兼容ant、maven、gradle等多种第三方构建工具，同时跟svn、git能无缝集成，也支持直接与知名源代码托管网站，比如github、bitbucket直接集成。简单点说，Jenkins其实就是大的框架集，可以整个任何你想整合的内容，实现公司的整个持续集成体系！
+安装基于docker安装：
+docker run -it \
+  --name jenkins \
+  --restart always \
+  --user root \
+  -p 10002:8080 \
+  -p 50000:50000 \
+  -v /data/jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /opt/jdk1.8.0_25:/opt/jdk1.8.0_25 \
+  -v /bin/docker:/bin/docker \
+  -v /data/repository:/data/repository \
+  -v $(which docker):/usr/bin/docker \
+  jenkins/jenkins:lts
+注意：需要使用jenkins/jenkins:lts镜像，jenkins:latest镜像官方已不提供支持，版本过低
+其中将外部docker映射到了内部docker，这样在jenkins容器内部也可以使用docker命令了
+注意启动之后会有个随机的密码：例：ff9c1128af2840d990798418bd3c92f2
+如果采用以-it的形式启动，可以在命令窗口中看到。
+
+当然也可以进入容器，在/var/jenkins_home/secrets/initialAdminPassword中找到。
+注意！映射在容器中的/var/jenkins_home 目录到具有名字 jenkins-data 的volume。 如果这个卷不存在，那么这个 docker run 命令会自动为你创建卷。 如果您希望每次重新启动Jenkins（通过此 docker run … 命令）时保持Jenkins状态，则此选项是必需的，jenkins数据会在该卷进行持久化 。 否则，那么在每次重新启动后，Jenkins将有效地重置为新的实例。
+（可选 /var/run/docker.sock 表示Docker守护程序通过其监听的基于Unix的套接字。 该映射允许 jenkinsci/blueocean 容器与Docker守护进程通信， 如果 jenkinsci/blueocean 容器需要实例化其他Docker容器，则该守护进程是必需的。 如果运行声明式管道，其语法包含agent部分用 docker.
+进入 ip:10002 jenkins安装界面
+
+安装对应插件
+Demo本Demo实现的场景是push到项目master分支，自动触发打包发布到docker镜像仓库harbor，然后在拉取镜像在docker中运行项目Demo地址：http://161.189.27.8:8090/chenliang/jenkinsdemo
+jenkins项目地址：http://52.83.79.244:10002/job/jenkins-demo
+大家可以拉取项目Demo代码，修改代码push提交master，自动触发打包执行，在jenkins的console output查看执行信息
+初始化
+step1 gitlab新建项目 比如jenkins-demo
+
+step2 
+jenkins添加gitlab账户及密码
+凭据—&gt;系统—&gt;全局凭据—&gt;add credentials
+
+
+step3  jenkins新建项目，选择maven项目—source code managment
+填写项目的地址，选择step生成的credentials，选择代码分支
+
+
+
+
+
+step4  选择Build Trigger—&gt;勾选gitlab触发选项—&gt;点击generate生成scretkey并记住—&gt;复制gitlab webhook的url
+url及secretkey在gitlab设置中需要用
+
+
+
+
+step5 回到gitlab项目的setting的integration页面中，填写step4中的url及secretkey，取消勾选ssl
+
+
+
+step6 build中填写构建maven命令及构建后需要执行的程序，本demo执行的是打包然后java命令执行jar包
+
+
+测试以gitlab项目jenkinsdemo为例：http://161.189.27.8:8090/chenliang/jenkinsdemo 当修改代码push到master中的时候会自动出发打包及执行jar包，在jenkins项目的console output中查看打包及执行日志
+
+trouble shooting安装插件报错
+更改jenkins源—&gt;进入系统管理—&gt;管理插件—&gt;高级 
+将
+http://updates.jenkins-ci.org/update-center.json更换为
+http://mirror.esuni.jp/jenkins/updates/update-center.json保存即可
+
+jenkins内部执行docker命令报错docker内部执行docker报的错误信息：docker: error while loading shared libraries: libltdl.so.7: cannot open shared object file: No such file or directory
+第一次使用的docker部署jenkins的时候，出现了两个问题：
+1、因为用户权限问题挂载/home/jenkins/data到/var/jenkins_home挂载不了。后面通过修改data目录的所属用户可以解决，即在容器下查询用户id（1000）,然后把data改成同样的用户id
+2、即便挂载docker命名和docker.sock,也修改了相应的权限，仍存在libltdl7没有权限读取。当然好像也不影响使用，只是在容器里面执行docker info的时候，会报无法读取libltdl.so.7的信息。
+docker: error while loading shared libraries: /usr/lib/x86_64-linux-gnu/libltdl.so.7: cannot read file data: Error 21
+于是查找资料在jenkins/jenkins基础上再建一个Jenkins镜像。
+编辑Dockerfile
+FROM jenkins/jenkins:lts
+
+USER root
+#清除了基础镜像设置的源，切换成阿里云的jessie源
+RUN echo &#39;&#39; &gt; /etc/apt/sources.list.d/jessie-backports.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian jessie main contrib non-free&quot; &gt; /etc/apt/sources.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list
+#更新源并安装缺少的包
+
+RUN apt-get update &amp;&amp; apt-get install -y libltdl7
+
+ARG dockerGid=999
+
+RUN echo &quot;docker:x:${dockerGid}:jenkins&quot; &gt;&gt; /etc/group USER jenkins
+
+# 安装 docker-compose  --- 挂载宿主机上的就可以了
+# RUN curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+# RUN chmod +x /usr/local/bin/docker-compose
+build镜像
+docker build . -t myjenkins:v1
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/CI/CD">CI/CD</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/jenkins">jenkins</a>&nbsp;
+          
+            <a href="/tags/CI/CD">CI/CD</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Apache-Airflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/6Ud8BfsPjZgoVrS.png" srcset="/img/loading.gif" alt="Apache Airflow使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Apache-Airflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Apache Airflow使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">前言airflow 是 apache下孵化项目，是纯 Python 编写的一款非常优雅的开源调度平台。github 上有 8971 个星，是非常受欢迎的调度工具。airflow 使用 DAG (有向无环图) 来定义工作流，配置作业依赖关系非常方便，豪不夸张地说：方便程度简直甩其他任务调度工具一条街。 airflow 有着以下天然优势：
+
+灵活易用，airflow 本身是 Python 编写的，且工作流的定义也是 Python 编写，有了 Python 胶水的特性，没有什么任务是调度不了的，有了开源的代码，没有什么问题是无法解决的，你完全可以修改源码来满足个性化的需求，而且更重要的是代码都是 –human-readable 。
+功能强大，自带的 Operators 都有15+，也就是说本身已经支持 15+ 不同类型的作业，而且还是可自定义 Operators，什么 shell 脚本，python，mysql，oracle，hive等等，无论不传统数据库平台还是大数据平台，统统不在话下，对官方提供的不满足，完全可以自己编写 Operators。
+优雅，作业的定义很简单明了, 基于 jinja 模板引擎很容易做到脚本命令参数化，web 界面更是也非常 –human-readable 。
+极易扩展，提供各种基类供扩展, 还有多种执行器可供选择，其中 CeleryExcutor 使用了消息队列来编排多个工作节点(worker), 可分布式部署多个 worker ，airflow 可以做到无限扩展。
+丰富的命令工具，你甚至都不用打开浏览器，直接在终端敲命令就能完成测试，部署，运行，清理，重跑，追数等任务。
+
+airflow 是免费的，可以将一些常做的巡检任务，定时脚本（如 crontab ），ETL处理，监控等任务放在 airflow 上集中管理，甚至都不用再写监控脚本，作业出错会自动发送日志到指定人员邮箱，低成本高效率地解决生产问题。
+组成部分从一个使用者的角度来看，调度工作都有以下功能：
+
+系统配置（$AIRFLOW_HOME/airflow.cfg）
+作业管理（$AIRFLOW_HOME/dags/xxxx.py）
+运行监控（webserver)
+报警（邮件或短信）
+日志查看（webserver 或 $AIRFLOW_HOME/logs/***)
+跑批耗时分析（webserver)
+后台调度服务（scheduler)
+
+除了短信需要自己实现，其他功能 airflow 都有，而且在 airflow 的 webserver 上我们可以直接配置数据库连接来写 sql 查询，做更加灵活的统计分析。
+重要概念DAGLinux 的 crontab 和 windows 的任务计划，他们可以配置定时任务或间隔任务，但不能配置作业之前的依赖关系。airflow 中 DAG 就是管理作业依赖关系的。DAG 的英文 directed acyclic graphs 即有向无环图，下图 1 便是一个简单的 DAG
+在 airflow 中这种 DAG 是通过编写 Python 代码来实现的，DAG 的编写非常简单，官方提供了很多的例子，在安装完成后，启动 webserver 即可看到 DAG 样例的源码（其实定义了 DAG 对象的 python 程序），稍做修改即可成为自己的 DAG 。上图 1 中 DAG 中的依赖关系通过下述三行代码即可完成：
+Operators-操作符DAG 定义一个作业流，Operators 则定义了实际需要执行的作业。airflow 提供了许多 Operators 来指定我们需要执行的作业：
+
+BashOperator - 执行 bash 命令或脚本。
+SSHOperator - 执行远程 bash 命令或脚本（原理同 paramiko 模块）。
+PythonOperator - 执行 Python 函数。
+EmailOperator - 发送 Email。
+HTTPOperator - 发送一个 HTTP 请求。
+MySqlOperator, SqliteOperator, PostgresOperator, MsSqlOperator, OracleOperator, JdbcOperator, 等. - 执行 SQL 任务。
+DockerOperator, HiveOperator, S3FileTransferOperator, PrestoToMysqlOperator, SlackOperator 等。
+
+除了以上这些 Operators 还可以方便的自定义 Operators 满足个性化的任务需求。后续会介绍如何使用这些 Operators。
+Timezone-时区airflow 1.9 之前的版本使用本地时区来定义任务开始日期，scheduler_interval 中 crontab 表达式中的定时也是依据本地时区为准，但 airflow 1.9 及后续新版本将默认使用 UTC 时区来确保 airflow 调度的独立性，以避免不同机器使用不同时区导致运行错乱。如果调度的任务集中在一个时区上，或不同机器，但使用同一时区时，需要对任务的开始时间及 cron 表达式进行时区转换，或直接使用本地时区。目前 1.9 的稳定版本还不支持时区配置，后续版本会加入时区配置，以满足使用本地时区的需求。
+Webserver-Web服务器webserver 是 airflow 的界面展示，可显示 DAG 视图，控制作业的启停，清除作业状态重跑，数据统计，查看日志，管理用户及数据连接等。不运行 webserver 并不影响 airflow 作业的调度。
+Schduler-调度器调度器 schduler 负责读取 DAG 文件，计算其调度时间，当满足触发条件时则开启一个执行器的实例来运行相应的作业，必须持续运行，不运行则作业不会跑批。
+Worker-工作节点当执行器为 CeleryExecutor 时，需要开启一个 worker。
+Executor-执行器执行器有 SequentialExecutor, LocalExecutor, CeleryExecutor
+
+SequentialExecutor 为顺序执行器，默认使用 sqlite 作为知识库，由于 sqlite 数据库的原因，任务之间不支持并发执行，常用于测试环境，无需要额外配置。
+LocalExecutor 为本执行器，不能使用 sqlite 作为知识库，可以使用 mysql,postgress,db2,oracle 等各种主流数据库，任务之间支持并发执行，常用于生产环境，需要配置数据库连接 url。
+CeleryExecutor 为 Celery 执行器，需要安装 Celery ,Celery 是基于消息队列的分布式异步任务调度工具。需要额外启动工作节点-worker。使用 CeleryExecutor 可将作业运行在远程节点上。
+
+
+基于Docker搭建基于第三方docker镜像进行安装，github-repo：https://github.com/puckel/docker-airflow
+前提：机器已经装上docker及docker-compose命令，本页面基于Docker搭建，部署airflow的CeleryExecutor模式
+
+Step1 拉取代码
+git clone https://github.com/puckel/docker-airflow.git
+
+Step2 修改 docker-compose-CeleryExecutor.yml及Dockerfile
+cd ~/docker-airflow
+vim docker-compose-CeleryExecutor.yml默认的compose是抓原来版本的镜像包，改成latest标签，这样才会使用用Dockerfile构建的镜像
+修改web暴露端口，8080可能被占用，下图修改为8096端口
+
+
+
+Step3 Airflow Config设置
+cd config
+vim airflow.cfg
+
+
+构建镜像
+docker build --rm -t puckel/docker-airflow:latest .
+docker-compose -f docker-compose-CeleryExecutor.yml up -d
+
+
+当看到下图，就代表已经启动，可通过该端口进行访问
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/etl">etl</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/apache%20airflow">apache airflow</a>&nbsp;
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/etl">etl</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Apache-Nifi%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/6E4IuLwCiAm15KW.png" srcset="/img/loading.gif" alt="Apache Nifi使用指南" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Apache-Nifi%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        <p class="h4 index-header">Apache Nifi使用指南</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">简介Apache NiFi是什么？NiFi官网给出如下解释：“一个易用、强大、可靠的数据处理与分发系统”。通俗的来说，即Apache NiFi 是一个易于使用、功能强大而且可靠的数据处理和分发系统，其为数据流设计，它支持高度可配置的指示图的数据路由、转换和系统中介逻辑。
+架构单节点架构
+
+集群架构图
+
+web-sever
+其目的在于提供基于HTTP的命令和控制API。
+Flow Controller
+这是操作的核心，以Processor为处理单元，提供了用于运行的扩展线程，并管理扩展接收资源时的调度。
+Extensions
+在其他文档中描述了各种类型的NiFi扩展，Extensions的关键在于扩展在JVM中操作和执行。
+FlowFile Repository
+FlowFile库的作用是NiFi跟踪记录当前在流中处于活动状态的给定流文件的状态，其实现是可插拔的，默认的方法是位于指定磁盘分区上的一个持久的写前日志。FlowFile库的作用是NiFi跟踪记录当前在流中处于活动状态的给定流文件的状态，其实现是可插拔的，默认的方法是位于指定磁盘分区上的一个持久的写前日志。
+Content Repository
+Content库的作用是给定流文件的实际内容字节所在的位置，其实现也是可插拔的。默认的方法是一种相对简单的机制，即在文件系统中存储数据块。
+Provenance Repository
+Provenance库是所有源数据存储的地方，支持可插拔。默认实现是使用一个或多个物理磁盘卷，在每个位置事件数据都是索引和可搜索的。
+docker部署nifi需要通过集群实现多租户，在standalone模式下，可以通过docker启动多个实例来实现多用户通过不同端口访问各自的nifi
+docker run --name nifi01 \
+  --restart=always \
+  -p 8090:8080 \
+  -p 10000:10000 \
+  -v /data/nifi:/data/nifi/ \
+  -d \
+  apache/nifi:latest
+
+  docker run --name nifi02 \
+  --restart=always \
+  -p 8094:8080 \
+  -p 10001:10000 \
+  -v /data/nifi02:/data/nifi02/ \
+  -d \
+  apache/nifi:latest
+启动nifi，停止nifi
+docker start nifi
+docker stop nifi
+NiFi ProcessorFlow Controller是NiFi的核心，Flow Controller扮演者文件交流的处理器角色，维持着多个处理器的连接并管理各个Processer，Processor则是实际处理单元。
+
+Processor包含各种类型的组件，如amazon、attributes、hadoop等，可通过前缀进行轻易辨识，如Get、Fetch开头代表获取，如getFile、getFTP、FetchHDFS，execute代表执行，如ExecuteSQL、ExecuteProcess、ExecuteFlumeSink等均可较容易知其简单用途。右边选择hadoop则会显示所有hadoop相关的processor，如图所示
+
+与hadoop相关的processor有读写HDFS文件，写Hbase，读写parquet文件等
+Nifi实战Demo通过Nifi实现把指定文件夹中的文件移动到另一个文件夹
+step 1选取processor
+选取getfile及putfile的process，并连接
+
+
+
+
+
+step 2 填写getfile及putfile相关属性
+双击getfile或者putfile的processor，property中填写源数据文件夹及目标文件夹，其他参数按需进行配置，此demo按照默认参数填写，对于putfile processor中的setting栏，设置勾选自动终止策略，当putfile失败或者成功的时候就停止此processor
+
+
+
+
+
+
+step 3 启动
+空白处右键选择start，状态栏显示绿色代表processor在执行，假如/data/nifi/input有文件此时开启工作流后/data/nifi/input对应也会有该文件
+
+
+
+数据库表和表同步表到表的同步,NIFI默认sql查询出来的数据为Avro格式,所以需要先将Avro格式转化为json格式,再将json转换为sql语句,最后使用PUTSQL处理器将数据存入数据库。需要用到ExecuteorSQL、ConvertAvroToJSON、ConvertJSONToSQL、PUTSQL四种处理器。 
+
+step 1 使用ExecuteSQL配置数据源从Components ToolBar上将processor拖拽到画布上，选择ExecuteSQL处理器，右键或双击该处理器编辑properties。该处理器原生提供三种数据库连接池，提供了大多数数据库驱动，另外还可以自定义连接池的名称。
+Database Connection Pooling Service 提供数据库连接池服务  
+postgresql驱动程序下载
+驱动配置完成后点击⚡,使能后查看是否报错  
+
+
+step 2 使用ConvertAvroToJSON将Avro格式转换为json格式
+step 3 使用ConvertJSONToSQL将json数据转换为SQL语句 
+step 4 使用PUTSQL将数据存入到数据库，配置完成后数据流启动后可以看到数据流动过程，再到数据库中验证结果。
+
+Tips:基本案例跑通后可以在Operate栏createTemplate,可以在web页面直接导出xml格式的数据处理流程重复使用减少配置时间。  
+Trouble Shooting
+原始文件夹或者目标文件夹没有权限，process右上角会显示报错信息，此时应该将文件夹设置对应权限，将拥有者改为nifi用户，此命令应该用root权限执行，若nifi在docker中，应该到使用root用户登录到对应container执行
+
+linux版本
+sudo chown -R nifi:nifi /data/nifi/input
+sudo chown -R nifi:nifi /data/nifi/output
+docker版本
+docker exec -it -u root nifi /bin/bash
+chown -R nifi:nifi /data/nifi/input
+chown -R nifi:nifi /data/nifi/output报错信息：
+
+
+putfile或者getfile的properties填写错误的时候，对应processor上面会显示感叹号，按照提示修改即可，如getfile中源文件夹为/data/nifi/input01，系统中没有此文件夹，则会显示对应提示信息
+
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/etl">etl</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/docker">docker</a>&nbsp;
+          
+            <a href="/tags/etl">etl</a>&nbsp;
+          
+            <a href="/tags/apache%20nifi">apache nifi</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Spark-run-on-K8s/" target="_self">
+          <img src="https://i.loli.net/2020/01/09/yfu8QZc7i3sRdrU.png" srcset="/img/loading.gif" alt="Spark run on K8s" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Spark-run-on-K8s/">
+        <p class="h4 index-header">Spark run on K8s</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">部署首先查看了下spark的官方文档，了解了spark怎么在k8s上面跑的，实际上不需要搭建spark集群，提交作业到k8s的api server即可。看似简单但是还是不知道怎么动手实践。于是youtube上面搜了下相关视频，按照视频很快就实践了一把spark run on k8s，具体步骤如下：
+
+step 1 到k8-master机器下载二进制spark最新二进制安装包，并解压
+
+cd /opt
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+tar -zxvf http://mirrors.tuna.tsinghua.edu.cn/apache/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz
+
+step 2 制作spark的docker镜像
+
+cd spark-2.4.4-bin-hadoop2.7
+./bin/docker-image-tool.sh -r chenlianguu -t v2.4.4 build  # 制作spark进行
+./bin/docker-image-tool.sh -r chenlianguu -t v2.4.4 push  #将spark镜像推送到docker hub
+docker images
+[root@k8s-master opt]# docker images
+REPOSITORY                                                        TAG                 IMAGE ID            CREATED             SIZE
+chenliang/spark-r                                                 v2.4.4              6479a523e3f7        20 hours ago        759MB
+
+
+step 3 提交作业到k8s
+
+在提交spark的作业的机器上，把api server的proxy打开
+kubectl proxy
+./bin/spark-submit \
+--master k8s://http://127.0.0.1:8001 \
+--name spark-pi \
+--deploy-mode cluster \
+--class org.apache.spark.examples.SparkPi \
+--conf spark.executor.instances=3 \
+--conf spark.kubernetes.container.image=chenlianguu/spark-r:v2.4.4 \
+/opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar
+运行说明集群模式下，通过spark-submit提交程序到k8s集群，具体一下步骤：  
+
+通过k8s创建spark driver端的pod
+driver端在k8s其他节点创建executor端的pod并保持通信，executor具体执行代码，这里设计到权限问题，假如没有对应的权限创建pods，执行spark会报错，具体见trouble  shooting第二点
+当程序跑完了，executor端pod会终止并清理，driver端的pod会保持complete状态并持久化log信息，最后会由k8s api server进行driver端pod的垃圾回收工作
+
+trouble shooting跑spark on k8s的pi example碰到的一些坑及解决方案
+
+找不到jar问题之前提交的脚本是这样的  
+
+./bin/spark-submit \
+--master k8s://http://127.0.0.1:8001 \
+--name spark-pi \
+--deploy-mode cluster \
+--class org.apache.spark.examples.SparkPi \
+--conf spark.executor.instances=3 \
+--conf spark.kubernetes.container.image=chenlianguu/spark-r:v2.4.4 \
+/opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar
+其中jar包制定的地址是local，路径填写应该加上协议local:///opt/spark-2.4.4-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.4.4.jar，加上之后还是报同样的错，google后发现jar包实际上是在jar包在docker镜像里面的地址，因此改为local:///opt/spark/examples/jars/spark-examples_2.11-2.4.4.jar   
+
+jar问题解决了，又开始报错，报错信息如下第一感觉就是权限问题，网上找到了解决方案，ref：解决办法，按照这个思路，在k8s-master节点，输入   kubectl create clusterrolebinding default --clusterrole cluster-admin --serviceaccount=default:default
+
+然后继续执行spark-submit脚本，可以顺利启动driver端，但是有2个executor端还是报错，说是资源不够，有一个executor端执行成功，整个job还是顺利的跑下来了，查看driver端日志。kubectl logs podsname 
+参考资料：spark官方docyoutube动手视频
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kubernetes">kubernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE">大数据</a>&nbsp;
+          
+            <a href="/tags/kubernetes">kubernetes</a>&nbsp;
+          
+            <a href="/tags/spark">spark</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+      <div class="col-12 col-md-4 m-auto">
+        <a href="/2020/01/09/Kubernetes%E9%83%A8%E7%BD%B2/" target="_self">
+          <img src="https://www.ovh.com/blog/wp-content/uploads/2019/01/kubernetesblog02.jpg" srcset="/img/loading.gif" alt="Kubernetes集群部署-admin" class="img-fluid rounded z-depth-3 index-thumbnails">
+        </a>
+      </div>
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/09/Kubernetes%E9%83%A8%E7%BD%B2/">
+        <p class="h4 index-header">Kubernetes集群部署-admin</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">k8s的搭建主要有三种方式：kubeadmin安装、docker安装及二进制安装，其中二进制安装方式最为复杂需要部署人员了解网络https，ca证书等方面的知识，kubeadmin安装方式大大简化了部署操作，但是对K8s的HA支持处于测试阶段，刚入门建议尝试kubeadmin方式安装。docker安装我并不觉得合适，本身k8s作为容器编排系统部署在docker里面，网络及相关端口配置较为复杂，为了避免埋下太多的坑，本人没有尝试这种方式进行安装。
+具体安装部署我就不写在这里了，分享一套自己看的k8s入门视频，很简短能够快速了解k8s，当时k8s学习曲线是比较陡峭的。
+👉🏻百度云盘 密码:amlo
+👉🏻安装部署文档  
+按照此文档部署基本没啥坑，注意的是部分镜像在国外服务器，需要替换成文档作者国内的镜像即可。
+
+最近看到新的工具rancher，企业级管理运维kubernetes集群的好工具的。后续继续更新
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-09&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/kubernetes">kubernetes</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E9%83%A8%E7%BD%B2">部署</a>&nbsp;
+          
+            <a href="/tags/kubernetes">kubernetes</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Work Hard Play Hard&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

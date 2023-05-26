@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="https://i.loli.net/2020/01/09/gqn1D9aJRP3iCcm.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="description" content="enthusiast for Modern Data Stack">
+  <meta name="author" content="Chen Liang">
+  <meta name="keywords" content="">
+  <title>Jenkins使用指南 ~ Liang Chen - data enthusiast</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.10.2/css/all.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.8.9/css/mdb.min.css"  >
+<link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Liang Chen - data enthusiast</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('https://i.loli.net/2020/01/09/iBerVkKW4fNmMLY.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  2020-01-09 1:07 
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.3k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      5 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Jenkins是一个广泛用于持续构建的可视化web工具，持续构建说得更直白点，就是各种项目的”自动化”编译、打包、分发部署。jenkins可以很好的支持各种语言（比如：java, c#, php等）的项目构建，也完全兼容ant、maven、gradle等多种第三方构建工具，同时跟svn、git能无缝集成，也支持直接与知名源代码托管网站，比如github、bitbucket直接集成。<br>简单点说，Jenkins其实就是大的框架集，可以整个任何你想整合的内容，实现公司的整个持续集成体系！</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>基于docker安装：</p>
+<pre><code class="shell">docker run -it \
+  --name jenkins \
+  --restart always \
+  --user root \
+  -p 10002:8080 \
+  -p 50000:50000 \
+  -v /data/jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /opt/jdk1.8.0_25:/opt/jdk1.8.0_25 \
+  -v /bin/docker:/bin/docker \
+  -v /data/repository:/data/repository \
+  -v $(which docker):/usr/bin/docker \
+  jenkins/jenkins:lts</code></pre>
+<p>注意：需要使用jenkins/jenkins:lts镜像，jenkins:latest镜像官方已不提供支持，版本过低</p>
+<p>其中将外部docker映射到了内部docker，这样在jenkins容器内部也可以使用docker命令了</p>
+<p>注意启动之后会有个随机的密码：<br>例：<br>ff9c1128af2840d990798418bd3c92f2</p>
+<p>如果采用以-it的形式启动，可以在命令窗口中看到。</p>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/password.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/password.png" srcset="/img/loading.gif" alt="password.png"></a></p>
+<p>当然也可以进入容器，在/var/jenkins_home/secrets/initialAdminPassword中找到。</p>
+<p>注意！映射在容器中的/var/jenkins_home 目录到具有名字 jenkins-data 的volume。 如果这个卷不存在，那么这个 docker run 命令会自动为你创建卷。 如果您希望每次重新启动Jenkins（通过此 docker run … 命令）时保持Jenkins状态，则此选项是必需的，jenkins数据会在该卷进行持久化 。 否则，那么在每次重新启动后，Jenkins将有效地重置为新的实例。</p>
+<p>（可选 /var/run/docker.sock 表示Docker守护程序通过其监听的基于Unix的套接字。 该映射允许 jenkinsci/blueocean 容器与Docker守护进程通信， 如果 jenkinsci/blueocean 容器需要实例化其他Docker容器，则该守护进程是必需的。 如果运行声明式管道，其语法包含agent部分用 docker.</p>
+<p>进入 ip:10002 jenkins安装界面</p>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/install.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/install.png" srcset="/img/loading.gif" alt="install.png"></a></p>
+<p>安装对应插件</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><pre><code>本Demo实现的场景是push到项目master分支，自动触发打包发布到docker镜像仓库harbor，然后在拉取镜像在docker中运行</code></pre><p>项目Demo地址：<a href="http://161.189.27.8:8090/chenliang/jenkinsdemo" target="_blank" rel="noopener">http://161.189.27.8:8090/chenliang/jenkinsdemo</a></p>
+<p>jenkins项目地址：<a href="http://52.83.79.244:10002/job/jenkins-demo" target="_blank" rel="noopener">http://52.83.79.244:10002/job/jenkins-demo</a></p>
+<p>大家可以拉取项目Demo代码，修改代码push提交master，自动触发打包执行，在jenkins的console output查看执行信息</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li><p>step1 gitlab新建项目 比如jenkins-demo</p>
+</li>
+<li><p>step2 </p>
+<p>jenkins添加gitlab账户及密码</p>
+<p>凭据—&gt;系统—&gt;全局凭据—&gt;add credentials</p>
+<p><img src="/.com//assets%5Cpass.png" srcset="/img/loading.gif" alt="1572856908321"></p>
+</li>
+<li><p>step3  jenkins新建项目，选择maven项目—source code managment</p>
+<p>填写项目的地址，选择step生成的credentials，选择代码分支</p>
+</li>
+</ul>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/maven.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/maven.png" srcset="/img/loading.gif" alt="maven.png"></a></p>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/demo02.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/demo02.png" srcset="/img/loading.gif" alt="demo02.png"></a></p>
+<ul>
+<li><p>step4  选择Build Trigger—&gt;勾选gitlab触发选项—&gt;点击generate生成scretkey并记住—&gt;复制gitlab webhook的url</p>
+<p>url及secretkey在gitlab设置中需要用</p>
+</li>
+</ul>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/setting.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/setting.png" srcset="/img/loading.gif" alt="setting.png"></a></p>
+<ul>
+<li>step5 回到gitlab项目的setting的integration页面中，填写step4中的url及secretkey，取消勾选ssl</li>
+</ul>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/step5.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/step5.png" srcset="/img/loading.gif" alt="step5.png"></a></p>
+<ul>
+<li>step6 build中填写构建maven命令及构建后需要执行的程序，本demo执行的是打包然后java命令执行jar包</li>
+</ul>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/build.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/build.png" srcset="/img/loading.gif" alt="build.png"></a></p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>以gitlab项目jenkinsdemo为例：<a href="http://161.189.27.8:8090/chenliang/jenkinsdemo" target="_blank" rel="noopener">http://161.189.27.8:8090/chenliang/jenkinsdemo</a> 当修改代码push到master中的时候会自动出发打包及执行jar包，在jenkins项目的console output中查看打包及执行日志</p>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/output.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/output.png" srcset="/img/loading.gif" alt="output.png"></a></p>
+<h2 id="trouble-shooting"><a href="#trouble-shooting" class="headerlink" title="trouble shooting"></a>trouble shooting</h2><h3 id="安装插件报错"><a href="#安装插件报错" class="headerlink" title="安装插件报错"></a>安装插件报错</h3><p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/ceverror01.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/ceverror01.png" srcset="/img/loading.gif" alt="ceverror01.png"></a></p>
+<p>更改jenkins源—&gt;进入系统管理—&gt;管理插件—&gt;高级 </p>
+<p>将</p>
+<pre><code>http://updates.jenkins-ci.org/update-center.json</code></pre><p>更换为</p>
+<pre><code>http://mirror.esuni.jp/jenkins/updates/update-center.json</code></pre><p>保存即可</p>
+<p><a href="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/demo01.png" target="_blank" rel="noopener"><img src="http://52.83.79.244:6875/uploads/images/gallery/2019-12-Dec/scaled-840-0/demo01.png" srcset="/img/loading.gif" alt="demo01.png"></a></p>
+<h3 id="jenkins内部执行docker命令报错"><a href="#jenkins内部执行docker命令报错" class="headerlink" title="jenkins内部执行docker命令报错"></a>jenkins内部执行docker命令报错</h3><p>docker内部执行docker报的错误信息：docker: error while loading shared libraries: libltdl.so.7: cannot open shared object file: No such file or directory</p>
+<p>第一次使用的docker部署jenkins的时候，出现了两个问题：</p>
+<p>1、因为用户权限问题挂载/home/jenkins/data到/var/jenkins_home挂载不了。后面通过修改data目录的所属用户可以解决，即在容器下查询用户id（1000）,然后把data改成同样的用户id</p>
+<p>2、即便挂载docker命名和docker.sock,也修改了相应的权限，仍存在libltdl7没有权限读取。当然好像也不影响使用，只是在容器里面执行docker info的时候，会报无法读取libltdl.so.7的信息。</p>
+<p>docker: error while loading shared libraries: /usr/lib/x86_64-linux-gnu/libltdl.so.7: cannot read file data: Error 21</p>
+<p>于是查找资料在jenkins/jenkins基础上再建一个Jenkins镜像。</p>
+<p>编辑Dockerfile</p>
+<pre><code class="shell">FROM jenkins/jenkins:lts
+
+USER root
+#清除了基础镜像设置的源，切换成阿里云的jessie源
+RUN echo &#39;&#39; &gt; /etc/apt/sources.list.d/jessie-backports.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian jessie main contrib non-free&quot; &gt; /etc/apt/sources.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list \
+  &amp;&amp; echo &quot;deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free&quot; &gt;&gt; /etc/apt/sources.list
+#更新源并安装缺少的包
+
+RUN apt-get update &amp;&amp; apt-get install -y libltdl7
+
+ARG dockerGid=999
+
+RUN echo &quot;docker:x:${dockerGid}:jenkins&quot; &gt;&gt; /etc/group USER jenkins
+
+# 安装 docker-compose  --- 挂载宿主机上的就可以了
+# RUN curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+# RUN chmod +x /usr/local/bin/docker-compose</code></pre>
+<p>build镜像</p>
+<pre><code class="shell">docker build . -t myjenkins:v1</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/CI/CD">CI/CD</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/docker">docker</a>
+                
+                  <a class="hover-with-bg" href="/tags/jenkins">jenkins</a>
+                
+                  <a class="hover-with-bg" href="/tags/CI/CD">CI/CD</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="vcomments" style="width: 90%; margin: 0 auto;"></div>
+  <script defer src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var notify = 'false' === true;
+    var verify = 'false' === true;
+    var oldLoad = window.onload;
+    window.onload = function () {
+      new Valine({
+        el: '#vcomments',
+        notify: notify,
+        verify: verify,
+        app_id: "lxvw2uH6C55B6fUR6xYK6Mip-gzGzoHsz",
+        app_key: "rXGqk3FqqMJejwdD0DHPFxIX",
+        placeholder: "说点什么",
+        avatar: "retro",
+        meta: ['nick', 'mail', 'link'],
+        pageSize: "10",
+      });
+      oldLoad && oldLoad();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js" ></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+<script src="https://cdn.staticfile.org/mdbootstrap/4.8.9/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="https://cdn.staticfile.org/tocbot/4.8.0/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="https://cdn.staticfile.org/smooth-scroll/16.1.0/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-162099397-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="https://cdn.staticfile.org/prettify/r298/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/typed.js/2.0.10/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Jenkins使用指南&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/anchor-js/4.2.0/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
